@@ -1,0 +1,141 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+	margin: 25px;
+}
+
+body {
+	height: 100vh;
+	background-color: #ffc;
+}
+
+
+.box {
+	width: 200px;
+	height: 200px;
+	margin: 50px;
+	border: 1px solid black;
+}
+
+
+/* ***************************** BOX 1 ********************* */
+
+.box1{
+	transition: width 1s, font-size 2s;
+}
+
+.box1:hover {
+	width: 400px;
+	font-size: 1.5em;
+	cursor: zoom-in;
+}
+/* ***************************** BOX 2 ********************* */
+
+.box2{
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-weight: bold;
+	transition: 500ms;
+	background-color: #ddd;
+}
+.box2:hover{
+	background-color: #666;
+	color: #ddd;
+	transform: scale(1.2);
+	cursor: pointer;
+}
+/* ***************************** BOX 3 ********************* */
+.box3{
+	transition: 2s 	;
+}
+.box3:hover{
+	color: blue;
+	transform: rotateZ(180deg);
+	cursor: pointer;
+}
+/* ***************************** BOX 4 ********************* */
+.box4{
+	transition: 2s;
+
+}
+.box4:hover{
+	transform: rotateZ(180deg);
+	cursor: pointer;
+}
+.box4 p{
+	transition: 2s;
+	height: 100%;
+
+}
+.box4:hover p{
+	transform: rotateZ(-180deg);
+}
+/* ***************************** BOX 5 ********************* */
+.box5{
+	height: 160px;
+	width: 260px;
+	border: none;
+	perspective: 1000px;/* per poter applicare una trasformazione 3d agli elementi interni bisgona assegnare una prespective al contenitore */
+}
+.card{
+	width: 100%;
+	height: 100%;
+	background-image:linear-gradient(135deg, #00c6ff, #0004ff);
+	color: #fff;
+	transform-style: preserve-3d;
+	position: relative;
+	transition: transform 1s;
+	border: 1px solid #00a;
+	border-radius: 10px;
+}
+.card-front, .card-back{
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	left: 0px;
+	top: 0px; 
+	/* fa si che il retro, ruotato di 180°, non si veda */
+	backface-visibility: hidden;
+	/* Serve a far che il padding non venga sommato alle dimensioni del contenitore */
+	box-sizing: border-box;
+	
+
+}
+.card-front{
+	transform: rotateY(0deg);
+	display: flex;
+	flex-direction: row; /* Valore di default */
+	/* Spaziatura orizzontale */
+	justify-content: center;
+	/*Allineamento verticale*/
+	align-items: center;
+	/* Spaziatura tra le colonne*/
+	gap: 15px;
+	
+}
+.card-back{
+	transform: rotateY(180deg);
+	display: grid;
+	grid-template-columns: 70px auto;
+	grid-template-rows: 25px 25px 25px 25px;
+	column-gap: 8px; 
+	row-gap: 5px;
+	padding-top:24px ;
+	padding-left: 6px;
+	
+	
+}
+.card-back > p:nth-of-type(odd){
+	text-align: right;
+}
+.box5:hover .card{
+	cursor: pointer;
+	transform: rotateY(180deg);
+}
+

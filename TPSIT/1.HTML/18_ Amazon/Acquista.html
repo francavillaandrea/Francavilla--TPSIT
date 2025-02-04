@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon</title>
+</head>
+<body>
+    <div align="center" width="1562"><map name="image-map"><area alt="Vai al Carello" title="Vai al Carrello" href="Acquista.html" coords="1444,8,1549,0,1541,54,1441,52" shape="poly"></map><img usemap="#image-map" src="./img/amazon.png" alt="Scemo"></div>
+    <h1 align="center">Inserisci i dati relativi all'acquisto</h1>
+<form action="./Conferma.html">
+    <table align="center">
+        <tr>
+            <td rowspan="2">
+                <label>Luogo di spedizione: </label>
+            </td>
+            <td>
+                <input type="radio" id="domicilio" name="txtSpedizone" value="domicilio">
+                <label for="domicilio">domicilio</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" id="ufficio postale" name="txtSpedizone" value="ufficio postale">
+                <label for="ufficio postale">ufficio postale</label>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <label>Opzioni aggiuntive: </label>
+            </td>
+            <td>
+                <input type="checkbox" id="assicurazione" name="txtAgg" value="assicurazione">
+                <label for="assicurazione">assicurazione</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="consegna veloce" name="txtAgg" value="consegna veloce">
+                <label for="consegna veloce">consegna veloce</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Tipi di pagamento: </label>
+            </td>
+            <td>
+                <select name="txtPagamento" >
+                    <option value="Visa">Visa</option>
+                    <option value="mastercard">mastercard</option>
+                    <option value="american express">american express</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="Note">Note: </label>
+            </td>
+            <td>
+                <textarea name="txtNote" id="Note">Inserisci delle note</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow: hidden;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+.Pfp{
+    width: 350px;
+    float: right;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s;
+}
+
+nav a.active {
+  color: red;
+}
+
+main {
+  width: 800px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+}
+.ig {
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  float: left;
+  margin-left: 15px;
+
+}
+
+.github {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+  float: right;
+  margin-right: 15px;
+
+}
+
+.circle-background {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn.updates {
+  background: white;
+  color: black;
+}
+
+.btn.projects {
+  background: red;
+  color: white;
+}
+
+.signature {
+  margin-top: 2rem;
+  color: white;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+/*Pulsante per cambiare modalità */
+.toggle-cont {
+    --primary: #54a8fc;
+    --light: #d9d9d9;
+    --dark: #121212;
+    --gray: #414344;
+
+    position: relative;
+    z-index: 10;
+
+    width: fit-content;
+    height: 30px; /* Ridotto per renderlo più compatto */
+
+    border-radius: 9999px;
+}
+
+.toggle-cont .toggle-label {
+    --gap: 5px;
+    --width: 30px; /* Ridotto per renderlo più compatto */
+
+    cursor: pointer;
+
+    position: relative;
+    display: inline-block;
+
+    padding: 0.5rem;
+    width: calc((var(--width) + var(--gap)) * 2);
+    height: 100%;
+    background-color: var(--dark);
+
+    border: 1px solid #777777;
+    border-bottom: 0;
+
+    border-radius: 9999px;
+    box-sizing: content-box;
+    transition: all 0.3s ease-in-out;
+}
+
+.toggle-cont .toggle-label .cont-icon {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    width: var(--width);
+    height: 30px; /* Ridotto per renderlo più compatto */
+    background-image: radial-gradient(
+        circle at 50% 0%,
+        #666666 0%,
+        var(--gray) 100%
+    );
+
+    border: 1px solid #aaaaaa;
+    border-bottom: 0;
+    border-radius: 9999px;
+    box-shadow: inset 0 -0.15rem 0.15rem var(--primary),
+        inset 0 0 0.5rem 0.75rem var(--second);
+
+    transition: transform 0.3s ease-in-out;
+}
+  
+.theme-toggle {
+  position: relative;
+}
+
+.theme-toggle input {
+  display: none;
+}
+
+.theme-toggle label {
+  width: 30px;
+  height: 15px;
+  background: #fff;
+  border-radius: 15px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+.theme-toggle label::after {
+  content: '';
+  width: 13px;
+  height: 13px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: 0.3s;
+}
+
+.theme-toggle input:checked + label::after {
+  transform: translateX(15px);
+}
+#footer {
+  border-top: 1px solid #fff;
+  background-color: #1a1a1a;
+  position: absolute;
+  color: #fff;
+  z-index: 4;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+.container
+{
+display: flex;
+flex-direction: column;
+}
+
+.image{
+width: 300px;
+float: left;
+margin: 0px 50px;
+}
+.moto{
+width: 900px;
+margin-top: 25px;
+text-align: center;
+}
+.nuoto {
+width: 900px;
+margin-top: 25px;
+text-align: center;
+}
+.musica{
+width: 900px;
+margin-top: 25px;
+text-align: center;
+}
+.carti{
+width: 300px;
+float: left;
+margin-right: 50px;
+margin-left: 50px;
+}
+
+/* Modalità Chiara */
+
+body.light-mode {
+  background-color: #f4f4f4;
+  color: #000;
+}
+body.light-mode header .logo,
+body.light-mode nav a {
+  color: #000;
+}
+
+body.light-mode nav a.active {
+  color: red;
+}
+
+body.light-mode h1 {
+  color: #fff;
+}
+
+body.light-mode .btn.updates {
+  background: red;
+  color: white;
+}
+
+body.light-mode .btn.projects {
+  background: red;
+  color: white;
+}
+body.light-mode footer {
+    background-color: #f4f4f4;
+    color: #000; 
+  }
+body.light-mode .signature {
+  color: #fff;
+}
+
+/* Responsive Design */
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 1rem;
+  }
+
+  nav a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  .circle-background {
+    width: 250px;
+    height: 250px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .btn {
+    width: 80%;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .signature {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    padding: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  .circle-background {
+    width: 200px;
+    height: 200px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .signature {
+    font-size: 0.8rem;
+  }
+}
+
+/* Animazioni Pulsante */
+.cont-icon .sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+
+  width: calc(var(--width) * 1px);
+  aspect-ratio: 1;
+  background-color: var(--light);
+
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  rotate: calc(1deg * var(--deg));
+  transform: translate(-50%, -50%);
+  animation: sparkle calc(100s / var(--duration)) linear
+      calc(0s / var(--duration)) infinite;
+}
+
+@keyframes sparkle {
+  to {
+      width: calc(var(--width) * 0.5px);
+      transform: translate(2000%, -50%);
+  }
+}
+
+.cont-icon .icon {
+  width: 1.1rem;
+  fill: var(--light);
+}
+
+.toggle-cont:has(.toggle-input:checked) {
+  --checked: true;
+}
+
+@container style(--checked: true) {
+  .toggle-cont .toggle-label {
+      background-color: #41434400;
+
+      border: 1px solid #3d6970;
+      border-bottom: 0;
+  }
+
+  .toggle-cont .toggle-label::before {
+      box-shadow: 0 1rem 2.5rem -2 rem #0080ff;
+  }
+
+  .toggle-cont .toggle-label .cont-icon {
+      background-image: url('./img/Beta.jpg'); 
+      background-size: cover; 
+      background-position: center;
+  }
+}
+
+.toggle-cont .toggle-input {
+  display: none;
+}
+
+  .toggle-cont .toggle-label .cont-icon .sparkle {
+      animation: sparkle calc(100s / var(--duration)) linear
+          calc(0s / var(--duration)) infinite;
+  }
+
+@keyframes sparkle {
+  to {
+    width: calc(var(--width) * 0.5px);
+    transform: translate(2000%, -50%);
+  }
+}
+
+.cont-icon .icon {
+  width: 1.1rem;
+  fill: var(--light);
+}
+
+.toggle-cont:has(.toggle-input:checked) {
+  --checked: true;
+}
+
+@container style(--checked: true) {
+  .toggle-cont .toggle-label {
+    background-color: #41434400;
+
+    border: 1px solid #3d6970;
+    border-bottom: 0;
+  }
+
+  .toggle-cont .toggle-label::before {
+    box-shadow: 0 1rem 2.5rem -2rem #0080ff;
+  }
+
+  .toggle-cont .toggle-label .cont-icon {
+    overflow: visible;
+
+    background-image: radial-gradient(
+      circle at 50% 0%,
+      #045ab1 0%,
+      var(--primary) 100%
+    );
+
+    border: 1px solid var(--primary);
+    border-bottom: 0;
+
+    transform: translateX(calc((var(--gap) * 2) + 100%)) rotate(-225deg);
+  }
+
+  .toggle-cont .toggle-label .cont-icon .sparkle {
+    z-index: -10;
+
+    width: calc(var(--width) * 1.5px);
+    background-color: #acacac;
+
+    animation: sparkle calc(100s / var(--duration)) linear
+      calc(10s / var(--duration)) infinite;
+  }
+
+  @keyframes sparkle {
+    to {
+      width: calc(var(--width) * 1px);
+      transform: translate(5000%, -50%);
+    }
+  }
+}
