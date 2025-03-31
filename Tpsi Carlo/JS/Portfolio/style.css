@@ -1,0 +1,87 @@
+@import url('https://fonts.cdnfonts.com/css/commodore-64-pixelized');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: content-box;   
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    color: #7a7e6a;
+    background-color: black;
+    overflow: hidden;
+    font-family: 'Commodore 64 Pixelized', sans-serif;
+}
+
+div.container{
+    width: 60vw;
+    height: 90vh;
+    margin-top: 5vh;
+    align-content: center;
+}
+
+div.container div.screen{
+    width: 65vw;
+    height: 90vh;
+    display: flex;
+    background-color: #7a7e6a;
+    border-radius: 1vw;
+    position: relative;
+    right: 18vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 3vh;
+    overflow: hidden;
+}
+
+#monitor{
+    width: 55vw;
+    height: 75vh;
+    display: flex;
+    align-self: center;
+    border: 2vw solid #494b40;
+    border-radius: 1vw;
+}
+
+div.container div.controls svg.keyboard{
+    object-fit: scale-down;
+    width: 30vw;
+    margin-top: auto;
+}
+
+div.container svg.keyboard a{
+    visibility: hidden;
+    animation: appari 1s steps(1, end);
+    animation-fill-mode: forwards;
+    animation-delay: 24s;
+}@keyframes appari{100% {visibility: visible;}}
+
+div.container div.controls p{
+    user-select: none;
+    font-size: 1.3vi;
+    margin-top: auto;
+}
+
+div.container div.controls{
+    position: relative;
+    width: fit-content;
+    left: 37vw;
+    bottom: 40vh;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: 11.5vw;
+    text-align: center;
+}
+
+div.container div.screen img.logo{
+    width: 7vw;
+    position: relative;
+    top: 1vh;
+    background-color: #494b40;
+    border-radius: 1vh;
+    padding: 0.3vmin;
+}

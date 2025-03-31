@@ -1,0 +1,11 @@
+Client ID:40887259c9754a87a347cea91c082b59
+Client secret: d084b872ba8845d1837f7deff5e14d0b
+
+
+Code: AQCwTUG6WflDfoejRnbmnHytHEsQiF37CQ-4CETbDBdeDRa-iZxnqxs4faiAIU7vKZQD_eAI0Y-2IoyQebaQTcrUaDjp5MHhOnAPIhRbMDvRGWh0pxCg79-aOFTkLcJep8HZL1fmo62_eK5K8ii4lmSUjM0HkYk3qMPrfmb3kro08fJaPg2OJbq6bECy-VIEsAvvD50UVymw7pM-mFn0jWPDXGuTDEYotztqavT7HSb29zmRrWpbBhcmFvSnD0CE
+curl -X POST "https://accounts.spotify.com/api/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "grant_type=client_credentials" \
+     -d "client_id=40887259c9754a87a347cea91c082b59" \
+     -d "client_secret=d084b872ba8845d1837f7deff5e14d0b"
+

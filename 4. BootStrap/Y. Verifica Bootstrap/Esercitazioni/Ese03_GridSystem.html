@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GridSystem</title>
+    <link href="./Bootstrap/bootstrap.css" rel="stylesheet">
+    <script defer src="./Bootstrap/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bootstrap: Grid layout</h1>
+        <div class="row border">
+            <h4>Layout BASE: larghezza colonne automatica</h4>
+        </div>
+        <div class="row">
+            <div class="col border">A</div>
+            <div class="col border">B</div>
+            <div class="col border">C</div>
+        </div>
+        
+        <div class="row border">
+            <h4>Layout avanzato: modifica dim. colonne</h4>
+        </div>
+        <div class="row">
+            <div class="col-8 border">1</div>
+            <div class="col border">2</div>
+            <div class="col border">3</div>
+        </div>
+
+        <div class="row border">
+            <h4>Layout avanzato: modifica larghezza colonne (screen size)</h4>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-1 col-md-8 border">1</div>
+            <div class="col border">2</div>
+            <div class="col border">3</div>
+            <div class="col border">4</div>
+            <div class="col border">5</div>
+            <div class="col border">6</div>
+            <div class="col border">7</div>
+            <div class="col border">8</div>
+            <div class="col border">9</div>
+            <div class="col border">10</div>
+            <div class="col border">11</div>
+            <div class="col border">12</div>
+        </div>
+<!--         <div class="row border">
+            <h4>Layout avanzato: allineamento items</h4>
+        </div>
+        <div class="row d-flex flex-row align-items-center">
+            <div class="col border">A</div>
+            <div class="col border">B</div>
+            <div class="col border">C</div>
+        </div> -->
+        <div class="row border">
+            <h4>Layout avanzato: utilizzo offset</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4 border">A</div>
+            <div class="col-md-4 offset-md-4 border">B</div>
+        </div>
+        
+        <div class="row border">
+            <h4>Layout avanzato: offset</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4 border">col-md-4</div>
+            <div class="col-md-4 offset-md-4 border">col-md-4 offset-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 offset-md-3 border">col-md-3 offset-md-3</div>
+            <div class="col-md-3 offset-md-3 border">col-md-3 offset-md-3</div>
+        </div>
+        <div class="row">
+            <div class="col-md-9 offset-md-3 bg-success border">lorem ipsum</div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="my-4">Bootstrap: utlizzo nesting</h1>
+        <div class="row border border-dark p-3 mb-3">
+            <div class="col-sm-3 bg-primary text-white p-3">
+                <strong>Livello 1</strong>
+            </div>
+            <div class="col-sm-9 bg-light p-3">
+                <div class="row">
+                    <div class="col-8 col-sm-6 bg-success text-white p-3 m-1"><strong>Livello 2</strong></div>
+                    <div class="col-4 col-sm-6 bg-warning p-3 m-1"><strong>Livello 3</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
