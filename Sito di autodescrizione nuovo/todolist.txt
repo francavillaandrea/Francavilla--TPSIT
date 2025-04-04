@@ -1,0 +1,3 @@
+- Sistemare i giochi per il telefono
+- Sistemare snake
+- Sistemare index perche l'immagine si sovrappone al testo del footer
