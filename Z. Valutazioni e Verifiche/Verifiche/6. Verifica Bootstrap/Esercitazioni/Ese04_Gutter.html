@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gutter</title>
+    <link href="./Bootstrap/bootstrap.css" rel="stylesheet">
+    <script defer src="./Bootstrap/bootstrap.js"></script>
+</head>
+<body>
+    <!-- Gutters 
+        Margini: 
+            m-[0-5] => tutti i lati
+            mt-[0-5] => margin-top
+            mb-[0-5] => margin-bottom
+            me-[0-5] => margin-right
+            ms-[0-5] => margin-left
+        Padding:
+            p*
+        Gutter: 
+            gx-[0-5] aumento width sx e dx 
+            gy-[0-5] aumento height 
+        -->
+        <div class="container border px-4">
+            <h1>Bootstrap: Gutter orizzontale</h1>
+            <div class="row gx-5">
+                <div class="col border">Lorem ipsum</div>
+                <div class="col border">Lorem ipsum</div>
+            </div>
+        </div>
+        <div class="container overflow-hidden">
+            <h1>Bootstrap: Gutter verticale</h1>
+            <div class="row gy-5">
+                <div class="col-6">
+                    <div class="p-3 border bg-light">Lorem ipsum</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light">Lorem ipsum</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light">Lorem ipsum</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light">Lorem ipsum</div>
+                </div>
+            </div>
+        </div>
+        <div class="container overflow-hidden">
+            <h1>Bootstrap: gutter applicato alle righe</h1>
+            <div class="row row-cols-md-2 row-cols-lg-5 row-cols-sm-1 g-2 g-lg-3">
+                <div class="col border bg-light p-3">1</div>
+                <div class="col border bg-light p-3">2</div>
+                <div class="col border bg-light p-3">3</div>
+                <div class="col border bg-light p-3">4</div>
+                <div class="col border bg-light p-3">5</div>
+                <div class="col border bg-light p-3">6</div>
+                <div class="col border bg-light p-3">7</div>
+                <div class="col border bg-light p-3">8</div>
+                <div class="col border bg-light p-3">9</div>
+                <div class="col border bg-light p-3">10</div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Francavilla Andrea </title>
+</head>
+<body>
+    <h1 align="center"> Moduli di iscrizione al Corso Serale </h1>
+    <form action="./index2.html">
+    <table>
+        <tr>
+            <td width="140"> 
+                <label for="txtCognome">Cognome:</label>
+            </td>
+            <td width="300"> 
+                <input type="text"  id="txtCognome"name="txtCognome" required size="20">
+            </td>
+        </tr>
+        <tr> 
+            <td>
+                <label for="txtNome">Nome :</label>
+            </td>
+            <td> 
+                <input type="text"  id="txtNome"name="txtNome" required size="20">
+            </td>
+        </tr>
+        <tr> 
+            <td> 
+
+            </td>
+            <td> 
+                Giorno Mese Anno 
+            </td>
+        </tr>
+        <tr> 
+            <td> <label for="txtDDN">Data di Nascita</label> </td>
+            <td> 
+                <input type="text"  id="txtDDN"name="txtg" required size="3"> <input type="text"  id="txtDDN"name="txtm" required size="3"> <input type="text"  id="txtDDN"name="txta" required size="4">
+            </td>
+        </tr>
+        <tr> 
+            <td> <legend>Genere </legend></td>
+            <td colspan="2"> <input type="radio" id="optM" name="optGenere" value="M">
+                <label for="optM" valign="right"> M </label> 
+                <input type="radio" id="optF" name="optGenere" value="F">
+                <label for="optF"> F </label>
+            </td>
+        </tr>
+        <tr> 
+            <td> 
+                <label for="lstProvincia"> Provincia: </label>
+            </td>
+            <td> 
+                <select name="lstProvincia" id="lstProvincia" required>
+                    <option value="CN"> Cuneo </option>
+                    <option value="TO"> Torino </option>
+                    <option value="AT"> Asti </option>
+                    <option value="AL"> Alessandria </option>
+                  </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"> Secondo quali modalità si desidera ricevere maggiori informazioni? </td>
+        </tr>
+        <tr> 
+            <td> (scelte multiple) </td>
+            <td> <input type="checkbox" id="chkPo" name="chkInfo" value="Posta Ordinaria ">
+                <label for="chkPo"> Posta Ordinaria </label>
+                    <br>
+                <input type="checkbox" id="chkPE" name="chkInfo" value="Posta Elettronica ">
+                <label for="chksport"> Posta Elettronica </label>
+                    <br>
+                    <input type="checkbox" id="chkT" name="chkInfo" value=" Telefono ">
+                <label for="chkT"> Telefono</label></td>
+        </tr>
+        <tr> 
+            <td> 
+                <br> <br>
+                <label for="txtNote "> Note </label>
+                <textarea name="txtNote" id="txtNote" cols="40" rows="10" ></textarea>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="invia">
+</form>
+    
+       
+    
+
+</body>
+</html>

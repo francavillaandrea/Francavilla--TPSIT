@@ -16,8 +16,12 @@ window.onload = function () {
 
 	//Associazione degli eventi
 	_txtMatricola.addEventListener("change", controllaMatricola);
-	_txtNome.addEventListener("change", controllaNomeCognome);
-	_txtCognome.addEventListener("change", controllaNomeCognome);
+	_txtNome.addEventListener("change", function(){
+		controllaNomeCognome(_txtNome);
+	});
+	_txtCognome.addEventListener("change", function(){
+		controllaNomeCognome(this);
+	});
 	_chkLavoratore.addEventListener("change", nascondiTextBox);
 	_btnInvia.addEventListener("click", validaForm);
 	//Inizializzazioni
@@ -31,6 +35,16 @@ window.onload = function () {
 			msg += "Matricola non valida! <br>";
 			
 		}
+		if(!controllaNomeCognome(_txtNome))
+		{
+			msg += "Nome non valido <br>";
+		}
+		if(!controllaNomeCognome(_txtCognome))
+		{
+			msg += "Cognome non valido <br>";
+		}
+
+		//Visualizzazione del risultato
 		if(msg != "")
 		{
 			_divMsg.innerHTML = msg;
@@ -55,17 +69,19 @@ window.onload = function () {
 		}
 	}
 
-	function controllaNomeCognome()
+	function controllaNomeCognome(_pointer)
 	{
-		if (this.value.length < 4 || !isLetter(this.value)) 
+		if (_pointer.value.length < 4 || !isLetter(_pointer.value)) 
 		{
-			//this.style.borderColor = "red";
-			this.classList.add("red-border");
+			//_pointer.style.borderColor = "red";
+			_pointer.classList.add("red-border");
+			return false;
 		}
 		else 
 		{
-			//this.style.borderColor = "lightGreen";
-			this.classList.remove("red-border");
+			//_pointer.style.borderColor = "lightGreen";
+			_pointer.classList.remove("red-border");
+			return true;
 
 		}
 	}
