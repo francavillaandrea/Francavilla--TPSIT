@@ -1,0 +1,242 @@
+@font-face {
+    font-family: waltograph;
+    src: local(waltograph),
+        url(./font/waltograph.ttf) format('truetype'),
+        url(./font/waltograph.svg) format('svg'),
+        url(./font/waltograph.woff) format('woff');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#wrapper {
+    height: 100%;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10pt;
+    line-height: 16pt;
+    background-image: url(./img/sky.jpg);
+    background-size: cover;
+    background-position: center;
+
+
+}
+
+#wrapper {
+    width: 990px;
+    height: 100%;
+    margin: 10px auto;
+    background-image: linear-gradient(to bottom, #eeeeff 30%, #27f 90%);
+}
+
+#content {
+    display: flex;
+    ;
+}
+
+#wrapper header,
+nav,
+section,
+aside,
+fieldset {
+    box-shadow: 3px 3px 2px #009;
+    border: 1px solid #bbf;
+    border-radius: 15px;
+    margin: 0px 5px;
+
+}
+
+#wrapper header {
+    border: 1px solid #bbf;
+    font-family: waltograph;
+    margin: 10px 5px;
+    box-shadow: 3px 3px 2px #009;
+    height: 100px;
+
+}
+
+#wrapper #content {
+    margin-top: 20px;
+}
+
+#wrapper header h1 {
+    font-size: 30pt;
+    text-align: center;
+    color: #00f;
+    line-height: 100px;
+    text-shadow: 3px 3px 2px #009;
+}
+
+#wrapper nav {
+    width: 200px;
+    background-color: #369;
+    margin: 0px auto;
+}
+
+#wrapper nav ul li {
+    width: 130px;
+    height: 45px;
+    font-weight: bold;
+    margin: 10px auto   ;
+    text-align: center;
+    box-shadow: 3px 3px 2px #009;
+    border: 1px solid #bbf;
+    list-style: none;
+    line-height: 16pt;
+    background-image: radial-gradient(ellipse, #F33 25%, #3ff 75%);
+    transition: 0.7s;
+    line-height: 45px;
+    border-radius: 5px;
+
+}
+
+#wrapper nav li {
+    text-align: center;
+}
+
+#wrapper nav ul li:hover {
+    transform: scale(1.1);
+    background-color: #04a;
+    color: yellow;
+    text-decoration: underline;
+    background-image: none;
+    cursor: pointer;
+}
+
+#wrapper nav ul li:hover a {
+    color: yellow;
+
+
+}
+
+#wrapper nav ul li a {
+    text-decoration: none;
+    color: #ccf;
+    margin: 0px auto;
+}
+
+#wrapper progress {
+    margin-left: 10px;
+}
+
+#wrapper nav h3 {
+    margin: 10px;
+    color: #ccccff;
+    font-weight: bold;
+}
+
+#wrapper nav h3:nth-of-type(2) {
+    margin-top: 100px;
+}
+
+#wrapper section {
+    width: 580px;
+    font-size: 8pt;
+    background-color: rgba(227, 113, 255, 0.5);
+}
+
+#wrapper section h1 {
+    text-align: center;
+    font-size: 20pt;
+    padding: 15px;
+}
+
+#wrapper section div {
+    column-count: 3;
+    column-rule: 1px solid black;
+}
+
+#wrapper aside {
+    width: 180px;
+    padding: 0px 10px;
+}
+
+#wrapper aside h2 {
+    margin: 10px;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+#wrapper aside #img {
+    width: 140px;
+    height: 220px;
+    background-origin: content-box;
+    background-color: #0af;
+    background-image: url(./img/booking.png);
+    padding: 3px;
+}
+
+#wrapper aside #img:hover {
+    background-origin: content-box;
+    cursor: pointer;
+    background-image: url(./img/booking2.png);
+}
+
+#wrapper aside #news {
+    height: 150px;
+    overflow: auto;
+}
+
+#wrapper fieldset {
+    margin: 10px;
+    text-align: center;
+}
+
+#wrapper fieldset button {
+    background-color: rgba(227, 113, 255, 0.5);
+    border-radius: 5px;
+    width: 50px;
+}
+
+@media screen and (max-width:990px),
+screen and (max-device-width:990px) {
+    #wrapper {
+        width: 100%;
+    }
+
+    aside {
+        display:none;
+    }
+    #wrapper nav{
+        float: left;
+    }
+}
+
+@media screen and (max-width:810px),
+screen and (max-device-width:810px) {
+    #wrapper {
+        width: 100%;
+    }
+
+    #wrapper aside {
+        display: none;
+    }
+
+    #content {
+        display: inline-block;
+    }
+
+    #wrapper nav {
+        width: 990px;
+    }
+
+    #wrapper nav ul li {
+        display: inline-block;
+    }
+
+    #wrapper nav h3 {
+        display: none;
+    }
+
+    #wrapper nav progress {
+        display: none;
+    }
+
+}
