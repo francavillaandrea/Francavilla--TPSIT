@@ -1,11 +1,226 @@
-function generaNumero(min,max){
-    /*formula per generare un numero 
-    casuale compreso tra min e max max escluso */
-    let n = Math.floor((max-min)*Math.random()+min);
-    return n;    
+/* FUNZIONI E CONCETTI SPECIFICI PER ESERCIZIO */
+
+// 01_Somma Numeri
+/**
+ * Impedisce l'inserimento di caratteri non numerici in un input
+ * Permette solo: numeri, backspace e tab
+ */
+function abbattiLettere(event) {
+    let char = event.key;
+    if(!((char >= '0' && char <= '9') || char == "Backspace" || char == "Tab"))
+        event.preventDefault();
 }
 
-//Per sostiture un carattere 
-function sostituisci (s, char, index){
-	s.substring(0, index) + char + s.substring(index + 1);
-} 
+/**
+ * Verifica se un numero è pari o dispari usando l'operatore modulo
+ */
+function checkEvenOdd(num) {
+    return num % 2 == 0 ? "pari" : "dispari";
+}
+
+// 02_Lancio Moneta
+/**
+ * Genera un numero casuale tra min (incluso) e max (escluso)
+ * Esempio: generaNumero(1,7) genera numeri da 1 a 6
+ */
+function generaNumero(min,max) {
+    return Math.floor((max-min)*Math.random())+min;
+}
+
+/**
+ * Simula n lanci di moneta con intervallo di 100ms tra ogni lancio
+ * Usa setInterval per temporizzare i lanci
+ */
+function lanciaNMonete(n) {
+    let counter = 0;
+    let id = setInterval(() => {
+        if(++counter > n) {
+            clearInterval(id);
+            return;
+        }
+    }, 100);
+}
+
+// 03_Alto e Basso
+- Gestione eventi keypress:
+function gestisciEnter(event) {
+    if(event.key == "Enter") gioca();
+}
+
+// 04_Indovina il Numero
+/**
+ * Gestisce i tentativi dell'utente evitando duplicati
+ * Usa un array per memorizzare i numeri già inseriti
+ */
+let tentativi = [];
+function checkTentativo(num) {
+    if(tentativi.includes(num)) return "Numero già inserito";
+    tentativi.push(num);
+}
+
+// 05_Cinque Numeri Posizionali
+/**
+ * Genera un array di 5 numeri univoci in ordine casuale
+ * Usa splice per rimuovere i numeri già utilizzati
+ */
+function generaArrayOrdinato() {
+    let numeriSegreti = [];
+    let disponibili = [1,2,3,4,5];
+    for(let i=0; i<5; i++) {
+        let pos = generaNumero(0, disponibili.length);
+        numeriSegreti[i] = disponibili[pos];
+        disponibili.splice(pos, 1); // Rimuove il numero usato
+    }
+    return numeriSegreti;
+}
+
+// 07_Indovina Parola e 08_Impiccato
+/**
+ * Sostituisce un carattere in una stringa in una posizione specifica
+ * Non modifica la stringa originale ma ne restituisce una nuova
+ */
+function sostituisciCarattere(str, char, index) {
+    return str.substring(0, index) + char + str.substring(index + 1);
+}
+
+/**
+ * Gestisce i tentativi errati usando un Set per evitare duplicati
+ * Restituisce il numero di tentativi sbagliati
+ */
+let lettereSbagliate = new Set();
+function aggiungiLetteraSbagliata(lettera) {
+    lettereSbagliate.add(lettera);
+    return lettereSbagliate.size;
+}
+
+// 10_Scrambler
+- Generazione caratteri ASCII:
+function generaCarattereASCII(min, max) {
+    return String.fromCharCode(generaNumero(min, max));
+}
+
+// 12_Resistenze Elettriche
+- Calcoli scientifici:
+function calcolaValore(cifra1, cifra2, esponente) {
+    let base = parseInt(cifra1 + cifra2);
+    return base * Math.pow(10, esponente);
+}
+
+// 15_Verifica Nazioni
+- Gestione data attributes:
+function impostaNazione(element, nazione) {
+    element.dataset.nazione = nazione;
+    element.dataset.risposta = "";
+}
+
+// 16_Tris
+/**
+ * Verifica la vittoria controllando righe, colonne e diagonali
+ * Ritorna true se trova tre simboli uguali allineati
+ */
+function controllaVittoria(griglia) {
+    // Controllo righe
+    for(let i=0; i<3; i++) {
+        if(griglia[i][0] != "" && 
+           griglia[i][0] == griglia[i][1] && 
+           griglia[i][1] == griglia[i][2]) 
+            return true;
+    }
+    // Colonne
+    for(let i=0; i<3; i++) {
+        if(griglia[0][i] != "" && 
+           griglia[0][i] == griglia[1][i] && 
+           griglia[1][i] == griglia[2][i])
+            return true;
+    }
+    // Diagonali
+    if(griglia[0][0] != "" && 
+       griglia[0][0] == griglia[1][1] && 
+       griglia[1][1] == griglia[2][2])
+        return true;
+    if(griglia[0][2] != "" && 
+       griglia[0][2] == griglia[1][1] && 
+       griglia[1][1] == griglia[2][0])
+        return true;
+    return false;
+}
+
+// 19_Black Jack
+/**
+ * Calcola il punteggio considerando gli assi come 1 o 11
+ * Gli assi valgono 11 solo se non causano sforamento
+ */
+function calcolaPunteggio(carte) {
+    let assi = 0;
+    let punteggio = 0;
+    // Conta gli assi e somma gli altri valori
+    for(let carta of carte) {
+        if(carta.valore == 1) assi++;
+        punteggio += carta.valore;
+    }
+    // Converte gli assi da 1 a 11 se possibile
+    while(assi > 0 && punteggio + 10 <= 21) {
+        punteggio += 10;
+        assi--;
+    }
+    return punteggio;
+}
+- Gestione eventi mouse:
+function gestioneHover(elemento) {
+    elemento.addEventListener("mouseover", () => elemento.style.opacity = 1);
+    elemento.addEventListener("mouseout", () => elemento.style.opacity = 0.5);
+}
+
+// 20_Morra Cinese
+- Gestione stili immagini:
+function impostaStileImmagine(elemento) {
+    elemento.style.backgroundRepeat = "no-repeat";
+    elemento.style.backgroundPosition = "center";
+    elemento.style.backgroundSize = "contain";
+}
+
+/* PATTERN E TECNICHE IMPORTANTI */
+1. Gestione Eventi
+   - Rimozione corretta eventi
+   - Delegazione eventi
+   - Eventi keyboard e mouse
+   - Eventi personalizzati
+
+2. Manipolazione DOM
+   - Dataset attributes
+   - Gestione stili dinamici
+   - Creazione elementi
+   - Gestione classi
+
+3. Array e Collezioni
+   - Set per valori univoci
+   - Splice per rimozione
+   - Map per associazioni
+   - Filter e find
+
+4. Temporizzazione
+   - setTimeout vs setInterval
+   - Gestione animazioni
+   - Clear dei timer
+
+5. Validazione Input
+   - Pattern regex
+   - Controlli numerici
+   - Sanitizzazione
+
+/* BEST PRACTICES */
+1. "use strict": Attiva il strict mode per una maggiore sicurezza
+2. const: Usa const per valori che non cambiano mai
+3. defer: Carica gli script dopo il DOM
+4. Casi limite: Gestisci sempre input invalidi e casi estremi
+5. Validazione input
+6. Nomi variabili significativi
+7. Commenti per logica complessa
+8. Gestione corretta eventi
+9. Separazione logica/UI
+10. Funzioni riutilizzabili
+11. Controllo tipo parametri
+12. Gestione errori try/catch
+13. Testing casi limite
+14. Ottimizzazione performance
+15. Codice mantenibile
