@@ -38,19 +38,17 @@
     --bs-navbar-active-color: #ffffff !important;
 }
 
-/* Font */
-:root {
-    --bs-body-font-family: "Comic Relief", system-ui;
-}
 
 body {
     font-family: "Comic Relief", system-ui;
     font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6, .navbar-brand {
-    font-family: "Comic Relief", system-ui;
-    font-weight: 700;
+main {
+  flex: 1;
 }
 
 /* Navbar e footer */
@@ -175,4 +173,25 @@ html{
 
 .modal-header {
     border-bottom: none;
+}
+
+/* Language Selector */
+.language-selector {
+  width: 60px;
+  text-align: center;
+}
+
+.language-selector option {
+  font-size: 1.2em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .shape {
+    display: none;
+  }
+  
+  .display-5 {
+    font-size: 2rem;
+  }
 }

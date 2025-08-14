@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Gestione dello scroll per la progress bar
     const progressBar = document.querySelector('.scroll-progress');
     
     window.addEventListener('scroll', () => {
@@ -31,5 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrolled = (scrollTop / scrollHeight) * 100;
         
         progressBar.style.width = scrolled + '%';
+        if (scrolled > 0) {
+            progressBar.style.display = 'block';
+        } else {
+            progressBar.style.display = 'none';
+        }
     });
 });

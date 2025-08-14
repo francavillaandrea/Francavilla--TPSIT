@@ -1,0 +1,268 @@
+body,
+header,
+section.topics,
+.card,
+nav a,
+.btn,
+.logo {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FBF8F5;
+  color: #333;
+}
+
+/* Header layout */
+header {
+  padding: 10px 20px;
+  background-color: #FBF8F5;
+  border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.nav-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 19px;
+  color: inherit;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.theme-switch {
+  cursor: pointer;
+}
+
+/* Main content */
+main {
+  padding: 10vh 20px;
+  text-align: center;
+}
+
+main h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+main p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+}
+
+/* Topics */
+section.topics {
+  padding: 120px 20px 80px;
+  text-align: center;
+  min-height: calc(100vh - 400px);
+}
+
+section.topics h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+section.topics p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #fff;
+  padding: 25px;
+  width: 240px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.card .btn {
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-toggle-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Dark theme */
+.dark-theme {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+.dark-theme header,
+.dark-theme section.topics,
+.dark-theme .card {
+  background-color: #0f0f0f;
+  border-color: #444;
+}
+
+.dark-theme nav a {
+  color: #ffffff;
+}
+
+.dark-theme .btn {
+  background-color: #ffffff;
+  color: #121212;
+  border: 2px solid #ffffff;
+}
+
+.dark-theme .card {
+  border: 1px solid #444;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.site-footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer p {
+  margin: 0;
+  color: #666;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #333;
+}
+
+/* Show footer when page is scrolled to bottom */
+body.at-bottom .site-footer {
+  transform: translateY(0);
+}
+
+/* Dark theme footer */
+.dark-theme .site-footer {
+  background-color: #0f0f0f;
+  border-top-color: #444;
+}
+
+.dark-theme .site-footer p,
+.dark-theme .footer-links a {
+  color: #888;
+}
+
+.dark-theme .footer-links a:hover {
+  color: #fff;
+}
+
+/* Logo fade */
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
