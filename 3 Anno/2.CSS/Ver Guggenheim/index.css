@@ -1,0 +1,115 @@
+*{
+    padding: 0px;
+    margin:0px;
+    box-sizing: content-box;
+}
+body{
+    background-color: #f00;
+}
+#wrapper{
+    width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+}
+#wrapper .header p{
+    float: left;
+    width: 123px;
+    height: 154px;
+    background-image: url(./img/logo.jpg);
+    background-position: left;
+    background-repeat: no-repeat;
+    border: 1px solid #eee;
+}
+#wrapper .header p:hover{
+    float: left;
+    font-size: 40pt;
+    background-color: rgb(200, 0, 0);
+    opacity: 0.4;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 50%;
+}
+#wrapper .nav {
+    margin: 0px auto
+}
+#wrapper .menu li{
+    margin-top: 60px;
+    display: inline-block;
+    float: right;
+    width: 80px;
+    height: 45px;
+    text-align: center;
+    line-height: 38px;
+    border: 1px solid #fff;
+}
+#wrapper .menu a {
+    text-decoration: none;
+    color: #f00;
+}
+#wrapper .menu a:hover{
+    color: #fff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#wrapper .menu li:hover{
+    background-color: #f00;
+    
+}
+#wrapper .mainSection{
+    width: 33%;
+    display: inline-block
+}
+#wrapper .mainSection h2{
+    padding: 15px;
+}
+#wrapper .mainSection p{
+    padding: 0px 15px;
+}
+.footer{
+    background-color: #c00000;
+    padding: 15px   ;
+}
+#wrapper .login {
+    width: 140px;
+    padding: 20px;
+    padding-top: 12px;
+    padding-right: 20px;
+    border:1px solid #ccc;
+    border-radius: 12px;
+    margin: 0px auto;
+}
+#wrapper .login input{
+    width: 100px;
+}
+#wrapper .login input:nth-last-of-type(1){
+    font-weight:bold;
+    width: 120px; 
+}
+
+#wrapper .login{
+    position: fixed;
+    top: 100px;
+    right: 40px;
+    border: 1px solid #ccc;
+    
+}
+#wrapper .icona{
+    background-image: url("./img/icons.png");
+    display: inline-block;
+    background-color: #fff;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.login div:nth-of-type(1){
+    background-position: -144px -96px;
+}
+
+.login div:nth-of-type(2){
+    background-position: -192px -96px;
+}
+.login div:nth-of-type(3){
+    margin-top: 5px;
+}
+

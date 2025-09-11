@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Pagina Acquisto </title>
+</head>
+<body>
+    <form action="./index2.html">
+    <h1> Inserisci i dati per l'acquisto</h1>
+    <label for="txtNeC">Cognome e Nome:</label>
+    <input type="text"  id="txtNeC"name="txtNeC" placeholder="Inserisci qui il tuo nome e il tuo congnome" required>
+    <br><br>
+    <label for="txtCa"> Codice Articolo da acquistare (da 1 a 10): </label>
+    <input type="number" id="txtCa" name="txtCa" placeholder="Codice Articolo" max="10" required>
+    <br> <br>
+    <legend > Media </legend>
+    <input type="radio" id="optPiccola" name="optTaglia" value="S">
+    <label for="optPiccola"> Piccola </label>
+    <br>
+    <input type="radio" id="optMedia" name="optTaglia" value="M">
+    <label for="optMedia"> Media </label>
+    <br>
+    <input type="radio" id="optGrande" name="optTaglia" value="L">
+    <label for="optGrande"> Grande </label>
+    <br> <br>
+    <span> Fattura</span>
+    <input type="checkbox" id="chkFattura" name="chkFattura" value="Fattura">
+    <label for="chkFattura"> </label>
+    <br>
+    <br>
+    <span> Pacco regalo</span>
+    <input type="checkbox" id="chkRegalo" name="chkRegalo" value="Regalo">
+    <label for="chkregalo"> </label>
+    <br><br>
+    <label for="lstPagam"> Pagamento :</label>
+    <select name="lstPagam" id="lstPagam" required>
+        <option value="Contrassegno"> Contrassegno </option>
+        <option value="Carta Di credito"> Carta Di credito </option>
+        <option value="Vaglia Postale"> Vaglia Postale </option>
+      </select>
+      <br><br>
+      <input type="submit" value="Invia">
+      <br><br>
+      Condividi su <a href="https://www.facebook.com/"> <img src="./facebook.png" alt="" width="60px" target="_blank" title="Vai a Facebook"></a>
+    </form>
+</body>
+</html>

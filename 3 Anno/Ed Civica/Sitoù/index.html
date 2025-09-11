@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sondaggio - Educazione Civica</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h2>Sondaggio sull'Uso e Abuso della Rete</h2>
+    <form action="confirmation.html">
+
+        <h3>Dati Personali</h3>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="cognome">Cognome:</label>
+        <input type="text" id="cognome" name="cognome" required>
+
+        <label for="età">Età:</label>
+        <input type="number" id="età" name="età" min="10" max="100" required>
+
+        <hr>
+
+        <h3>Domande sul tuo utilizzo della rete</h3>
+
+        <label>Hai mai subito cyberbullismo?</label>
+        <input type="checkbox" name="cyberbullismo" value="sì"> Sì<br>
+        <input type="checkbox" name="cyberbullismo" value="no"> No<br>
+
+        <label>Utilizzi i social media quotidianamente?</label>
+        <input type="radio" name="social_media" value="sì" required> Sì<br>
+        <input type="radio" name="social_media" value="no"> No<br>
+
+        <label>Quale piattaforma utilizzi di più?</label>
+        <select name="piattaforma" required>
+            <option value="">Seleziona...</option>
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="Altre">Altre</option>
+        </select>
+
+        <label>Descrivi brevemente la tua esperienza online:</label>
+        <textarea name="esperienza" rows="4" cols="50" required></textarea>
+
+        <label>Quanto tempo trascorri online ogni giorno?</label>
+        <input type="number" name="tempo_online" min="0" max="24" required> ore<br>
+
+        <label>Hai mai assistito a episodi di sexting?</label>
+        <input type="radio" name="sexting" value="sì" required> Sì<br>
+        <input type="radio" name="sexting" value="no"> No<br>
+
+        <label>Ti senti sicuro/a quando navighi su internet?</label>
+        <input type="radio" name="sicurezza" value="molto" required> Molto<br>
+        <input type="radio" name="sicurezza" value="abbastanza"> Abbastanza<br>
+        <input type="radio" name="sicurezza" value="poco"> Poco<br>
+        <input type="radio" name="sicurezza" value="per niente"> Per niente<br>
+
+        <label>Quali dispositivi utilizzi per accedere a internet? (Seleziona tutti quelli che usi)</label>
+        <input type="checkbox" name="dispositivi" value="computer"> Computer<br>
+        <input type="checkbox" name="dispositivi" value="smartphone"> Smartphone<br>
+        <input type="checkbox" name="dispositivi" value="tablet"> Tablet<br>
+        <input type="checkbox" name="dispositivi" value="console"> Console videogiochi<br>
+
+        <input type="submit" value="Invia">
+    </form>
+</body>
+</html>
