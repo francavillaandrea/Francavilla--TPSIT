@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albero Genealogico - Famiglia Cebotari</title>
+    <style>
+        /* Imposta lo stile generale della pagina */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #101010;
+            color: white;
+        }
+
+        /* Stile dell'header e del menu di navigazione */
+        header {
+            background-color: #1e1e1e;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #00aaff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffffff;
+        }
+
+        /* Stile della sezione principale */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #101010, #00507A);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Stile del pulsante interattivo */
+        button {
+            background-color: #00aaff;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0088cc;
+        }
+
+        /* Stile del footer */
+        footer {
+            background-color: #1e1e1e;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            color: #707070;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="back-home" onclick="window.location.href='index.html'">Torna alla Home</button>
+
+    <header>
+        <h1>Albero Genealogico - Famiglia con Nomi Particolari</h1>
+    </header>
+
+    <div class="tree">
+        <ul>
+            <!-- Nonna -->
+            <li>
+                <div class="person">Nonna Mihai</div>
+                <ul>
+                    <!-- Figli -->
+                    <li>
+                        <div class="person">Padre Oleg</div>
+                        <div class="person">Madre Ira</div>
+                        <ul>
+                            <!-- Figli (Nipoti) -->
+                            <li><div class="person">Nipote Maxim</div></li>
+                            <li><div class="person">Nipote George</div></li>
+                            <li><div class="person">Nipote Vitale</div></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Famiglia Cebotari. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>

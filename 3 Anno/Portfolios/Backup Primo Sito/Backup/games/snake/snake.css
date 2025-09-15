@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+#gameContainer {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    background: #68B245;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+#snakeCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Stile aggiornato del pulsante Gioca */
+.game-button {
+    padding: 20px 40px;
+    font-size: 24px;
+    background: linear-gradient(45deg, #d10000, #ff1a1a);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(209, 0, 0, 0.6);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(209, 0, 0, 0.8);
+}
+
+.game-button:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Tema scuro */
+body.dark-theme #gameContainer {
+    background: #1a1a2e;
+}
+
+/* Controlli fullscreen (mantieni il resto del CSS esistente) */
+.fullscreen-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* Rimuoviamo gli stili del bottone che potrebbero creare conflitti */
+
+/* Media queries */
+@media (max-width: 768px) {
+    canvas {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    #score {
+        font-size: 1.5em;
+    }
+
+    #startButton {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+/* Stili per fullscreen */
+:fullscreen #gameContainer {
+    width: 100vw;
+    height: 100vh;
+} 

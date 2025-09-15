@@ -1,0 +1,94 @@
+/* Base styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: content-box;
+}
+
+.navbar {
+    display: flex;
+    text-align: center;
+    background-color: #000;
+    padding: 10px 20px;
+    color: white;
+}
+
+.navbar .logo {
+    background-image: url(./img/Pfp.jpg);
+    background-position: center;
+    width: 75px;
+    height: 78px;
+    background-repeat: no-repeat;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+.desc {
+    display: flex;
+    height: 100vh;
+}
+
+.hero-item {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    overflow: hidden; /* Nasconde lo zoom all'esterno dei limiti */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.hero-item a{
+    text-decoration: none;
+    color:#fff;
+}
+.desc div:nth-of-type(2){
+    float: right;
+    background-image: url(./img/Beta.jpg);
+}
+.desc div:nth-of-type(1){
+    float: left;
+    background-image: url(./img/Pfp.jpg);
+}
+
+/* Effetto hover */
+.hero-item:hover {
+    transform: scale(1.03); /* Zoom leggero */
+    cursor:pointer;
+}
+
+.hero-item h1 {
+    margin: 0;
+    z-index: 1; /* Mantiene il testo sopra l'effetto */
+}
+footer {
+    height: 50px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    line-height: 50px; /* Centra verticalmente il testo */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

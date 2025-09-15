@@ -1,0 +1,57 @@
+:root {
+    --background-color: #f4f4f9;
+    --text-color: #333333;
+    --card-color: #ffffff;
+    --button-color: #5599ff;
+}
+
+.dark-mode {
+    --background-color: #333333;
+    --text-color: #ffffff;
+    --card-color: #444444;  
+	--button-color: #dddddd;
+}
+body{
+    height: 100vh;
+    margin: 0px;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.4s, color 0.4s;
+}
+.main-container{
+    width: 400px;
+    height: 400px;
+    margin: 0px  auto;
+    display: flex;
+    flex-direction: column;
+    /* Allineamento verticale in alto */
+    justify-content: flex-start;
+    /* Allineamento orizzontale in centro */
+    align-items: center;
+    background-color: var(--card-color);
+    border-radius: 10px;
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.1);
+}
+.theme-button{
+    position:fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.1);
+    background-color: var(--button-color);
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+.theme-button:hover{
+    background-color: #3377cc;
+}
+
+
+
+
+
+
