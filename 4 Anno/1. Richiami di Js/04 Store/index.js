@@ -1,14 +1,14 @@
 "use strict"
 
 const content = document.getElementById("content")
-
 const btnSearch = document.getElementById("btn-search");
+const alertSearch = document.getElementById("alert-search")
 btnSearch.addEventListener("click", showAlert);
 
 loadProducts();
 function showAlert() {
-
-}
+    alertSearch.classList.remove("d-none")
+}   
 
 function loadProducts() {
     let h3 = document.createElement("h3")
@@ -54,9 +54,13 @@ function loadProducts() {
         let btn = document.createElement("a")
         btn.classList.add("btn", "btn-secondary")
         btn.textContent = "Compra"
+        btn.addEventListener("click", function () {
+            const modal = new bootstrap.Modal("#buy-modal")
+            modal.show();
+        })
         cardBody.appendChild(btn)
-    
     }
 
 
 }
+
