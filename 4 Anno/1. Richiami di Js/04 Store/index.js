@@ -1,27 +1,54 @@
 "use strict"
 
-const content = document.getElementById("content")
+const content = document.getElementById("content");
 const btnSearch = document.getElementById("btn-search");
-const alertSearch = document.getElementById("alert-search")
+const alertSearch = document.getElementById("alert-search");
+const categories = document.querySelectorAll("a.dropdown-item");
 btnSearch.addEventListener("click", showAlert);
 
-loadProducts();
+
+for (let category of categories) {
+    category.addEventListener("click", function () {
+        for(let item of categories)
+        {
+            item.classList.remove("active")
+        }
+        this.classList.add("active")
+        switch(category.textContent)
+        {
+            case "PC":
+                loadProducts(pc,pc_header,"pc")
+                break;
+            case "Telefoni":
+                loadProducts(telefoni,telefoni_header,"telefoni")
+                break;
+            case "Tv":
+                loadProducts(tv,tv_header,"tv")
+                break;
+             case "Audio Player":
+                loadProducts(player,player_header,"player")
+                break;
+        }
+    });
+}
+loadProducts(pc,pc_header,"pc");
 function showAlert() {
     alertSearch.classList.remove("d-none")
-}   
+}
 
-function loadProducts() {
+function loadProducts(data, headers, path) {
+    content.innerHTML = ""
     let h3 = document.createElement("h3")
-    h3.textContent = `Numero di prodotti ${pc.length}`
+    h3.textContent = `Numero di prodotti ${data.length}`
     content.appendChild(h3);
 
     let row = document.createElement("div")
     row.classList.add("row")
     content.appendChild(row)
 
-    for (let i = 0; i < pc.length; i++) {
+    for (let i = 0; i < data.length; i++) {
 
-        let product = pc[i]
+        let product = data[i]
 
         let cell = document.createElement("div")
         cell.classList.add("col-md-4")
@@ -33,7 +60,7 @@ function loadProducts() {
 
         let img = document.createElement("img")
         img.classList.add("card-img-top")
-        img.src = `./img/products/pc${product[0]}.jpg`
+        img.src = `./img/${path}/img${product[0]}.jpg`
         card.appendChild(img)
 
         let cardBody = document.createElement("div")
@@ -47,7 +74,7 @@ function loadProducts() {
         cardText.classList.add("card-text")
         cardText.textContent = ""
         for (let j = 2; j < product.length; j++) {
-            cardText.textContent += `${product[j]} / `
+            cardText.innerHTML += `${headers[j]}: ${product[j]} <br\> `
         }
         cardBody.appendChild(cardText)
 
