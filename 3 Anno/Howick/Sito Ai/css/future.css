@@ -1,0 +1,250 @@
+/* Theme variables */
+:root {
+  --bg-color: #FBF8F5;
+  --text-color: #333;
+  --text-secondary: #666;
+  --border-color: #000;
+  --card-bg: #fff;
+  --timeline-color: #007bff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #444;
+  --card-bg: #2a2a2a;
+  --timeline-color: #4a9eff;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Future Intro Section */
+.future-intro {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.future-intro h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.future-intro p {
+  font-size: 1.2em;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.future-description {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.future-description h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+/* Emerging Technologies Section */
+.emerging-tech {
+  margin-bottom: 60px;
+}
+
+.emerging-tech h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.tech-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+}
+
+.tech-number {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  background-color: var(--timeline-color);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.tech-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3em;
+}
+
+/* Timeline Section */
+.timeline {
+  margin-top: 60px;
+}
+
+.timeline h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+
+.timeline-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: var(--timeline-color);
+}
+
+.timeline-item {
+  margin-bottom: 30px;
+  position: relative;
+  width: 50%;
+  padding-right: 40px;
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: auto;
+  padding-right: 0;
+  padding-left: 40px;
+}
+
+.timeline-date {
+  position: absolute;
+  top: 0;
+  right: -65px;
+  background-color: var(--timeline-color);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+  right: auto;
+  left: -65px;
+}
+
+.timeline-content {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Header layout */
+header {
+  padding: 10px 20px;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.nav-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 19px;
+  color: inherit;
+}
+
+.active {
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-container::before {
+    left: 0;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 0;
+  }
+
+  .timeline-item:nth-child(even) {
+    padding-left: 30px;
+  }
+
+  .timeline-date {
+    left: -65px !important;
+    right: auto !important;
+  }
+}
+
+/* Theme transition */
+body,
+header,
+.tech-card,
+.timeline-content,
+nav a {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}

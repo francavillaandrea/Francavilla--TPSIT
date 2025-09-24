@@ -4,6 +4,7 @@ window.onload = function() {
 
 	let txtRis = document.querySelector("#txtRis");
 
+	//Per poter usare un qualsiasi metodo di JavaScript funzionale come il forEach) la nodeList deve essere convertita in array.
 	let vet = Array.from(document.querySelectorAll("#wrapper div, #wrapper p"))
 	vet.forEach(function(item){
 		item.addEventListener("click", elabora)
