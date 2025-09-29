@@ -80,8 +80,7 @@ function visualizza(index) {
             let numOpzioniSelezionate = 0;
             for(let i = 0; i < lstMultiple.options.length; i++) {
                 if(lstMultiple.options[i].selected) {
-                    numOpzioniSelezionate++;
-                    msg += numOpzioniSelezionate + ". " + lstMultiple.options[i].text + 
+                    numOpzioniSelezionlezionate + ". " + lstMultiple.options[i].text + 
                           " (value: " + (lstMultiple.options[i].value || "non impostato") + ")\n";
                 }
             }
