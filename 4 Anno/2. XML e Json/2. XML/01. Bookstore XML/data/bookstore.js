@@ -1,4 +1,4 @@
-let bookstore = `<?xml version="1.0"?> 
+let bookstoreIniziale = `<?xml version="1.0"?> 
 <bookstore> 
 	<book category="cooking"> 
 	    <id> 1 </id>  
