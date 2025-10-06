@@ -25,13 +25,40 @@ let xmlBookstore = localStorage.getItem("bookstore");
 if (!xmlBookstore) {
     xmlBookstore = bookstoreIniziale;
 }
-//COnvertiamo lòa stinga xmlBookstore in oggetto xml
+//COnvertiamo la stinga xmlBookstore in oggetto xml
 const parser = new DOMParser();
 const xmlDoc = parser.parseFromString(xmlBookstore, "text/xml");
 const xmlRoot = xmlDoc.firstElementChild;
 
-let category = "", id = "", title = "", language = "", autors = "", year = "", price = "";
+let category = "", id = "", title = "", language = "", authors = "", year = "", price = "";
 visualizza();
+
+function readBook(book) {
+    category = "", id = "", title = "", language = "", authors = "", year = "", price = "";
+
+    if (book.hasAttribute("category")) {
+        category = book.getAttribute("category")
+    }
+    id = book.firstElementChild.textContent;
+
+    let titleNode = book.querySelector("title");
+    title = titleNode.textContent;
+    if (titleNode.hasAttribute("lang")) {
+        language = titleNode.getAttribute("lang")
+    }
+
+    let yearNode = book.querySelector("year");
+    if (yearNode) {
+        year = yearNode.textContent;
+    }
+
+    price = book.lastElementChild.textContent;
+
+    let authorsVet = book.querySelectorAll("author");
+    authorsVet.forEach(function (author) {
+        authors += author.textContent + "-"
+    });
+}
 
 function visualizza() {
     divNbooks.textContent = `Numero libri: ${xmlRoot.children.length}`
@@ -40,13 +67,49 @@ function visualizza() {
         tBody.appendChild(row)
         readBook(book);
 
+        let td = document.createElement("td")
+        row.appendChild(td)
+        td.textContent = id;
 
+        td = document.createElement("td")
+        row.appendChild(td)
+        td.textContent = title;
+
+        td = document.createElement("td")
+        row.appendChild(td)
+        td.textContent = category;
+
+        td = document.createElement("td")
+        row.appendChild(td)
+        td.textContent = language;
+
+        td = document.createElement("td")
+        row.appendChild(td)
+        td.textContent = authors;
+
+        td = document.createElement("td")
+        row.appendChild(td)
+        td.textContent = year;
+
+        td = document.createElement("td")
+        row.appendChild(td)
+        td.textContent = price;
+
+        td = document.createElement("td")
+        row.appendChild(td)
+        let btn = document.createElement("button");
+        td.appendChild(btn)
+        btn.textContent = "delete"
     }
 }
+btnDettagli.addEventListener("click", function () {
+    for (let btn of btns) {
+        btn.classList.remove("active");
+    }
+    btnDettagli.classList.add("active");
 
+    listView.style.display = "none"
+    detailsView.style.display = "block"
+    loadDetails();
 
-
-
-
-
-
+});
