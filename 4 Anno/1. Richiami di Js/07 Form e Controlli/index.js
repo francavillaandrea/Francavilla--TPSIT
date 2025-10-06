@@ -5,6 +5,7 @@ const txt1 = form1.querySelector("input[type=text]");
 const lst1 = form1.querySelector("select");
 const lst2 = form1.querySelector("select[multiple]");
 const chks = form1.querySelectorAll("input[type=checkbox][name=chk]");
+const opts = form1.querySelectorAll("input[type=radio][name=opt]");
 
 
 // richiamato dall'html
@@ -53,9 +54,9 @@ function visualizza(index) {
             });
             break;
         case 8:
-            for(let item of lst2.selectedOptions)
-            {
-                msg += item.value + "\n"    
+            //alert(`${lst2.value}`)
+            for (let item of lst2.selectedOptions) {
+                msg += item.value + "\n"
             }
             break;
 
@@ -66,10 +67,42 @@ function visualizza(index) {
 
 
 function imposta(index) {
-    let items
+    let text;
     switch (index) {
         case 1:
-            let text = prompt("Inserire il contenuto del textbox");
-            txt1.value = text 
+            text = prompt("Inserire il contenuto del textbox");
+            txt1.value = text;
+            break;
+        case 2:
+            text = prompt("Inserire il value del listbox");
+            lst1.value = text;
+            break;
+        case 3:
+            text = prompt("Inserisci il value del checkbox o il valore HTML");
+            chks.forEach(function (chk) {
+                const label = chk.parentElement;
+                if (chk.value == text || label.textContent.trim() == text) {
+                    chk.checked = true;
+                }
+            });
+            break;
+        case 4:
+            text = prompt("Inserisci il value del radio button o il valore dell'HTML")
+            opts.forEach(function (opt) {
+                if (opt.value == text) {
+                    opt.checked = true;
+                }
+            });
+            break;
+        case 5:
+            text = prompt("Inserisci il value della voce da selezionare")
+            Array.from(lst2.children).forEach(function (option) {
+                if(option.value == text)
+                {
+                    option.selected = true;
+                }
+            });
+            break;
+
     }
 }
