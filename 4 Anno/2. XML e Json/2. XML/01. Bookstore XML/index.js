@@ -108,8 +108,8 @@ btnDettagli.addEventListener("click", function () {
     }
     btnDettagli.classList.add("active");
 
-    listView.style.display = "none"
-    detailsView.style.display = "block"
+    listView.style.display = "none";
+    detailsView.style.display = "block";
     loadDetails();
 
 });
