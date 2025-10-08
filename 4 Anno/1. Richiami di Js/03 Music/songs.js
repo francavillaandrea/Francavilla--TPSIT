@@ -12,7 +12,4 @@ const songs = [
     [10, "LA CANZONE NOSTRA", "MACE & Blanco & Salmo", "OBE", 237, "Rap", 130000000]
 ];
 
-<<<<<<< HEAD
-=======
 
->>>>>>> c13b3f8af912aa510978cd8a4eacc97fab9fbe04
