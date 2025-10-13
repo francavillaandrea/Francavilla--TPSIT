@@ -97,11 +97,17 @@ function visualizza() {
 
         td = document.createElement("td")
         row.appendChild(td)
-        let btn = document.createElement("button");
-        td.appendChild(btn)
-        btn.textContent = "delete"
+        let btnElimina = document.createElement("button");
+        td.appendChild(btnElimina)
+        btnElimina.textContent = "delete"
+        btnElimina.addEventListener("click", function () {
+            
+        });
     }
 }
+
+//Gestione Dettagli
+let currentBookIndex = 0;
 btnDettagli.addEventListener("click", function () {
     for (let btn of btns) {
         btn.classList.remove("active");
@@ -113,3 +119,29 @@ btnDettagli.addEventListener("click", function () {
     loadDetails();
 
 });
+
+
+function loadDetails() {
+    details.innerHTML = ""
+    let book = xmlRoot.children[currentBookIndex]
+    let label, p;
+    readBook(book)
+
+    createRow(label, p, `id: ${id}`)
+    createRow(label, p, `title: ${title}`)
+    createRow(label, p, `category: ${category}`)
+    createRow(label, p, `language: ${language}`)
+    createRow(label, p, `authors: ${authors}`)
+    createRow(label, p, `year: ${year}`)
+    createRow(label, p, `price: ${price}`)
+}
+
+function createRow(label, p, data) {
+    let dataSplitted = data.split(": ")
+    label = document.createElement("label");
+    label.innerHTML = dataSplitted[0];
+    details.appendChild(label)
+    p = document.createElement("p")
+    p.innerHTML = dataSplitted[1];
+    details.appendChild(p)
+}
