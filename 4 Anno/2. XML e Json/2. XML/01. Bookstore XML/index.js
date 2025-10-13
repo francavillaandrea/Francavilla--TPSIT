@@ -61,6 +61,7 @@ function readBook(book) {
 }
 
 function visualizza() {
+    tBody.innerHTML = ""
     divNbooks.textContent = `Numero libri: ${xmlRoot.children.length}`
     for (let book of xmlRoot.children) {
         let row = document.createElement("tr")
@@ -101,7 +102,7 @@ function visualizza() {
         td.appendChild(btnElimina)
         btnElimina.textContent = "delete"
         btnElimina.addEventListener("click", function () {
-            
+
         });
     }
 }
