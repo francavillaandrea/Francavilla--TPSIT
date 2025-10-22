@@ -1,10 +1,6 @@
 "use strict"
 
-<<<<<<< HEAD
-const films = [
-=======
 let films = [
->>>>>>> c13b3f8af912aa510978cd8a4eacc97fab9fbe04
     // Id, Title, Favorite, Watch date, Rating (0-5)
     [1, "Pulp Fiction", true, "10-03-2024", 5],
     [2, "21 Grammi", true, "17-03-2024", 3],
@@ -16,16 +12,7 @@ let films = [
 ];
 
 
-<<<<<<< HEAD
-//window.addEventListener("load", function () {
-window.onload = function() {
-
-
-
-}
-=======
 const tBody = document.getElementsByTagName("tbody")[0]
-
 const btnAggiungi = document.getElementById("btn-add")
 const btnClear = document.getElementById("btn-clear")
 const btnReload = document.getElementById("btn-reload")
@@ -103,6 +90,7 @@ function visualizza() {
                 for (; k < films[i][j]; k++) {
                     let icon = document.createElement("i")
                     icon.classList.add("bi", "bi-star-fill")
+                    icon.classList.add("bi", "bi-star-fill")
                     td.appendChild(icon)
 
                 }
@@ -124,4 +112,3 @@ function visualizza() {
 function generaNumero(min, max) {
     return Math.floor((max - min) * Math.random()) + min;
 }
->>>>>>> c13b3f8af912aa510978cd8a4eacc97fab9fbe04
