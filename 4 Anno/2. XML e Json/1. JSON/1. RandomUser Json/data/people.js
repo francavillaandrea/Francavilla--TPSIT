@@ -1,4 +1,4 @@
-const initialData = `[
+let initialData = `[
       {
          "gender":"male",
          "name":{
@@ -9,7 +9,10 @@ const initialData = `[
          "location":{
             "street":"9281 southampton street",
             "city":"porirua",
-z:"jacob.cooper@example.com",
+            "state":"taranaki",
+            "postcode":89758
+         },
+         "email":"jacob.cooper@example.com",
          "login":{
             "username":"bigcat644",
             "password":"blueball",
