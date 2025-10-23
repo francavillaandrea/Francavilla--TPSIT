@@ -55,11 +55,7 @@ function DisplayData()
         td = document.createElement("td");
         tr.append(td);
         td.textContent = `${people[i].location.city}`
-
-        td = document.createElement("td");
-        tr.append(td);
-        td.textContent = `${people[i].location.city}`
-
+1
         td = document.createElement("td");
         tr.append(td);
         td.textContent = `${people[i].location.state}`
