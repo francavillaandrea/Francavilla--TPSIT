@@ -1,4 +1,4 @@
-let initialData = `[
+const initialData = `[
       {
          "gender":"male",
          "name":{
