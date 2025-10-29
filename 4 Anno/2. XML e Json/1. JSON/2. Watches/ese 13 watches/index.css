@@ -1,0 +1,52 @@
+
+body{
+	background-color:#f7f7f7;
+}
+
+.gender{
+	text-align:center;
+}
+
+.gender select{
+	width:100px;
+	margin-left:10px;
+}
+
+table{
+	width : 95%;
+	border : 1px solid #aaa;
+	margin : 20px auto;
+	border-collapse: collapse;  
+}
+
+table tr{
+	height:40px;
+}
+
+table thead tr td{
+	background-color:#ddd;
+	font-weight:bold;
+	font-size:14pt;
+}
+
+table tbody tr:nth-of-type(even)  {
+	background-color:#fff;
+}
+
+table tbody tr td img{
+	height:40px;
+}
+
+
+table tr td{
+	border:1px solid #aaa;
+}
+
+
+.inserisci{
+	display:block;
+	width:190px;
+	height:30px;
+	font-weight:bold;
+	margin : 16px auto;
+}

@@ -1,0 +1,2 @@
+i due files .json servono unicamente a scopo descrittivo per poter avere una migliore leggibilità dei dati.
+Non servono ai fini dell'esercizio

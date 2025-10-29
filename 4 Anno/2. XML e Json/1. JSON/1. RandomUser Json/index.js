@@ -174,6 +174,9 @@ function navigate() {
         case "Ordina":
             sortByName();
             break;
+        case "Salva":
+            saveData();
+            break;
     }
     displayData();
     enableButtons();
@@ -198,19 +201,33 @@ function checkLast() {
 //Ordinamento
 
 function sortByName() {
-    peoplesort(function (record1, record2) {
+    people.sort(function (record1, record2) {
         let str1 = record1["name"]["first"].toUpperCase();
         let str2 = record2["name"]["first"].toUpperCase();
-        if (str1 > str2)
+        if (str1 > str2) {
             return 1;
-        else
+        }
+        else if (str1 < str2) {
             return -1;
+        }
+        else {
+            return 0;
+        }
     });
     displayData();
 }
 
 //Elimina per nazione
-
 function deleteByNation() {
+    let nation = prompt("Inserisci la nazione da eliminare (Es AU, NZ, IT ecc)");
+    if (nation.length != 2) {
+        alert("Nazione non valida")
+        return;
+    }
+    
+}
+
+//Salva
+function saveData() {
 
 }
