@@ -1,4 +1,4 @@
-let datiIniziali = `[
+let initialData = `[
     { "gender" : "Men's",
 	  "models" : [  {
 					 "code"   : "QWZ5671",
@@ -52,5 +52,3 @@ let datiIniziali = `[
 				]				   
 	}
 ]`
-
-   

@@ -1,8 +1,8 @@
 "use strict";
 
 
-let btnSalva = document.getElementById("btnSalva")
-let btnAnnulla = document.getElementById("btnAnnulla")
+let btnSave = document.getElementById("btnSalva")
+let btnUndo = document.getElementById("btnAnnulla")
 	
 let opts = document.getElementsByName("optGender");
 let txtCode = document.getElementById("txtCode")
