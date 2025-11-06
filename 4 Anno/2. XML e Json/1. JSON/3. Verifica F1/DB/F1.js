@@ -1,4 +1,3 @@
-
 let database =  `{
 	
   "Mercedes-AMG Petronas Formula One Team": {
