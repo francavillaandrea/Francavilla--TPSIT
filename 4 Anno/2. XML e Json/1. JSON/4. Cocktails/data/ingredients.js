@@ -79,7 +79,7 @@ let ingredients = `{
          "strIngredient1":"Kahlua"
       },
       {
-         "strIngredient1":"demerara Sugar"
+         "strIngredient1":"Demerara Sugar"
       },
       {
          "strIngredient1":"Dubonnet Rouge"

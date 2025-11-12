@@ -1,248 +1,134 @@
 "use strict";
 
-//Variables
-let teams = JSON.parse(database);
-let vectTeams = [];
-
-//Pointers
-const divPiloti = document.getElementById("divPiloti");
-const divNazioni = document.getElementById("divNazioni");
-const lstScuderie = document.getElementById("lstScuderie");
+let scuderie = JSON.parse(database); 
 const tbody = divPiloti.querySelector("tbody");
-const btnAll = divPiloti.querySelector("button");
-const divDettagli = document.getElementById("divDettagli");
-btnAll.addEventListener("click", visualizeAll);
 
-//Functions
-loadTeams();
-loadNations();
-loadPilots();
-lstScuderie.addEventListener("change", chooseTeam);
+getScuderie(); 
+getNazioni();
+getPiloti();
 
-
-function loadPilots(selectedTeam) {
-    tbody.innerHTML = "";
-    for (let key in teams) {
-        if (!selectedTeam || key == selectedTeam) {
-            let pilots = teams[key].piloti;
-            pilots.forEach(function (pilot) {
-                let tr = document.createElement("tr");
-                tbody.appendChild(tr);
-
-                let td = document.createElement("td");
-                td.textContent = pilot.numero;
-                tr.appendChild(td);
-
-                td = document.createElement("td");
-                let span = document.createElement("span");
-                span.textContent = pilot.nome;
-                span.style.textDecoration = "underline";
-                span.style.fontStyle = "italic";
-                span.style.cursor = "pointer";
-                span.addEventListener("click", function() {
-                    showPilotDetails(pilot.numero);
-                });
-                td.appendChild(span);
-                tr.appendChild(td);
-
-                td = document.createElement("td");
-                td.textContent = pilot.nazione;
-                tr.appendChild(td);
-
-                td = document.createElement("td");
-                td.textContent = key;
-                tr.appendChild(td);
-
-            });
-        }
-
+function getScuderie(){
+    let scuderieVet = [];
+    // Carico vet scuderie
+    for(let scuderia in scuderie)
+    {
+        scuderieVet.push(scuderia);
     }
+    // Ordino vet scuderie 
+    scuderieVet.sort();
+    
+    // Caricamento in lstBox: lstScuderie
+    for(let scuderia of scuderieVet)
+    {
+        let opt = document.createElement("option");
+        opt.textContent = scuderia;
+        opt.value = scuderia;
+        // Append opt in lst
+        lstScuderie.appendChild(opt);
+    }
+    // Rimuovo selezione di default 
+    lstScuderie.selectedIndex = -1;
+
 }
 
-
-function loadNations() {
-
+function getNazioni(){
     let set = new Set();
-    for (let key in teams) {
-        let pilots = teams[key].piloti;
-        //let pilots = teams[key]["piloti"];
-        pilots.forEach(function (pilot) {
-            set.add(pilot.nazione);
-        });
 
+    for(let key in scuderie)
+    {
+        let piloti = scuderie[key]["piloti"]; 
+        // let piloti = scuderie[key].piloti; 
+        for(let pilota of piloti)
+        {
+            // Mediante set evito di controllore
+            // se inserita la stessa nazione più volte
+            set.add(pilota.nazione);
+        }
     }
-    let vetNations = Array.from(set).sort();
-
-    //Loads on the page all the nations
-    vetNations.forEach(function (nation) {
-        let chk = document.createElement("input");
-        chk.type = "checkbox";
-        chk.value = nation;
-        divNazioni.appendChild(chk);
-
+    // Converto set in array 
+    let vetNazioni = Array.from(set).sort();
+    
+    for(let nazione of vetNazioni)
+    {
+        let input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = nazione;
+        divNazioni.appendChild(input);
         let span = document.createElement("span");
-        span.textContent = nation;
+        span.textContent = nazione;
         divNazioni.appendChild(span);
-
         let br = document.createElement("br");
         divNazioni.appendChild(br);
-
-        chk.addEventListener("change", chkNations);
-
-    });
-}
-
-function loadTeams() {
-    //load vectTeams
-    for (let team in teams) {
-        vectTeams.push(team);
-    }
-    //Sorts the array
-    vectTeams.sort();
-
-    //Loads listBox: lstTeams
-    vectTeams.forEach(function (team) {
-        let opt = document.createElement("option");
-        opt.textContent = team;
-        opt.value = team;
-        lstScuderie.appendChild(opt);
-
-    });
-    //Per tutti i valori html che contengono id, Js gli assegna automaticamente un puntatore accessibile senza farne un ulteriore.
-    lstScuderie.selectedIndex = -1;
-}
-
-// Manage Teams
-function chooseTeam() {
-    deselectCheckbox();
-    loadPilots(this.value);
-}
-
-function deselectCheckbox() {
-    let chks = divNazioni.querySelectorAll("input[type=checkbox]");
-    chks.forEach(function (chk) {
-        chk.checked = false;
-    });
-}
-
-//Btn All
-function visualizeAll() {
-    deselectCheckbox();
-    loadPilots();
-}
-
-//Checkbox Nations
-function chkNations() {
-    // Reset team selection when filtering by nations
-    lstScuderie.selectedIndex = -1;
-
-    // Get all checked nations
-    let vetNations = [];
-    let chks = divNazioni.querySelectorAll("input[type=checkbox]");
-    chks.forEach(function (chk) {
-        if (chk.checked) {
-            vetNations.push(chk.value);
-        }
-    });
-
-    // Clear the current table
-    tbody.innerHTML = "";
-
-    // If no nations selected, show all pilots
-    if (vetNations.length === 0) {
-        loadPilots();
-        return;
-    }
-
-    // Filter and display pilots from selected nations
-    for (let key in teams) {
-        let pilots = teams[key].piloti;
-        pilots.forEach(function (pilot) {
-            if (vetNations.includes(pilot.nazione)) {
-                let tr = document.createElement("tr");
-                tbody.appendChild(tr);
-
-                let td = document.createElement("td");
-                td.textContent = pilot.numero;
-                tr.appendChild(td);
-
-                td = document.createElement("td");
-                let span = document.createElement("span");
-                span.textContent = pilot.nome;
-                span.style.textDecoration = "underline";
-                span.style.fontStyle = "italic";
-                span.style.cursor = "pointer";
-                span.addEventListener("click", function() {
-                    showPilotDetails(pilot.numero);
-                });
-                td.appendChild(span);
-                tr.appendChild(td);
-
-                td = document.createElement("td");
-                td.textContent = pilot.nazione;
-                tr.appendChild(td);
-
-                td = document.createElement("td");
-                td.textContent = key;
-                tr.appendChild(td);
+        
+        input.addEventListener('change', function(){
+            lstScuderie.selectedIndex = -1; 
+            let vetNazioni = [];
+            let checks = divNazioni.querySelectorAll("input[type=checkbox]");
+            for(let checkbox of checks)
+            {
+                if (checkbox.checked)
+                {
+                    vetNazioni.push(checkbox.value);
+                }
             }
         });
     }
 }
 
-function showPilotDetails(pilotNumber) {
-    // Find the pilot with the given number
-    let selectedPilot;
-    let selectedTeam;
-    
-    for (let team in teams) {
-        let pilots = teams[team].piloti;
-        for(let i = 0; i < pilots.length; i++) {
-            if(pilots[i].numero == pilotNumber) {
-                selectedPilot = pilots[i];
-                selectedTeam = team;
-                break;
-            }
+function getPiloti(selectedScuderia){
+    tbody.innerHTML = "";
+    for(let key in scuderie)
+    {
+       if(!selectedScuderia || key == selectedScuderia)
+       {
+        let piloti = scuderie[key].piloti;
+        for(let pilota of piloti)
+        {
+            let tr = document.createElement("tr");
+            tbody.appendChild(tr);
+            let td = document.createElement("td");
+            td.textContent = pilota.numero;
+            tr.appendChild(td);
+
+            td = document.createElement("td");
+            let span = document.createElement("span");
+            span.textContent = pilota.nome;
+            span.style.textDecoration = "underline";
+            span.style.fontStyle = "italic";
+            td.appendChild(span);
+            tr.appendChild(td);
+
+            td = document.createElement("td");
+            td.textContent = pilota.nazione;
+            tr.appendChild(td);
+
+            td = document.createElement("td");
+            td.textContent = key;
+            tr.appendChild(td);
         }
-        if(selectedPilot) break;
+       }
     }
+}
 
-    if (!selectedPilot) return;
 
-    // Clear and show the details container
-    divDettagli.innerHTML = "";
-    divDettagli.style.display = "flex";
+// ----------- Gestione SCUDERIE ----------------
 
-    // Create details container
-    let detailsContainer = document.createElement("div");
-    
-    // Create and append image
-    let img = document.createElement("img");
-    img.alt = selectedPilot.nome;
-    img.src = `./img/${selectedPilot.nome}.jpg`;
-    divDettagli.appendChild(img);
+lstScuderie.addEventListener('change', function(){
+    deselezionaCheckBox();
+    getPiloti(this.value);
+});
 
-    // Add pilot details
-    let details = [
-        { label: "Nome", value: selectedPilot.nome },
-        { label: "Numero", value: selectedPilot.numero },
-        { label: "Nazione", value: selectedPilot.nazione },
-        { label: `Data di nascita`, value: selectedPilot.data_di_nascita },
-        { label: `Scuderia`, value: selectedTeam },
-        { label: `Motore`, value: teams[selectedTeam].motore },
-        { label: `Pneumatici`, value: teams[selectedTeam].pneumatici }
-    ];
+// ----------- Gestione TUTTI ----------------
+let btnTutti = divPiloti.querySelector("button");
+btnTutti.addEventListener('click', function(){
+    deselezionaCheckBox();
+    lstScuderie.selectedIndex = -1;
+    getPiloti(); 
+});
 
-    for(let i = 0; i < details.length; i++) {
-        let p = document.createElement("p");
-        let strong = document.createElement("strong");
-        let text = document.createElement("span");
-        strong.textContent = `${details[i].label}: `;
-        text.textContent = details[i].value;
-        p.appendChild(strong);
-        p.appendChild(text);
-        detailsContainer.appendChild(p);
-    }
-
-    divDettagli.appendChild(detailsContainer);
+function deselezionaCheckBox()
+{
+    let checks = divNazioni.querySelectorAll("input[type=checkbox]");
+    for(let checkbox of checks)
+        checkbox.checked = false; 
 }

@@ -1,5 +1,5 @@
+
 let database =  `{
-	
   "Mercedes-AMG Petronas Formula One Team": {
     "pneumatici": "Pirelli",
     "motore": "Mercedes",
