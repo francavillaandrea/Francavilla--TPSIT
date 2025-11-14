@@ -129,7 +129,7 @@ function showDetails(selectedPerson) {
     p = document.createElement("a");
     detailsWrapper.appendChild(p);
     p.textContent = selectedPerson["email"];
-callbackBr()
+    callbackBr()
     //Phone
     let span = document.createElement("span");
     detailsWrapper.appendChild(span);
@@ -149,7 +149,7 @@ callbackBr()
     txt = document.createElement("input");
     txt.type = "text"
     txt.readOnly = true;
-    txt.value = selectedPerson["cell"]
+    txt.value = selectedPerson["cell"];
     detailsWrapper.appendChild(txt);
 
     callbackBr();
@@ -158,7 +158,7 @@ callbackBr()
     let btn = document.createElement("button");
     detailsWrapper.appendChild(btn);
     btn.textContent = "salva";
-    
+
 
     //Btn delete
     btn = document.createElement("button");
