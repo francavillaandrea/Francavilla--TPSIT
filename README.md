@@ -1,15 +1,15 @@
 # CARTELLA ESERCIZI TPSIT 4B INF
-## ARGOMENTI 
+## Argomenti 
 
-> HTML
->> HTML 5
->>> CSS
->>>> CSS 3
->>>>> BOOTSTRAP
->>>>>> JAVASCRIPT
->>>>>>> XML
->>>>>>>> JSON
->>>>>>>>> PHP
+> HTML <br>
+> HTML 5 <br>
+> CSS <br>
+> CSS 3 <br>
+> BOOTSTRAP <br>
+> JAVASCRIPT <br>
+> XML <br>
+> JSON <br>
+> PHP <br>
 
 ## Authors
 
