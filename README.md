@@ -2,12 +2,17 @@
 ## ARGOMENTI 
 
 > HTML
-> CSS
-> HTML 5
-> CSS3
-> BOOTSTRAP
-> JAVASCRIPT
-> RICHIAMI DI JS
-> XML
-> JSON
-> PHP
+>> HTML 5
+>>> CSS
+>>>> CSS 3
+>>>>> BOOTSTRAP
+>>>>>> JAVASCRIPT
+>>>>>>> XML
+>>>>>>>> JSON
+>>>>>>>>> PHP
+
+## Authors
+
+- [@francavillaandrea](https://www.github.com/francavillaandrea)
+
+
