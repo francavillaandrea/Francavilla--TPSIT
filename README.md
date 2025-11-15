@@ -9,6 +9,7 @@
 > JAVASCRIPT <br>
 > XML <br>
 > JSON <br>
+> Ajax <br>
 > PHP <br>
 
 ## Authors
