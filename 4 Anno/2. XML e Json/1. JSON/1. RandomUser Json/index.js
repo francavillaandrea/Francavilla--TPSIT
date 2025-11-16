@@ -12,18 +12,18 @@ const pageLabel = document.querySelector("#buttons p");
 const details = document.getElementById("details");
 
 //Prende people dal local storage se c'è altrimenti lo prende dal .js
-let stringPeople = localStorage.getItem("initialData");
+let stringPeople = localStorage.getItem("people");
 
 if (!stringPeople) {
     stringPeople = initialData;
 }
 
-const JSONPEOPLE = JSON.parse(stringPeople);
+const JSONPeople = JSON.parse(stringPeople);
 
 let males = [];
 let females = [];
 
-for (let aux of JSONPEOPLE) {
+for (let aux of JSONPeople) {
     if (aux.gender == "male") {
         males.push(aux);
     }
@@ -174,6 +174,9 @@ function navigate() {
         case "Ordina":
             sortByName();
             break;
+        case "Salva":
+            saveData();
+            break;
     }
     displayData();
     enableButtons();
@@ -203,17 +206,53 @@ function sortByName() {
         let str2 = record2["name"]["first"].toUpperCase();
         if (str1 > str2) {
             return 1;
-
+        }
+        else if (str1 < str2) {
+            return -1;
         }
         else {
-            return -1;
+            return 0;
         }
     });
     displayData();
 }
 
 //Elimina per nazione
-
 function deleteByNation() {
+    let nation = prompt("Inserisci la nazione da eliminare (Es AU, NZ, IT ecc)").toUpperCase();
+    if (nation.length != 2) {
+        alert("Nazione non valida")
+        return;
+    }
+    males = males.filter(function (person) {
+        return person.nat != nation;
+    });
 
+    females = females.filter(function (person) {
+        return person.nat != nation;
+    });
+    //Visto che filter riassegna males e females di conseguenza dobbiamo riassegnare anche people.
+
+    if (opts[0].checked) {
+        people = males;
+    }
+    else {
+        people = females;
+    }
+
+    displayData();
+
+}
+
+//Salva
+function saveData() {
+    let JSONPeople = [];
+    for (let male of males) {
+        JSONPeople.push(male)
+    }
+    for (let female of females) {
+        JSONPeople.push(female)
+    }
+
+    localStorage.setItem("people", JSON.stringify(JSONPeople))
 }

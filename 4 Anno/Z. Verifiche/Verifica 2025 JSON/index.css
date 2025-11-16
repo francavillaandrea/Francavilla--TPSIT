@@ -1,0 +1,112 @@
+#optWrapper{
+	width:180px;
+	margin: 20px auto;
+	background-color:#ffa;
+	font-size:13pt;
+	padding:20px;
+	padding-left:35px;
+	font-style:italic;
+	font-weight:bold;
+	border-radius:15px;
+	border:1px solid blue;
+}
+
+#optWrapper select{
+	width:100px;
+	margin:10px 30px;
+	padding:3px;
+}
+
+/* *************************************** */
+table{
+	background-color:#ddd;
+	margin: 20px auto;
+	padding:10px 0;
+	width:700px;
+	overflow:auto;
+	border-radius:10px;
+	border:1px solid blue;
+	user-select:none;
+}
+
+table thead { 
+    display:block;
+	height:30px; 
+	margin-bottom:10px;
+	background-color:#ffa; 
+}
+
+table tbody {
+	display:block;
+	height: 292px; 	 
+	overflow-y: auto;    
+}
+
+table th{
+	width:135px;
+}
+
+table td{
+	width:135px;
+	text-align:center;
+}
+
+table tr:nth-of-type(even){
+	background-color:#eee;
+}
+
+table tbody tr:hover{
+	background-color:#00d;
+	color:white;
+	cursor:pointer;
+}
+
+/* *************************************** */
+#detailsWrapper{
+	background-color:#ddd;
+	margin: 20px auto;
+	padding:15px;
+	width:350px;
+	height:248px;
+	border-radius:15px;
+	border:1px solid blue;
+	text-align:center;
+	display:block;
+}
+
+#detailsWrapper p{
+	margin:0;
+	padding:2px;
+}
+
+#detailsWrapper p:last-of-type{
+	padding-bottom:6px;
+}
+
+#detailsWrapper button{
+	margin-right:6px;
+}
+
+/* *************************************** */
+#buttonsWrapper{
+	width:450px;
+	margin: 15px auto;
+	padding: 10px;
+	padding-left:40px;
+	background-color:#ffa;
+	border-radius:10px;
+	border:1px solid blue;
+}
+
+#buttonsWrapper button, #buttonsWrapper p{
+	display:inline-block;
+	width:80px;
+	margin:5px;
+	padding:10px;
+	text-align:center;
+	font-weight: 600;
+	border-radius:5px;
+}
+#buttonsWrapper p{
+	width:25px;
+}
