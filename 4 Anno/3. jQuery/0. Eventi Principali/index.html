@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventi Principali</title>
+    <link rel="stylesheet" href="./Css/style.css">
+    <!-- CDN Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- CDN jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <script src="./Js/script.js"></script>
+</head>
+
+<body>
+
+    <h1 class="mb-4">Esercitazione Interattiva jQuery + Bootstrap</h1>
+    <h3>Eventi Mouse</h3>
+    <div id="mouseEvents" class="mb-4">
+        <div id="clickBox" class="event-box bg-primary">Click</div>
+        <div id="dblclickBox" class="event-box bg-success">DblClick</div>
+        <div id="mouseenterBox" class="event-box bg-warning">MouseEnter</div>
+        <div id="mouseleaveBox" class="event-box bg-danger">MouseLeave</div>
+        <div id="mousedownBox" class="event-box bg-info">MouseDown</div>
+        <div id="mouseupBox" class="event-box bg-secondary">MouseUp</div>
+        <div id="hoverBox" class="event-box bg-dark">Hover</div>
+    </div>
+
+    <h3>Eventi Form e Tastiera</h3>
+    <form id="testForm">
+        <input type="text" class="form-control" id="focusInput" placeholder="Focus/Blur">
+        <input type="text" class="form-control" id="keyInput" placeholder="KeyDown/KeyUp">
+        <select class="form-control" id="selectChange">
+            <option value="">Seleziona un colore</option>
+            <option value="Rosso">Rosso</option>
+            <option value="Verde">Verde</option>
+            <option value="Blu">Blu</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Invia Form</button>
+    </form>
+
+    <h3>Log Eventi</h3>
+    <div class="log" id="log"></div>
+
+</body>
+
+</html>
