@@ -9,11 +9,16 @@
 > JAVASCRIPT <br>
 > XML <br>
 > JSON <br>
+> jQuery <br>
 > Ajax <br>
 > PHP <br>
 
 ## Authors
 
 - [@francavillaandrea](https://www.github.com/francavillaandrea)
+
+
+
+
 
 
