@@ -1,48 +1,49 @@
-"use strict"
+"use strict";
 
-$(document).ready(init)
+$(document).ready(init);
 
 function init() {
 
     function writeLog(msg) {
-        $("#log").prepend(`<div> ${msg} </div>`);
+        $("#log").prepend(`<div>${msg}</div>`);
     }
 
-    $("#clickBox").click(function () {
-        writeLog("Click su clickbox");
-    });
+    // Click
+    $("#clickBox").click(() => { writeLog("Click su clickbox"); });
 
-    $("#dblclickBox").dblclick(function () {
-        writeLog("Doppio click su clickbox");
-    });
+    // Doppio click
+    $("#dblclickBox").dblclick(() => { writeLog("Doppio click su clickbox"); });
 
-    $("#mouseenterBox").mouseenter(function () {
-        writeLog("Mouse enter sul box");
-    });
+    // Mouse enter / leave
+    $("#mouseenterBox").mouseenter(() => { writeLog("Mouse enter sul box"); });
 
-    $("#mouseleaveBox").mouseleave(function () {
-        writeLog("Mouse leave sul box");
-    });
+    $("#mouseleaveBox").mouseleave(() => { writeLog("Mouse leave sul box"); });
 
+    // Mouse down / up
+    $("#mousedownBox").mousedown(() => { writeLog("Mouse down sul box"); });
 
-    $("#mousedownBox").mousedown(function () {
-        writeLog("Mouse down sul box");
-    });
+    $("#mouseupBox").mouseup(() => { writeLog("Mouse up sul box"); });
 
-    $("#mouseupBox").mouseup(function () {
-        writeLog("Mouse up sul box");
-    });
-
+    // Hover
     $("#hoverBox").hover(
+        () => { writeLog("Mouse enter sul box"); },
+        () => { writeLog("Mouse leave sul box"); }
+    );
 
-        function () {
-            writeLog("Mouse enter sul box");
-        },
+    // Focus / Blur
+    $("#focusInput").focus(() => { writeLog("Evento focus su focusInput"); });
 
-        function () {
-            writeLog("Mouse leave sul box");
-        }
-    )
+    $("#focusInput").blur(() => { writeLog("Evento blur su focusInput"); });
+
+    // Keydown / Keyup
+    $("#keyInput").keydown((e) => { writeLog(`Evento keydown: ${e.key}`); });
+
+    $("#keyInput").keyup((e) => { writeLog(`Evento keyup: ${e.key}`); });
+
+    // Change
+    $("#selectChange").change((e) => { writeLog(`Evento change: ${$(e.target).val()}`);});
+
+    // Submit
+    $("#testForm").submit((e) => { e.preventDefault(); writeLog("Submit del form"); });
+
 }
-
-$(".form-control")[0]
