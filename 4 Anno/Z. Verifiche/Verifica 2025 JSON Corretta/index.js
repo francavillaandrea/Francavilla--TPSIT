@@ -34,6 +34,23 @@ function loadData() {
 }
 
 function populateNationsList() {
+    //Crea un vettore e lo carica con person.nat e tramite il Set rimuove i duplicati, lo ordina e con 
+    // lo spread operator (i 3 puntini all'inizio) diventa un array poi fa un foreach e carica il listbox.
+    //La freccia => (Arrow Function [Operatore Lamda]) serve sostanzialmente a non fare un metodo sia nel foreach
+    //sia nel person.map()
+    //La versione senza arrow function sarebbe
+    /*
+    const nations = [...new Set(peopleData.map(function(person) {
+        return person.nat;
+    }))].sort();
+
+    nations.forEach(function(nat) {
+        const option = document.createElement('option');
+        option.value = nat;
+        option.textContent = nat;
+        lstNations.appendChild(option);
+    });
+    */
     const nations = [...new Set(peopleData.map(person => person.nat))].sort();
 
     nations.forEach(nat => {
@@ -178,7 +195,6 @@ function savePerson(person) {
         alert('Dati salvati correttamente');
 
         displayTable();
-        detailsWrapper.style.display = 'none';
     }
 }
 
