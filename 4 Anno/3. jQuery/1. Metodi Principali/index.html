@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercitazione Metodi jQuery</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./css/style.css" rel="stylesheet" />
+
+    <!-- jQuery e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script defer src="./js/script.js" ></script>
+</head>
+
+<body>
+
+    <h1 class="mb-4">Gioco dei Metodi jQuery</h1>
+
+    <div id="box">BOX</div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Mostra/Nascondi</h5>
+            <div class="btn-group-vertical w-100">
+                <button class="btn btn-primary" id="hideBtn">hide()</button>
+                <button class="btn btn-primary" id="showBtn">show()</button>
+                <button class="btn btn-primary" id="toggleBtn">toggle()</button>
+                <button class="btn btn-primary" id="fadeInBtn">fadeIn()</button>
+                <button class="btn btn-primary" id="fadeOutBtn">fadeOut()</button>
+                <button class="btn btn-primary" id="slideUpBtn">slideUp()</button>
+                <button class="btn btn-primary" id="slideDownBtn">slideDown()</button>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h5>Classe/CSS</h5>
+            <div class="btn-group-vertical w-100">
+                <button class="btn btn-success" id="addClassBtn">addClass()</button>
+                <button class="btn btn-success" id="removeClassBtn">removeClass()</button>
+                <button class="btn btn-success" id="toggleClassBtn">toggleClass()</button>
+                <button class="btn btn-success" id="cssBtn">css()</button>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h5>Contenuto/DOM</h5>
+            <div class="btn-group-vertical w-100">
+                <button class="btn btn-warning" id="attrBtn">attr()</button>
+                <button class="btn btn-warning" id="htmlBtn">html()</button>
+                <button class="btn btn-warning" id="textBtn">text()</button>
+                <button class="btn btn-warning" id="valBtn">val()</button>
+                <button class="btn btn-warning" id="appendBtn">append()</button>
+                <button class="btn btn-warning" id="prependBtn">prepend()</button>
+                <button class="btn btn-warning" id="afterBtn">after()</button>
+                <button class="btn btn-warning" id="beforeBtn">before()</button>
+                <button class="btn btn-danger" id="removeBtn">remove()</button>
+                <button class="btn btn-danger" id="emptyBtn">empty()</button>
+                <button class="btn btn-info" id="animateBtn">animate()</button>
+            </div>
+        </div>
+    </div>
+
+    <h3>Log Azioni</h3>
+    <div class="log" id="log"></div>
+
+</body>
+
+</html>
