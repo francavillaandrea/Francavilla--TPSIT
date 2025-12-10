@@ -1,0 +1,11 @@
+body {
+    background: #f7f7f7;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+#btnRicarica {
+    float: right;
+}
