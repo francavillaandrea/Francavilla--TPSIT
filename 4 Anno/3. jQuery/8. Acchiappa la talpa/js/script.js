@@ -10,7 +10,7 @@ let moleInterval = null;
 let timerInterval = null;
 let gameRunning = false;
 
-let currentMole = null;   // 🔒 talpa unica
+let currentMole = null; 
 let hideTimeout = null;
 let moleVisible = false;
 
@@ -66,7 +66,7 @@ function showRandomMole() {
     const randomIndex = Math.floor(Math.random() * holes.length);
     const randomHole = $(holes[randomIndex]);
 
-    currentMole = $("<div>").addClass("mole");
+    currentMole = $("<div><div/>").addClass("mole");
     randomHole.append(currentMole);
 
     currentMole.animate({ bottom: "10px" }, 300);
