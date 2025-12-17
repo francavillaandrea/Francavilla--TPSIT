@@ -1,0 +1,43 @@
+/* Contenitore della griglia */
+#gameContainer {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    gap: 5px;
+    background: linear-gradient(to bottom, #3a9bdc, #a5d8df);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #0288d1;
+}
+
+/* Cella standard */
+.cell {
+    width: 50px;
+    height: 50px;
+    background-color: #388e3c; 
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    user-select: none;
+}
+
+/* Effetto hover */
+.cell:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 12px #ffeb3b;
+}
+
+/* Contenitore centrale */
+.game-container {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+body {
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+}

@@ -109,7 +109,4 @@ $("#restartBtn").on("click", function () {
     startGame();
 });
 
-function generaNumero(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
 

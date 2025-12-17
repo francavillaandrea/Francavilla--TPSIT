@@ -23,7 +23,7 @@ $("#startBtn").on("click", () => {
     $("#typingInput").val("");
 
     $("#startBtn").attr("disabled", true);
-    currentWord = generateWord(); //SDOBBERMAN
+    currentWord = generateWord(); 
     $("#wordDisplay").text(currentWord);
 
     timeInterval = setInterval(() => {
