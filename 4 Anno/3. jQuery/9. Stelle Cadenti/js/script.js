@@ -16,7 +16,7 @@ const container = $("#gameContainer");
 
 startGame();
 
-container.css({
+$("#gameContainer");.css({
     position: "relative",
     width: COLS * 70 + "px",
     height: ROWS * 100 + "px",

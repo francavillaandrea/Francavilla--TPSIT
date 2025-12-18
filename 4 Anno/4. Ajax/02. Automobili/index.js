@@ -156,7 +156,7 @@ tbody.addEventListener("click", e => {
     if (target.classList.contains("btnElimina")) {
         if (!confirm("Sei sicuro di voler eliminare questa auto?")) return;
 
-        ajax.sendRequest("DELETE", "automobili/" + autoSelezionata.id)
+        ajax.sendRequest("z", "automobili/" + autoSelezionata.id)
             .then(() => {
                 riga.remove();
                 automobili = automobili.filter(a => a.id != autoSelezionata.id);

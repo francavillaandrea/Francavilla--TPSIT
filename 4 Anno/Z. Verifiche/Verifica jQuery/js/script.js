@@ -42,8 +42,6 @@ function generateGrid() {
     for (let i = 0; i < nBombs; i++) {
         let nBomb = generaNumero(0, 64);
         let cellBomb = $(`#cell${nBomb}`).attr("bomba", `true`);
-
-
     }
 }
 
