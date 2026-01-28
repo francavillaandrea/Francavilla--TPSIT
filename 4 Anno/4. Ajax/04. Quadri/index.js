@@ -33,12 +33,12 @@ function getArtists() {
             //dunque conviene serializzare l'oggetto
             input.dataset.artista = JSON.stringify(artista);
             input.name = "artisti";
-            input.addEventListener("click", () => {
+            input.addEventListener("click", function () {
                 getQuadri(artista);
             });
             label.appendChild(input);
             //Text content sovrascrive l'HTML,
-            //label.textContent = artista.name;
+            //label.textContent = artista.name; 
             //al suo posto conviene utilizzare il metodo createTextNode
             label.appendChild(document.createTextNode(artista.name));
             //Oppure label.append(stringa)
@@ -87,16 +87,15 @@ function visualizzaQuadro(quadro) {
         <div>GENERE=<b>${artista.gender}</b></div>
         <div>
             LIKE=<b>${quadro.nLike}</b>
-            <img src="./img/like.jpg" class="like" onclick='addLike(${JSON.stringify(quadro)})'>
+            <img src="./img/like.jpg" class="like">
         </div>
     `;
-
-    infoBox.querySelector("img"), addEventListener("click", () => {
+    //onclick='addLike(${JSON.stringify(quadro)})
+    infoBox.querySelector("img").addEventListener("click", function () {
         addLike(quadro);
     });
-
     //Se si usa innerHTML lo style nel tag deve essere in formato CSS non JS
-    //NOTA: Se hai un'immagine in formato base64 non si deve mettere il path ma solo
+    //NOTA: Se hai un'immagine in formato base64 non si deve mettere il path ma solo 
     //il nome del file con estensione
     let img = quadro.img.startsWith("data:image/") ? quadro.img : `./img/${quadro.img}`;
     imgBox.innerHTML =
@@ -105,7 +104,7 @@ function visualizzaQuadro(quadro) {
     `;
 }
 
-btnNext.addEventListener("click", () => {
+btnNext.addEventListener("click", function () {
     indiceQuadro++;
     visualizzaQuadro(quadri[indiceQuadro]);
 
@@ -115,7 +114,7 @@ btnNext.addEventListener("click", () => {
     btnPrev.disabled = false;
 });
 
-btnPrev.addEventListener("click", () => {
+btnPrev.addEventListener("click", function () {
     indiceQuadro--;
     visualizzaQuadro(quadri[indiceQuadro]);
 
@@ -129,6 +128,7 @@ async function addLike(quadro) {
     let likeIncrementati = quadro.nLike + 1;
     //Await blocca il codice finché non viene risolta la promise e restituisce il valore che
     //verrebbe normalmente inniettato al then
+    //Notare che la modifica PATCH funziona solo sulla base dell'ID, i dati che voglio settare
     const httpResponse = await ajax.sendRequest("PATCH", `/quadri/${quadro.id}`, { nLike: likeIncrementati })
         .catch(ajax.errore);
 
@@ -155,7 +155,40 @@ async function addLike(quadro) {
 
 }
 
-function generaNumero(min, max) {
-    return Math.floor((max - min) * Math.random()) + min;
+btnSalva.addEventListener("click", async function () {
+    let imageBlob = lstFile.files[0];
+    if(!imageBlob || !txtTitolo.value)
+    {
+        alert("Si prega di compilare i campi");
+    }
+    else
+    {
+        let base64Img = await base64Convert(imageBlob).catch(function (err) { alert(err) });
+        let parsedArtist = JSON.parse(document.querySelector("input[type=radio]:checked").dataset.artista);
+        let httpResponse = await ajax.sendRequest("POST","/quadri",{artist: parsedArtist.id,title:txtTitolo.value
+            ,img:base64Img,nLike:0}).catch(ajax.errore);
+        if(httpResponse)
+        {
+            alert("Quadro inserito correttamente");
+            getQuadri(parsedArtist);
+        }
+    }
+});
+
+function base64Convert(blob) {
+    return new Promise(function (resolve, reject) {
+        let reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onload = function (event) {
+            resolve(event.target.result); // event.target sarebbe reader
+        };
+        reader.onerror = function (error) {
+            reject(error);
+        };
+    })
 }
 
+
+    function generaNumero(min, max) {
+        return Math.floor((max - min) * Math.random()) + min;
+    }
