@@ -5,15 +5,15 @@
     <title>Concerti 2022</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon"  href="img/icoVallauri.png" type="image/png" />
-
+	
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="index.css" />
+	<link rel="stylesheet" href="./index.css" />
 
 	<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-	<script src="./libs/axios@1.13.min.js"></script>
-	<script src="./libs/libreria.js"></script>
+	<script src="./libs/axios@1.13.min.js"></script>  
+	<script src="./libs/libreria.js"></script>  
 	<script defer src="./index.js"></script>
 </head>
 
@@ -21,24 +21,24 @@
  <div class="container">
     <h1 style="text-align: center">CONCERTI 2022</h1>
     <div class="row">
-
+				
         <div class="dropdown" id="lstCitta">
             <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-			    Città
+			    Città 
 			</button>
             <div class="dropdown-menu">
 				<!--  <a class="dropdown-item" href="#">HTML</a>   -->
             </div>
         </div>
         <div class="dropdown" id="lstGeneri">
-            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-			    Generi
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+			    Generi 
 			</button>
             <div class="dropdown-menu">
 				<!--  <a class="dropdown-item" href="#">HTML</a>   -->
             </div>
         </div>
-
+		       	
 		<table class="table table-hover" style="margin-top:20px">
 			<thead>
 				<tr>
@@ -52,16 +52,33 @@
 					<th>prenota</th>
 				</tr>
 			</thead>
-
-			<tbody>
-
+			
+			<tbody>	
+ 
 			</tbody>
 		</table>
-
-		<div class="form-group" id="divDettagli">
+		
+		<div id="divDettagli">
+			<h2>Dettagli</h2>
+			<div>
+				<span>Data:</span> <span></span>
+			</div>	
+			<div>
+				<span>Città:</span> <span></span>
+			</div>				
+			<div>
+				<span>Struttura:</span> <span></span>
+			</div>				
+			<div>
+				<span>Posti Liberi:</span> <span></span>
+			</div>				
+			<div>
+				<span>Dettagli:</span> <span></span>
+			</div>				
+			<button class="btn btn-info">OK</button>
 		</div>
     </div>
  </div>
-
+ 
 </body>
 </html>
