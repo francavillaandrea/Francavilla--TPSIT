@@ -1,0 +1,12 @@
+#wordDisplay {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#typingInput.correct {
+    border: 3px solid #28a745 !important;
+}
+
+#typingInput.wrong {
+    border: 3px solid #dc3545 !important;
+}

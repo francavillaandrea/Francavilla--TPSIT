@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio DataTable</title>
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- Stile personalizzato -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- jQuery 3.7 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!-- Dati JSON -->
+    <script src="./data/jsonData.js"></script>
+    
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+    <div class="container py-4">
+        <h2 class="mb-4 text-center">Esercizio con DataTable</h2>
+        <button id="btnRicarica" class="btn btn-primary mb-3">Ricarica dati</button>
+        <table id="tbUsers" class="display table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Città</th>
+                    <!--<th>Seleziona</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Verrà popolato da DataTables -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
