@@ -1,0 +1,32 @@
+.dropdown {
+	display:inline;
+	margin-right:10px;
+}
+
+#divDettagli{
+	font-size:12pt;
+	text-align:center;
+	margin:0 auto;
+	width:380px;
+	padding:10px;
+	border:1px solid #ccc;
+	background-color:#fff;
+	z-index:2;
+	
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#divDettagli span:nth-of-type(1){
+	 font-weight:bold;
+}
+
+#divDettagli div  {
+	 margin-bottom:8px;
+}
+
+#divDettagli button{
+	margin:8px;
+}
