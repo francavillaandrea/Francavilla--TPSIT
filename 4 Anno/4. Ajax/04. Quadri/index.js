@@ -10,31 +10,41 @@ const wrapperAdd = document.querySelectorAll('.wrapper')[1]
 
 btnPrev.disabled = true;
 
-
 getArtists();
-//<label> <input type='radio'> artistname </label> 
 
 function getArtists() {
-    let promise = ajax.sendRequest("GET", "/artisti")
-    promise.catch(function (httpResponse) {
-        let label, input, opt;
+    let promise = ajax.sendRequest("GET", "/artisti");
+    promise.catch(ajax.errore);
+    promise.then(function (httpResponse) {
         let artisti = httpResponse.data;
-        artisti.forEach(artista => {
-            
+        let label, input, opt;
+
+        artisti.forEach(function (artista) {
+            //<!-- <label> <input type='radio'> artistname </label> -->
             label = document.createElement("label");
-            label.textContent = artista.name;
-            head.append(label);
+            head.appendChild(label);
 
             input = document.createElement("input");
             input.type = "radio";
             input.id = artista.id;
-            label.append(input);
-
-            
+            input.name = "artisti";
+            label.appendChild(input);
+            //Text content sovrascrive l'HTML,
+            //label.textContent = artista.name; 
+            //al suo posto conviene utilizzare il metodo createTextNode
+            label.appendChild(document.createTextNode(artista.name));
+            //Oppure label.append(stringa)
         });
+
+        let nArtista = generaNumero(0, artisti.length);
+        let id = artisti[nArtista].id;
+        head.querySelector(`input[type=radio][id="${id}"]`).checked = true;
+
+        getQuadri()
     });
 }
 
 
-
-
+function generaNumero(min, max) {
+    return Math.floor((max - min) * Math.random()) + min;
+}
