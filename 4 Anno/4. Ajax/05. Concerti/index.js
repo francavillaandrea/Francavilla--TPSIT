@@ -21,6 +21,7 @@ async function getCities() {
         }
     }
 }
+
 async function getGenders() {
     let httpResponse = await ajax.sendRequest("GET", "/generi").catch(ajax.errore);
     if (httpResponse) {
@@ -83,13 +84,13 @@ function getConcerts() {
             tr.appendChild(creaElementoTabella(concert.sede.citta));
             tr.appendChild(creaElementoTabella(concert.sede.struttura));
 
-            tr.appendChild(creaElementoTabella("Prenota", ["btn", "btn-success", "btn-xs"]));
-            tr.appendChild(creaElementoTabella("Dettagli", ["btn", "btn-info", "btn-xs"]));
+            tr.appendChild(creaElementoTabella("Prenota", ["btn", "btn-success", "btn-xs"], concert));
+            tr.appendChild(creaElementoTabella("Dettagli", ["btn", "btn-info", "btn-xs"], concert));
         }
     });
 }
 
-function creaElementoTabella(text, classes) {
+function creaElementoTabella(text, classes, concert) {
     let td = document.createElement("td");
     //Visto che agli elementi della tabella non vanno aggiunte classi a meno che non
     //siano dei bottoni possiamo controllare se ci passano delle classi
@@ -102,12 +103,10 @@ function creaElementoTabella(text, classes) {
         btn.textContent = text;
 
         if (text == "Dettagli") {
-            btn.addEventListener("click", showDetails)
+            btn.addEventListener("click", () => showDetails(concert.id));
         }
         else {
-            btn.addEventListener("click", () => {
-                bookConcert(concert);
-            })
+            btn.addEventListener("click", () => bookConcert(concert));
         }
 
         for (let auxClass of classes) {
@@ -118,25 +117,73 @@ function creaElementoTabella(text, classes) {
     return td;
 }
 
-function showDetails() {
-    let concertId = this.parentElement.parentElement.firstElementChild.textContent;
-    const promise = ajax.sendRequest("GET", `/concerti/${concertId}`);
+function showDetails(concertId) {
+    const promise = ajax.sendRequest("GET", "/concerti/" + concertId);
     promise.catch(ajax.errore);
-    promise.then(httpResponse => {
-        let data = httpResponse;
-        caricaDettagli([concert.data, concert.sede.città,]);
+    promise.then(function (httpResponse) {
+        divDettagli.style.display = "";
+        let concert = httpResponse.data;
+        let postiLiberi = concert.sede.nPosti - concert.postiPrenotati;
 
-    })
-}
-function bookConcert(concert) {
-
+        caricaDettagli([concert.data, concert.sede.citta, concert.sede.struttura, postiLiberi, concert.dettagli]);
+    });
 }
 
 function caricaDettagli(vDetails) {
-    vDetails.forEach((element,i) => {
-        let span = divDettagli.querySelector(`div:nth-of-type(${i+1}) span:nth-of-type(2)`)
+
+    vDetails.forEach(function (element, i) {
+        //let span = divDettagli.querySelector(`div:nth-of-type(${i+1})>span:nth-of-type(2)`);
+        let span = divDettagli.querySelector(`:scope div:nth-of-type(${i + 1}) span:nth-of-type(2)`);
         span.textContent = element;
-        console.log(element)
     });
+}
+
+let btnClose = divDettagli.querySelector("button").addEventListener("click", () => {
+    divDettagli.style.display = "none"
+})
+
+async function bookConcert(concert) {
+    let nTickets = prompt("Inserisci il numero di biglietti che desideri acquistare:");
+
+    if (nTickets === null) return;
+
+    nTickets = parseInt(nTickets);
+
+    if (isNaN(nTickets) || nTickets <= 0 || nTickets > 10) {
+        alert("Inserisci un numero valido (1–10).");
+        return;
+    }
+
+    let postiDisponibili = concert.sede.nPosti - concert.postiPrenotati;
+
+    if (nTickets > postiDisponibili) {
+        alert(`Posti disponibili: ${postiDisponibili}`);
+        return;
+    }
+
+    let nuoviPostiPrenotati = concert.postiPrenotati + nTickets;
+
+    await ajax.sendRequest(
+        "PATCH",
+        `/concerti/${concert.id}`,
+        { postiPrenotati: nuoviPostiPrenotati }
+    ).catch(ajax.errore);
+
+    alert("Prenotazione effettuata con successo");
+
+    concert.postiPrenotati = nuoviPostiPrenotati;
+
+    getConcerts();
+
+    let postiLiberi = concert.sede.nPosti - concert.postiPrenotati;
+    caricaDettagli([
+        concert.data,
+        concert.sede.citta,
+        concert.sede.struttura,
+        postiLiberi,
+        concert.dettagli
+    ]);
+
+    divDettagli.style.display = "";
 }
 // #endregion
