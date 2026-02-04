@@ -29,17 +29,7 @@ function getArtists() {
             input = document.createElement("input");
             input.type = "radio";
             input.id = artista.id;
-<<<<<<< HEAD
             input.name = "artisti";
-=======
-            //Dataset non accetta oggetti richiede espressamente delle stringhe
-            //dunque conviene serializzare l'oggetto
-            input.dataset.artista = JSON.stringify(artista);
-            input.name = "artisti";
-            input.addEventListener("click", function () {
-                getQuadri(artista);
-            });
->>>>>>> 8180b9697ac89c546cfaa1b896059e36b5034555
             label.appendChild(input);
             //Text content sovrascrive l'HTML,
             //label.textContent = artista.name; 
@@ -50,19 +40,9 @@ function getArtists() {
 
         let nArtista = generaNumero(0, artisti.length);
         let id = artisti[nArtista].id;
-<<<<<<< HEAD
         head.querySelector(`input[type=radio][id="${id}"]`).checked = true;
 
         getQuadri()
-=======
-        //Notare che le "" sono fondamentali in quanto querySelector è una
-        //combinazione di js e css. Passando i parametri senza "" css potrebbe
-        //non riconoscere il valore dunque è obbligatorio l'uso delle virgolette
-        //così da evitare comportamenti inaspettati
-        head.querySelector(`input[type="radio"][id="${id}"]`).checked = true;
-
-        getQuadri(artisti[nArtista]);
->>>>>>> 8180b9697ac89c546cfaa1b896059e36b5034555
     });
 }
 
