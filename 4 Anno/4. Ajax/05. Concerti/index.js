@@ -49,7 +49,6 @@ function createDropdownItem(text) {
     aTag.href = "#";
     aTag.textContent = text;
 
-    return aTag;
 }
 //#endregion
 
