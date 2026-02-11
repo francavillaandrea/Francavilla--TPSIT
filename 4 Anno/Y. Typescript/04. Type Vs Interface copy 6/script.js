@@ -1,3 +1,6 @@
+// ============================
+// ESERCIZIO 4 - TYPE VS INTERFACE
+// ============================
 var beer = {
     id: 0,
     name: "beer",

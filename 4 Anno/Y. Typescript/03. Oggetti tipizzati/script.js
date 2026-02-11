@@ -1,6 +1,3 @@
-// ============================
-// ESERCIZIO 3 - OGGETTI TIPIZZATI
-// ============================
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -12,15 +9,6 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-// Crea un oggetto User con:
-// - id (number)
-// - name (string)
-// - email (string)
-// - isAdmin (boolean)
-// Prima tipizza l'oggetto inline.
-// Poi crea un type o un interface chiamato User
-// e usa quello per tipizzare l'oggetto.
-//Definizione struttura generica --> Tipizzazione inline
 var user = {
     id: 0,
     name: "goku",

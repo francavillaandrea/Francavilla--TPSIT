@@ -1,18 +1,3 @@
-// ============================
-// ESERCIZIO 3 - OGGETTI TIPIZZATI
-// ============================
-
-// Crea un oggetto User con:
-// - id (number)
-// - name (string)
-// - email (string)
-// - isAdmin (boolean)
-
-// Prima tipizza l'oggetto inline.
-// Poi crea un type o un interface chiamato User
-// e usa quello per tipizzare l'oggetto.
-
-//Definizione struttura generica --> Tipizzazione inline
 const user: {
     id: number;
     name: string;

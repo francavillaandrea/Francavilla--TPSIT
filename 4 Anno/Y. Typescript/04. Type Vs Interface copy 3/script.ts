@@ -1,3 +1,18 @@
+// ============================
+// ESERCIZIO 4 - TYPE VS INTERFACE
+// ============================
+
+// Definisci un tipo Product con:
+// - id (number)
+// - name (string)
+// - price (number)
+
+// Crea una funzione che accetta un Product
+// e stampa:
+// "Prodotto: Nome - €Prezzo"
+
+// Prova a farlo sia con type che con interface.
+
 //Type
 /*
 type Product = {
