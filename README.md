@@ -5,14 +5,14 @@
 > HTML 5 <br>
 > CSS <br>
 > CSS 3 <br>
-> BOOTSTRAP <br>
-> JAVASCRIPT <br>
+> Bootstrap <br>
+> JavaScript <br>
 > XML <br>
 > JSON <br>
 > jQuery <br>
 > Ajax <br>
 > PHP <br>
->Typescript <br>
+> Typescript <br>
 
 ## Authors
 
