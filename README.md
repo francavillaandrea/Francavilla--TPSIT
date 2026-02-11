@@ -12,6 +12,7 @@
 > jQuery <br>
 > Ajax <br>
 > PHP <br>
+>Typescript <br>
 
 ## Authors
 
