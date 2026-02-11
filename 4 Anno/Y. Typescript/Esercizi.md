@@ -56,8 +56,8 @@ Gli esercizi sono divisi per macro-argomenti e contengono sia le consegne che es
     ```
     node dist/index.js
     ```
-
 ---
+# Esercizi
 
 ## 1. Tipi di base
 
@@ -156,4 +156,51 @@ Usa Pick<Product, 'id' | 'name'> per creare un nuovo tipo
 ```ts
 Crea una funzione isString(x: unknown): x is string
 Usa questa funzione per filtrare un array misto di numeri e stringhe
+```
+
+### Esercizio 16: Mapped Types
+```ts
+Crea un type User con proprietà name, age, email
+Usa un Mapped Type per creare un nuovo tipo OptionalUser dove tutte le proprietà sono opzionali
+```
+
+### Esercizio 17: Conditional Types
+```ts
+Crea un tipo MyType<T> che ritorna "string" se T è string, altrimenti "other"
+Testa MyType<string> e MyType<number>
+```
+
+### Esercizio 18: Intersection Types
+```ts
+Crea due interfacce A {a: number} e B {b: string}
+Crea un tipo C = A & B
+Crea un oggetto che rispetta il tipo C
+```
+### Esercizio 19: keyof e typeof
+```ts
+Crea un oggetto const user = {name: "Goku", age: 30}
+Usa keyof typeof user per creare un tipo che rappresenti tutte le chiavi dell'oggetto
+```
+### Esercizio 20: Enums avanzati
+```ts
+Crea un enum Role {ADMIN, USER, GUEST}
+Crea una funzione che accetta Role e stampa un messaggio diverso per ogni ruolo
+```
+---
+# Mini Progetti
+### Progetto 1: To-Do List TypeScript + DOM
+```ts
+Crea un app To-Do List in TypeScript con:
+- interfaccia Task {id, text, done}
+- aggiungi, rimuovi e completa task
+- salva in localStorage
+- tipizza tutto correttamente
+```
+### Progetto 2: Mini API Mock
+```ts
+Crea un mini-progetto TS che simula una fetch di utenti:
+- interfaccia User {id, name, email, isAdmin}
+- funzione async fetchUsers() che ritorna Promise<User[]>
+- filtra solo gli utenti admin
+- mostra i dati in console o DOM
 ```

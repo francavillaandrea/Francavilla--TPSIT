@@ -1,3 +1,4 @@
+// Esercizio 03 - Oggetti Tipizzati
 const user: {
     id: number;
     name: string;
