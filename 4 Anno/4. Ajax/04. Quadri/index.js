@@ -32,7 +32,7 @@ function getArtists() {
             input.name = "artisti";
             label.appendChild(input);
             //Text content sovrascrive l'HTML,
-            //label.textContent = artista.name; 
+            //label.textContent = artista.name;
             //al suo posto conviene utilizzare il metodo createTextNode
             label.appendChild(document.createTextNode(artista.name));
             //Oppure label.append(stringa)
@@ -85,7 +85,7 @@ function visualizzaQuadro(quadro) {
         addLike(quadro);
     });
     //Se si usa innerHTML lo style nel tag deve essere in formato CSS non JS
-    //NOTA: Se hai un'immagine in formato base64 non si deve mettere il path ma solo 
+    //NOTA: Se hai un'immagine in formato base64 non si deve mettere il path ma solo
     //il nome del file con estensione
     let img = quadro.img.startsWith("data:image/") ? quadro.img : `./img/${quadro.img}`;
     imgBox.innerHTML =
@@ -147,18 +147,17 @@ async function addLike(quadro) {
 
 btnSalva.addEventListener("click", async function () {
     let imageBlob = lstFile.files[0];
-    if(!imageBlob || !txtTitolo.value)
-    {
+    if (!imageBlob || !txtTitolo.value) {
         alert("Si prega di compilare i campi");
     }
-    else
-    {
+    else {
         let base64Img = await base64Convert(imageBlob).catch(function (err) { alert(err) });
         let parsedArtist = JSON.parse(document.querySelector("input[type=radio]:checked").dataset.artista);
-        let httpResponse = await ajax.sendRequest("POST","/quadri",{artist: parsedArtist.id,title:txtTitolo.value
-            ,img:base64Img,nLike:0}).catch(ajax.errore);
-        if(httpResponse)
-        {
+        let httpResponse = await ajax.sendRequest("POST", "/quadri", {
+            artist: parsedArtist.id, title: txtTitolo.value
+            , img: base64Img, nLike: 0
+        }).catch(ajax.errore);
+        if (httpResponse) {
             alert("Quadro inserito correttamente");
             getQuadri(parsedArtist);
         }

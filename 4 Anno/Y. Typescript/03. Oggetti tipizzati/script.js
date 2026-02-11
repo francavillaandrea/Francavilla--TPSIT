@@ -1,60 +1,47 @@
 // ============================
 // ESERCIZIO 3 - OGGETTI TIPIZZATI
 // ============================
-
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 // Crea un oggetto User con:
 // - id (number)
 // - name (string)
 // - email (string)
 // - isAdmin (boolean)
-
 // Prima tipizza l'oggetto inline.
 // Poi crea un type o un interface chiamato User
 // e usa quello per tipizzare l'oggetto.
-
 //Definizione struttura generica --> Tipizzazione inline
-const user: {
-    id: number;
-    name: string;
-    email: string;
-    isAdmin: boolean
-} = {
+var user = {
     id: 0,
     name: "goku",
     email: "goku@sayan.com",
     isAdmin: true
 };
-
-// Definizione del type
-type User = {
-    id: number;
-    name: string;
-    email: string;
-    isAdmin: boolean;
-};
-
 // Uso del type --> assomiglia ad una struct e serve a definire i tipi delle variabili di un oggetto
-const user2: User = {
+var user2 = {
     id: 1,
     name: "vegeta",
     email: "vegeta@sayan.com",
     isAdmin: false
 };
-
-const updated = makeAdmin(user2);
+var updated = makeAdmin(user2);
 console.log(updated);
-
-function makeAdmin(user: User): User {
+function makeAdmin(user) {
     if (user.isAdmin) {
-        console.log(`L'utente ${user.name} è già admin`);
+        console.log("L'utente ".concat(user.name, " \u00E8 gi\u00E0 admin"));
         return user;
     }
-
-    const updatedUser: User = {
-        ...user,
-        isAdmin: true
-    };
-
-    console.log(`L'utente ${user.name} è diventato admin`);
+    var updatedUser = __assign(__assign({}, user), { isAdmin: true });
+    console.log("L'utente ".concat(user.name, " \u00E8 diventato admin"));
     return updatedUser;
 }

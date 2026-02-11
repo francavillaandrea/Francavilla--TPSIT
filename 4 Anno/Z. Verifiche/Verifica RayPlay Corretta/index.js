@@ -1,4 +1,9 @@
 "use strict"
+let div_Film = document.getElementById("div_Film");
+let div_Dettagli = document.getElementById("div_Dettagli");
+let div_Riproduzione = document.getElementById("div_Riproduzione");
+let params = {}; // query params used for movie list requests
+
 let listBox = div_Film.querySelector("select");
 let elencoFilm = div_Film.querySelector(".elencoFilm")
 let chkFree = div_Film.querySelector("input")
@@ -50,8 +55,9 @@ chkFree.addEventListener("change", function () {
     filterMovies(selectedGenre, this.checked)
 });
 
-async function getMovies(params) {
+async function getMovies(params = {}) {
     // Carica tutti i film dal server e li renderizza nella lista
+    let httpResponse = await ajax.sendRequest("GET", "/film", params).catch(console.error);
     if (httpResponse) {
         let movies = httpResponse.data
         elencoFilm.innerHTML = "";
@@ -71,6 +77,7 @@ async function getMovies(params) {
 let quality = "";
 async function showMovieDetails(movie) {
     // Richiede i dettagli aggiornati del film dal server e li visualizza
+    let httpResponse = await ajax.sendRequest("GET", `/film/${movie.id}`).catch(console.error);
     if (httpResponse) {
         currentMovie = httpResponse.data;
 
@@ -133,14 +140,15 @@ async function showMovieDetails(movie) {
 
 async function filterMovies(genre, isFree) {
     // Filtra i film per genere e disponibilità (free o a pagamento)
+    let query = {};
     if (genre != 0) {
-        params.codGenere = genre;
+        query.codGenere = genre;
     }
     if (isFree) {
-        params.prezzo = "free";
+        query.prezzo = "free";
     }
 
-    let httpResponse = await ajax.sendRequest("GET", "/film", params).catch(console.error);
+    let httpResponse = await ajax.sendRequest("GET", "/film", query).catch(console.error);
     if (httpResponse) {
         let movies = httpResponse.data
         elencoFilm.innerHTML = "";
@@ -160,6 +168,7 @@ async function filterMovies(genre, isFree) {
 
 async function playVideo(quality) {
     // Riproduce il video selezionato in HD o 4K
+    let videoFilename = `video${currentMovie.id}_${quality}.mp4`;
     let videoPath = `./video/${videoFilename}`;
 
     div_Film.style.display = "none"
@@ -181,12 +190,21 @@ async function playVideo(quality) {
         videoElement.src = "";
     };
 
+    // Quando il video termina, incrementa il contatore e torna ai dettagli
+    videoElement.onended = () => {
+        incrementVisualization(quality);
+        div_Riproduzione.style.display = "none";
+        div_Dettagli.style.display = "block";
+        videoElement.src = "";
+    };
+
     videoElement.src = videoPath;
 }
 
-async function incrementVisualization(param) {
+async function incrementVisualization(field) {
     // Incrementa il contatore delle visualizzazioni sul server
-    let newValue = currentMovie.nVisualizzazioni[field] + 1;
+    if (!currentMovie || !field) return;
+    let newValue = (currentMovie.nVisualizzazioni[field] || 0) + 1;
     let update = {};
     if (field == "hd") {
         update.nVisualizzazioni = { hd: newValue, "4k": currentMovie.nVisualizzazioni["4k"] };
@@ -206,6 +224,7 @@ detailsClose.addEventListener("click", (event) => {
 btnIndietro.addEventListener("click", () => {
     // Torna ai dettagli del film quando si preme INDIETRO
     div_Dettagli.style.display = "block";
+    div_Riproduzione.style.display = "none";
     videoElement.src = "";
     incrementVisualization(quality);
 });
