@@ -1,0 +1,19 @@
+/* Stile base per gli esercizi TypeScript */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #1C1C1C ;
+    color: #333;
+}
+
+h1 {
+    color: #F00 ;
+}
+
+#output {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #808080;
+    min-height: 50px;
+}

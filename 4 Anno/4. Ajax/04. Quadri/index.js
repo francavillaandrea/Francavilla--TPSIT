@@ -29,16 +29,10 @@ function getArtists() {
             input = document.createElement("input");
             input.type = "radio";
             input.id = artista.id;
-            //Dataset non accetta oggetti richiede espressamente delle stringhe
-            //dunque conviene serializzare l'oggetto
-            input.dataset.artista = JSON.stringify(artista);
             input.name = "artisti";
-            input.addEventListener("click", function () {
-                getQuadri(artista);
-            });
             label.appendChild(input);
             //Text content sovrascrive l'HTML,
-            //label.textContent = artista.name; 
+            //label.textContent = artista.name;
             //al suo posto conviene utilizzare il metodo createTextNode
             label.appendChild(document.createTextNode(artista.name));
             //Oppure label.append(stringa)
@@ -46,13 +40,9 @@ function getArtists() {
 
         let nArtista = generaNumero(0, artisti.length);
         let id = artisti[nArtista].id;
-        //Notare che le "" sono fondamentali in quanto querySelector è una
-        //combinazione di js e css. Passando i parametri senza "" css potrebbe
-        //non riconoscere il valore dunque è obbligatorio l'uso delle virgolette
-        //così da evitare comportamenti inaspettati
-        head.querySelector(`input[type="radio"][id="${id}"]`).checked = true;
+        head.querySelector(`input[type=radio][id="${id}"]`).checked = true;
 
-        getQuadri(artisti[nArtista]);
+        getQuadri()
     });
 }
 
@@ -95,7 +85,7 @@ function visualizzaQuadro(quadro) {
         addLike(quadro);
     });
     //Se si usa innerHTML lo style nel tag deve essere in formato CSS non JS
-    //NOTA: Se hai un'immagine in formato base64 non si deve mettere il path ma solo 
+    //NOTA: Se hai un'immagine in formato base64 non si deve mettere il path ma solo
     //il nome del file con estensione
     let img = quadro.img.startsWith("data:image/") ? quadro.img : `./img/${quadro.img}`;
     imgBox.innerHTML =
@@ -157,18 +147,17 @@ async function addLike(quadro) {
 
 btnSalva.addEventListener("click", async function () {
     let imageBlob = lstFile.files[0];
-    if(!imageBlob || !txtTitolo.value)
-    {
+    if (!imageBlob || !txtTitolo.value) {
         alert("Si prega di compilare i campi");
     }
-    else
-    {
+    else {
         let base64Img = await base64Convert(imageBlob).catch(function (err) { alert(err) });
         let parsedArtist = JSON.parse(document.querySelector("input[type=radio]:checked").dataset.artista);
-        let httpResponse = await ajax.sendRequest("POST","/quadri",{artist: parsedArtist.id,title:txtTitolo.value
-            ,img:base64Img,nLike:0}).catch(ajax.errore);
-        if(httpResponse)
-        {
+        let httpResponse = await ajax.sendRequest("POST", "/quadri", {
+            artist: parsedArtist.id, title: txtTitolo.value
+            , img: base64Img, nLike: 0
+        }).catch(ajax.errore);
+        if (httpResponse) {
             alert("Quadro inserito correttamente");
             getQuadri(parsedArtist);
         }
@@ -188,7 +177,13 @@ function base64Convert(blob) {
     })
 }
 
+<<<<<<< HEAD
+function generaNumero(min, max) {
+    return Math.floor((max - min) * Math.random()) + min;
+}
+=======
 
     function generaNumero(min, max) {
         return Math.floor((max - min) * Math.random()) + min;
     }
+>>>>>>> 8180b9697ac89c546cfaa1b896059e36b5034555
