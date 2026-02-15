@@ -1,62 +1,68 @@
 import { ContactForm } from "../components/contact-form";
 import { SiteLayout } from "../components/site-layout";
 
-export default function ContactPage() {
-  return (
-    <SiteLayout
-      current="contact"
-      title="Contattami"
-      eyebrow="Contatti"
-      subtitle="Contatti - Francavilla Andrea"
-    >
-      <div className="row g-4">
-        <div className="col-12 col-lg-5">
-          <div className="card bg-body-tertiary h-100">
-            <div className="card-body">
-              <h2 className="h4 mb-3">Informazioni di Contatto</h2>
-              <ul className="list-unstyled mb-0">
-                <li className="mb-3">
-                  <i className="bi bi-envelope-fill me-2"></i>
-                  <a href="mailto:a.francavilla.3537@vallauri.edu" className="link-body-emphasis text-decoration-none">
-                    a.francavilla.3537@vallauri.edu
-                  </a>
-                </li>
-                <li className="mb-3">
-                  <i className="bi bi-instagram me-2"></i>
-                  <a
-                    href="https://www.instagram.com/andrea.francavilla/"
-                    className="link-body-emphasis text-decoration-none"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    @andrea.francavilla
-                  </a>
-                </li>
-                <li>
-                  <i className="bi bi-github me-2"></i>
-                  <a
-                    href="https://github.com/francavillaandrea"
-                    className="link-body-emphasis text-decoration-none"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    francavillaandrea
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+const contacts = [
+    {
+        icon: "bi-envelope-fill",
+        label: "Email",
+        value: "a.francavilla.3537@vallauri.edu",
+        href: "mailto:a.francavilla.3537@vallauri.edu",
+    },
+    {
+        icon: "bi-instagram",
+        label: "Instagram",
+        value: "@andrea.francavilla",
+        href: "https://www.instagram.com/andrea.francavilla/",
+    },
+    {
+        icon: "bi-github",
+        label: "GitHub",
+        value: "francavillaandrea",
+        href: "https://github.com/francavillaandrea",
+    },
+];
 
-        <div className="col-12 col-lg-7">
-          <div className="card bg-body-tertiary">
-            <div className="card-body">
-              <h2 className="h4 mb-3">Inviami un messaggio</h2>
-              <ContactForm />
+export default function ContactPage() {
+    return (
+        <SiteLayout current="contact" title="Contattami" eyebrow="Contact" subtitle="Parliamo di collaborazioni, idee o opportunità.">
+            <div className="row g-4">
+                <div className="col-12 col-lg-5">
+                    <article className="card section-card h-100">
+                        <div className="card-body">
+                            <p className="section-kicker mb-2">Canali</p>
+                            <h2 className="h4 mb-3">Informazioni di contatto</h2>
+
+                            <div className="d-grid gap-3">
+                                {contacts.map((item) => (
+                                    <a
+                                        key={item.label}
+                                        href={item.href}
+                                        className="contact-link"
+                                        target={item.href.startsWith("http") ? "_blank" : undefined}
+                                        rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                                    >
+                                        <i className={`bi ${item.icon}`}></i>
+                                        <div>
+                                            <p className="mb-0 fw-semibold">{item.label}</p>
+                                            <p className="mb-0 small text-muted">{item.value}</p>
+                                        </div>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div className="col-12 col-lg-7">
+                    <article className="card section-card h-100">
+                        <div className="card-body">
+                            <p className="section-kicker mb-2">Messaggio</p>
+                            <h2 className="h4 mb-3">Scrivimi direttamente</h2>
+                            <ContactForm />
+                        </div>
+                    </article>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </SiteLayout>
-  );
+        </SiteLayout>
+    );
 }

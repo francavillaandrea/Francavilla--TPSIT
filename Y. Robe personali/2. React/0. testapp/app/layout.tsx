@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Comic_Relief } from "next/font/google";
-import Script from "next/script";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import "../1. Portfolio/css/styles.css";
 
 export const metadata: Metadata = {
-    title: "Portfolio - Andrea Francavilla",
-    description: "Portfolio personale convertito in Next.js",
+    title: "Andrea Francavilla | Portfolio",
+    description:
+        "Portfolio professionale di Andrea Francavilla: progetti web, giochi sviluppati in JavaScript, percorso tecnico e contatti.",
 };
 
-const comicRelief = Comic_Relief({
+const manrope = Manrope({
     subsets: ["latin"],
-    weight: ["400"],
+    variable: "--font-body",
+    display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+    subsets: ["latin"],
+    variable: "--font-heading",
     display: "swap",
 });
 
@@ -21,7 +26,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="it" data-bs-theme="dark">
+        <html lang="it">
             <head>
                 <link
                     rel="stylesheet"
@@ -32,12 +37,8 @@ export default function RootLayout({
                     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
                 />
             </head>
-            <body className={comicRelief.className}>
+            <body className={`${manrope.variable} ${spaceGrotesk.variable}`}>
                 {children}
-                <Script
-                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                    strategy="afterInteractive"
-                />
             </body>
         </html>
     );

@@ -1,65 +1,74 @@
 import { SiteLayout } from "../components/site-layout";
 
+const profileInfo = [
+    { label: "Nome", value: "Andrea Francavilla" },
+    { label: "Età", value: "17 anni" },
+    { label: "Residenza", value: "Carrù, Italia" },
+    { label: "Ruolo", value: "Studente di Informatica" },
+];
+
+const timeline = [
+    {
+        title: "Percorso scolastico",
+        text: "Frequento l'IIS Vallauri di Fossano, indirizzo informatico, dove sto consolidando basi di sviluppo software e progettazione web.",
+    },
+    {
+        title: "Approccio al lavoro",
+        text: "Mi concentro su progetti concreti, con attenzione al dettaglio tecnico e a una presentazione professionale dei risultati.",
+    },
+    {
+        title: "Obiettivo",
+        text: "Crescere come frontend developer, costruendo prodotti digitali usabili, performanti e pronti al rilascio online.",
+    },
+];
+
 export default function MePage() {
-  return (
-    <SiteLayout
-      current="me"
-      title="Chi Sono"
-      eyebrow="Me"
-      subtitle="Chi Sono - Francavilla Andrea"
-    >
-      <div className="row justify-content-center">
-        <div className="col-12 col-lg-8">
-          <div className="text-center mb-4 reveal-up">
-            <img
-              src="/assets/img/Chi Sono/chisono.jpg"
-              alt="Andrea Francavilla"
-              className="rounded profile-image d-block mx-auto"
-            />
-          </div>
+    return (
+        <SiteLayout current="me" title="Profilo Professionale" eyebrow="Me" subtitle="Chi sono, come lavoro e dove voglio arrivare.">
+            <div className="row g-4 align-items-stretch">
+                <div className="col-12 col-lg-4">
+                    <article className="card section-card h-100">
+                        <div className="card-body text-center">
+                            <img src="/assets/img/Pfp.jpg" alt="Andrea Francavilla" className="profile-image rounded-4 mb-3" />
+                            <h2 className="h5 mb-2">Andrea Francavilla</h2>
+                            <p className="text-muted mb-0">Junior Developer</p>
+                        </div>
+                    </article>
+                </div>
 
-          <div className="card bg-body-tertiary mb-4 text-center reveal-up">
-            <div className="card-body">
-              <h2 className="h4 mb-3">Profilo</h2>
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <strong>Nome:</strong> Andrea Francavilla
-                </li>
-                <li>
-                  <strong>Età:</strong> 17 anni
-                </li>
-                <li>
-                  <strong>Residenza:</strong> Carrù, Italia
-                </li>
-                <li>
-                  <strong>Occupazione:</strong> Studente
-                </li>
-              </ul>
+                <div className="col-12 col-lg-8">
+                    <article className="card section-card h-100">
+                        <div className="card-body">
+                            <p className="section-kicker mb-2">Dati principali</p>
+                            <div className="row g-3">
+                                {profileInfo.map((item) => (
+                                    <div className="col-12 col-md-6" key={item.label}>
+                                        <div className="quick-stat h-100">
+                                            <p className="mb-1 fw-semibold">{item.label}</p>
+                                            <p className="mb-0 text-muted">{item.value}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </div>
-          </div>
 
-          <div className="card bg-body-tertiary mb-4 text-center reveal-up">
-            <div className="card-body">
-              <h2 className="h4 mb-3">Percorso</h2>
-              <p className="mb-0">
-                Sono uno studente dell&apos;IIS Vallauri di Fossano, dove studio informatica. La mia passione per la
-                tecnologia e la programmazione mi ha portato a scegliere questo percorso che mi sta fornendo le basi
-                per il mio futuro.
-              </p>
+            <div className="card section-card mt-4">
+                <div className="card-body">
+                    <p className="section-kicker mb-2">Visione</p>
+                    <h2 className="h4 mb-3">Percorso e mindset</h2>
+                    <div className="d-grid gap-3">
+                        {timeline.map((item) => (
+                            <div className="roadmap-item" key={item.title}>
+                                <h3 className="h6 mb-1">{item.title}</h3>
+                                <p className="mb-0 text-muted">{item.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div className="card bg-body-tertiary mb-4 text-center reveal-up">
-            <div className="card-body">
-              <h2 className="h4 mb-3">Interessi e Passioni</h2>
-              <p className="mb-0">
-                Al di fuori dello studio, ho diverse passioni che coltivo nel tempo libero. La moto, la musica e lo
-                sport sono parte integrante della mia vita quotidiana e contribuiscono a definire chi sono.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </SiteLayout>
-  );
+        </SiteLayout>
+    );
 }

@@ -1,149 +1,144 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 type Skill = {
-  id: string;
-  icon: string;
-  iconColor: string;
-  title: string;
-  subtitle: string;
-  details: string[];
-  ctaLabel?: string;
-  ctaHref?: string;
+    id: string;
+    icon: string;
+    title: string;
+    summary: string;
+    level: number;
+    tags: string[];
+    details: string[];
+    ctaLabel?: string;
+    ctaHref?: string;
 };
 
 const skills: Skill[] = [
-  {
-    id: "web",
-    icon: "bi-code-slash",
-    iconColor: "text-danger",
-    title: "Web Developing",
-    subtitle: "Competenze nel Web Developing",
-    details: [
-      "Conoscenze consolidate di HTML",
-      "Conoscenze consolidate di CSS",
-      "Una conoscenza minima e non consolidata di JavaScript",
-      "Tema chiaro/scuro dinamico",
-    ],
-  },
-  {
-    id: "bash",
-    icon: "bi-terminal",
-    iconColor: "text-warning",
-    title: "Command Line",
-    subtitle: "Competenze Bash",
-    details: [
-      "Gestione file e directory",
-      "Gestione permessi",
-      "Pipeline e redirezione",
-      "Altri script in arrivo prossimamente...",
-    ],
-  },
-  {
-    id: "clike",
-    icon: "bi-file-earmark-code",
-    iconColor: "text-success",
-    title: "Linguaggi C-like",
-    subtitle: "Competenze",
-    details: [
-      "C, nel quale ho una conoscenza abbastanza consolidata",
-      "C++, nel quale ho conoscenze minime",
-      "C#, nel quale ho delle buone conoscenze ma poco approfondite",
-      "Altri progetti in arrivo prossimamente...",
-    ],
-  },
-  {
-    id: "python",
-    icon: "bi-filetype-py",
-    iconColor: "text-info",
-    title: "Python",
-    subtitle: "Competenze Python",
-    details: [
-      "Programmazione base",
-      "Gestione file e input utente",
-      "Manipolazione stringhe",
-      "Utilizzo della libreria Tkinter",
-    ],
-    ctaLabel: "Scarica progetto ToDo",
-    ctaHref: "/assets/projects/todoList.zip",
-  },
+    {
+        id: "frontend",
+        icon: "bi-window-stack",
+        title: "Frontend Development",
+        summary: "Interfacce responsive, accessibili e orientate all'esperienza utente.",
+        level: 78,
+        tags: ["HTML", "CSS", "JavaScript", "React"],
+        details: [
+            "Creazione di pagine responsive con layout fluidi.",
+            "Componentizzazione e riuso con React.",
+            "Gestione tema chiaro/scuro e cura della coerenza visuale.",
+        ],
+    },
+    {
+        id: "programming",
+        icon: "bi-file-earmark-code",
+        title: "Programmazione",
+        summary: "Basi solide su linguaggi C-like e buona capacità di problem solving.",
+        level: 72,
+        tags: ["C", "C++", "C#", "Python"],
+        details: [
+            "Buona padronanza di C e strutture dati fondamentali.",
+            "Conoscenze pratiche di C# e orientamento agli oggetti.",
+            "Automazioni e utility in Python per attività scolastiche.",
+        ],
+    },
+    {
+        id: "cli",
+        icon: "bi-terminal",
+        title: "Command Line",
+        summary: "Uso quotidiano del terminale per sviluppo e organizzazione progetti.",
+        level: 66,
+        tags: ["Bash", "PowerShell", "Git", "CLI Tools"],
+        details: [
+            "Gestione file, processi e comandi di scripting.",
+            "Workflow Git per versione e collaborazione.",
+            "Debug rapido con strumenti da terminale.",
+        ],
+    },
+    {
+        id: "projects",
+        icon: "bi-controller",
+        title: "Project Building",
+        summary: "Sviluppo di mini-progetti e giochi web completi e pubblicabili.",
+        level: 80,
+        tags: ["Games", "UI", "UX", "Deployment-ready"],
+        details: [
+            "Realizzazione di giochi browser-based in JavaScript.",
+            "Architettura di pagine portfolio con routing Next.js.",
+            "Ottimizzazione contenuti e flusso di navigazione.",
+        ],
+        ctaLabel: "Scarica progetto ToDo",
+        ctaHref: "/assets/projects/todoList.zip",
+    },
 ];
 
 export function SkillsShowcase() {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+    const [selectedId, setSelectedId] = useState(skills[0].id);
+    const selectedSkill = useMemo(() => skills.find((skill) => skill.id === selectedId) ?? skills[0], [selectedId]);
 
-  const selectedSkill = useMemo(
-    () => skills.find((skill) => skill.id === selectedId) ?? null,
-    [selectedId],
-  );
+    return (
+        <section className="skills-showcase mb-5">
+            <div className="row g-4 align-items-stretch">
+                <div className="col-12 col-lg-5">
+                    <div className="card section-card h-100">
+                        <div className="card-body">
+                            <p className="section-kicker mb-2">Competenze</p>
+                            <h2 className="h4 mb-3">Stack tecnico</h2>
+                            <div className="d-grid gap-2">
+                                {skills.map((skill) => (
+                                    <button
+                                        key={skill.id}
+                                        type="button"
+                                        className={`skill-selector ${selectedId === skill.id ? "active" : ""}`}
+                                        onClick={() => setSelectedId(skill.id)}
+                                    >
+                                        <span className="d-flex align-items-center gap-2">
+                                            <i className={`bi ${skill.icon}`}></i>
+                                            {skill.title}
+                                        </span>
+                                        <span>{skill.level}%</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSelectedId(null);
-      }
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+                <div className="col-12 col-lg-7">
+                    <div className="card section-card h-100">
+                        <div className="card-body d-flex flex-column">
+                            <p className="section-kicker mb-2">Dettaglio</p>
+                            <h3 className="h4 mb-2">{selectedSkill.title}</h3>
+                            <p className="text-muted mb-4">{selectedSkill.summary}</p>
 
-  return (
-    <>
-      <section className="skills-showcase mb-5">
-        <p className="text-center text-uppercase small mb-3 skill-kicker">Competenze</p>
-        <div className="d-flex justify-content-center flex-wrap gap-3">
-          {skills.map((skill) => (
-            <button
-              key={skill.id}
-              type="button"
-              className="skill-orb"
-              onClick={() => setSelectedId(skill.id)}
-              aria-label={`Apri dettagli ${skill.title}`}
-            >
-              <i className={`bi ${skill.icon} ${skill.iconColor}`}></i>
-            </button>
-          ))}
-        </div>
-      </section>
+                            <div className="progress mb-3" role="progressbar" aria-label="Livello competenza" aria-valuenow={selectedSkill.level} aria-valuemin={0} aria-valuemax={100}>
+                                <div className="progress-bar" style={{ width: `${selectedSkill.level}%` }} />
+                            </div>
 
-      {selectedSkill ? (
-        <div className="skill-modal-backdrop" role="dialog" aria-modal="true">
-          <div className="skill-modal-card">
-            <div className="d-flex justify-content-between align-items-start gap-3 mb-3">
-              <div>
-                <h2 className="h4 mb-1">{selectedSkill.title}</h2>
-                <p className="mb-0 text-muted">{selectedSkill.subtitle}</p>
-              </div>
-              <button
-                type="button"
-                className="btn-close btn-close-white"
-                aria-label="Chiudi dettagli competenza"
-                onClick={() => setSelectedId(null)}
-              ></button>
+                            <div className="d-flex flex-wrap gap-2 mb-4">
+                                {selectedSkill.tags.map((tag) => (
+                                    <span className="badge text-bg-dark" key={tag}>
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <ul className="mb-0">
+                                {selectedSkill.details.map((detail) => (
+                                    <li key={detail} className="mb-2">
+                                        {detail}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {selectedSkill.ctaHref && selectedSkill.ctaLabel ? (
+                                <a href={selectedSkill.ctaHref} className="btn btn-danger mt-3 align-self-start">
+                                    {selectedSkill.ctaLabel}
+                                </a>
+                            ) : null}
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <ul className="mb-3">
-              {selectedSkill.details.map((detail) => (
-                <li key={detail}>{detail}</li>
-              ))}
-            </ul>
-
-            {selectedSkill.ctaHref && selectedSkill.ctaLabel ? (
-              <a href={selectedSkill.ctaHref} className="btn btn-danger btn-sm">
-                {selectedSkill.ctaLabel}
-              </a>
-            ) : null}
-          </div>
-
-          <button
-            type="button"
-            className="skill-modal-overlay-close"
-            onClick={() => setSelectedId(null)}
-            aria-label="Chiudi finestra"
-          ></button>
-        </div>
-      ) : null}
-    </>
-  );
+        </section>
+    );
 }

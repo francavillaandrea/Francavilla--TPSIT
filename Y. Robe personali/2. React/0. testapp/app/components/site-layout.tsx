@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { ScrollProgress } from "./scroll-progress";
 import { ThemeSwitcher } from "./theme-switcher";
 
@@ -7,125 +9,131 @@ type NavKey = "home" | "me" | "hobby" | "contact" | "games";
 type HobbyKey = "moto" | "musica" | "sport";
 
 type SiteLayoutProps = {
-  current: NavKey;
-  currentHobby?: HobbyKey;
-  title: string;
-  subtitle?: string;
-  eyebrow?: string;
-  children: ReactNode;
+    current: NavKey;
+    currentHobby?: HobbyKey;
+    title: string;
+    subtitle?: string;
+    eyebrow?: string;
+    children: ReactNode;
 };
 
 export function SiteLayout({ current, currentHobby, title, subtitle, eyebrow, children }: SiteLayoutProps) {
-  const hobbyActive = current === "hobby" || currentHobby;
+    const hobbyActive = current === "hobby" || Boolean(currentHobby);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  return (
-    <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary border border-1 rounded-bottom sticky-top main-navbar">
-        <div className="container-fluid">
-          <Link className="navbar-brand text-decoration-none" href="/">
-            Francavilla Andrea
-          </Link>
-
-          <div className="d-flex align-items-center gap-3 w-100 justify-content-between flex-wrap">
-            <ul className="navbar-nav flex-row flex-wrap gap-1">
-              <li className="nav-item">
-                <Link className={`nav-link ${current === "home" ? "active" : ""}`} href="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${current === "me" ? "active" : ""}`} href="/me">
-                  Me
-                </Link>
-              </li>
-              <li className="nav-item nav-dropdown">
-                <Link className={`nav-link ${hobbyActive ? "active" : ""}`} href="/hobby">
-                  Hobby
-                </Link>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className={`dropdown-item ${currentHobby === "moto" ? "active" : ""}`} href="/hobby/moto">
-                      Moto
+    return (
+        <>
+            <header className="main-header sticky-top">
+                <nav className="container nav-shell">
+                    <Link className="brand text-decoration-none" href="/" onClick={() => setIsMenuOpen(false)}>
+                        <span className="brand-dot" />
+                        Andrea Francavilla
                     </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={`dropdown-item ${currentHobby === "musica" ? "active" : ""}`}
-                      href="/hobby/musica"
-                    >
-                      Musica
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className={`dropdown-item ${currentHobby === "sport" ? "active" : ""}`} href="/hobby/sport">
-                      Sport
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${current === "games" ? "active" : ""}`} href="/games">
-                  Giochi
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${current === "contact" ? "active" : ""}`} href="/contact">
-                  Contatti
-                </Link>
-              </li>
-            </ul>
 
-            <ThemeSwitcher />
-          </div>
-        </div>
-      </nav>
+                    <div className="d-flex align-items-center gap-2">
+                        <ThemeSwitcher />
+                        <button
+                            type="button"
+                            className="btn btn-sm btn-outline-secondary d-lg-none"
+                            aria-label="Apri menu"
+                            onClick={() => setIsMenuOpen((prev) => !prev)}
+                        >
+                            <i className="bi bi-list"></i>
+                        </button>
+                    </div>
+                </nav>
 
-      <ScrollProgress />
+                <div className={`container nav-links-wrap ${isMenuOpen ? "open" : ""}`}>
+                    <ul className="nav-links-list">
+                        <li>
+                            <Link className={`nav-pill ${current === "home" ? "active" : ""}`} href="/" onClick={() => setIsMenuOpen(false)}>
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-pill ${current === "me" ? "active" : ""}`} href="/me" onClick={() => setIsMenuOpen(false)}>
+                                Profilo
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-pill ${hobbyActive ? "active" : ""}`} href="/hobby" onClick={() => setIsMenuOpen(false)}>
+                                Hobby
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-pill ${current === "games" ? "active" : ""}`} href="/games" onClick={() => setIsMenuOpen(false)}>
+                                Giochi
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-pill ${current === "contact" ? "active" : ""}`} href="/contact" onClick={() => setIsMenuOpen(false)}>
+                                Contatti
+                            </Link>
+                        </li>
+                    </ul>
 
-      <main className="flex-grow-1">
-        <div className="container py-5">
-          <div className="row justify-content-center">
-            <div className="col-12 col-xl-10">
-              <section className="page-heading text-center mb-5">
-                {eyebrow ? <p className="text-uppercase small page-eyebrow mb-2">{eyebrow}</p> : null}
-                <h1 className="mb-3">{title}</h1>
-                {subtitle ? <p className="lead mb-0 page-subtitle">{subtitle}</p> : null}
-              </section>
-              {children}
-            </div>
-          </div>
-        </div>
-      </main>
+                    <ul className="nav-links-list nav-sublist">
+                        <li>
+                            <Link className={`nav-subpill ${currentHobby === "moto" ? "active" : ""}`} href="/hobby/moto" onClick={() => setIsMenuOpen(false)}>
+                                Moto
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-subpill ${currentHobby === "musica" ? "active" : ""}`} href="/hobby/musica" onClick={() => setIsMenuOpen(false)}>
+                                Musica
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-subpill ${currentHobby === "sport" ? "active" : ""}`} href="/hobby/sport" onClick={() => setIsMenuOpen(false)}>
+                                Sport
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </header>
 
-      <footer className="py-3 border border-1 rounded-top bg-body-tertiary">
-        <div className="container-fluid px-4">
-          <div className="d-flex justify-content-between align-items-center">
-            <div>
-              <a
-                href="https://www.instagram.com/andrea.francavilla/"
-                className="link-body-emphasis text-decoration-none"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="bi bi-instagram fs-5"></i>
-              </a>
-            </div>
-            <div className="text-center flex-grow-1 mx-4">
-              <p className="mb-0">© Author Francavilla Andrea 2026 All Rights Reserved.</p>
-            </div>
-            <div>
-              <a
-                href="https://github.com/francavillaandrea"
-                className="link-body-emphasis text-decoration-none"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="bi bi-github fs-5"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </>
-  );
+            <ScrollProgress />
+
+            <main className="flex-grow-1">
+                <div className="container py-5">
+                    <div className="row justify-content-center">
+                        <div className="col-12 col-xl-10">
+                            <section className="page-heading text-center mb-5">
+                                {eyebrow ? <p className="text-uppercase small page-eyebrow mb-2">{eyebrow}</p> : null}
+                                <h1 className="mb-3">{title}</h1>
+                                {subtitle ? <p className="lead mb-0 page-subtitle">{subtitle}</p> : null}
+                            </section>
+                            {children}
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer className="site-footer">
+                <div className="container footer-shell">
+                    <p className="mb-0 small">© 2026 Andrea Francavilla. Tutti i diritti riservati.</p>
+                    <div className="d-flex align-items-center gap-3">
+                        <a
+                            href="https://www.instagram.com/andrea.francavilla/"
+                            className="footer-link"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="Instagram"
+                        >
+                            <i className="bi bi-instagram fs-5"></i>
+                        </a>
+                        <a
+                            href="https://github.com/francavillaandrea"
+                            className="footer-link"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="GitHub"
+                        >
+                            <i className="bi bi-github fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </>
+    );
 }
