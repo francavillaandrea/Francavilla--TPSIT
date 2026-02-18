@@ -1,0 +1,51 @@
+ò<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verifica JSON</title>
+	<link type="text/css" rel="stylesheet" href="index.css">
+	<script type="application/javascript" src="./libs/axios@1.13.min.js"></script>
+	<script type="application/javascript" src="./libs/libreria.js"></script>
+    <script type="application/javascript" defer src="./index.js"></script>
+</head>
+
+<body>
+    <h1 style="text-align: center;">100 best classical books of all time</h1>
+	<div style="text-align:center"><img src="images/library.jpg" width="600"> </div>
+
+
+	<div id="filters" >
+		<div><input type="checkbox" checked autocomplete="off"> All Books </div>
+		<div>choose an author: <select> </select> </div>
+		<div>choose a language: <select> </select>  </div>
+	</div>
+
+	<div id="mainWrapper">
+		<h2 style="text-align: center;">rate your favorite books:</h2>
+		<!--
+		<input type="checkbox"> <span> </span> <br>
+		<button id="btnInvia"> invia </button> <-- messo dinamicamente
+        -->
+
+    </div>
+
+	<div id="dettagli">
+	   <h2> Dettagli </h2>
+	</div>
+
+	<div id="add">
+		<h2 style="text-align: center;">add a book on the selected author</h2>
+		<p>
+		   <span> Title: </span>
+		   <input id= "txtTitle" type="text">
+		</p>
+		<p>
+		   <span> Language: </span>
+		   <input id= "txtLanguage" type="text">
+		</p>
+		<br>
+		<button id="btnAdd"> add </button>
+	</div>
+
+</body>
+</html>
+

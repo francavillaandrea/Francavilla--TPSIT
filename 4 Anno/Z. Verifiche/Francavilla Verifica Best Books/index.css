@@ -1,0 +1,110 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	width:1400px;
+	margin:0 auto;
+}
+h1{
+	font-size:36pt;
+	margin:10px;
+}
+h2{
+	padding:6px;
+	margin:0;
+}
+
+#filters{
+	width:220px;
+	height:200px;
+	margin:14px 10px;
+	padding:16px 14px;
+	background-color:#ffa;
+	font-size:12pt;
+	font-style:italic;
+	font-weight:bold;
+	border-radius:10px;
+	border:1px solid blue;
+	float:left;
+}
+
+#filters div{
+	margin-bottom:15px;
+}
+
+#filters div:nth-of-type{
+	text-align:center;
+}
+
+#filters select{
+	margin-top:6px;
+	padding:10px;
+	width:180px;
+}
+
+
+/* ************************ */
+
+#mainWrapper{
+	width:540px;
+	margin:15px 10px;
+	padding:12px;
+	background-color:#ddd;
+	border-radius:10px;
+	border:1px solid blue;
+	float:left;
+}
+
+#mainWrapper input[type=checkbox]{
+	margin-right:12px;
+}
+
+#mainWrapper span:hover {
+	text-decoration:underline;
+	color:#00A;
+	cursor:pointer;
+}
+button{
+	margin:12px;
+	padding:6px 20px;
+	border-radius:5px;
+}
+
+/* *************************** */
+
+#dettagli, #add{
+	width:370px;
+	height:360px;
+	margin:15px 10px;
+	padding:10px;
+	background-color:#ddd;
+	border-radius:10px;
+	border:1px solid blue;
+	overflow:auto;
+	float:left;
+}
+
+#dettagli h2{
+    text-align:center;
+}
+
+#dettagli p{
+    margin:6px;
+	vertical-align:middle;
+}
+
+#dettagli img{
+    height:60px;
+	vertical-align:middle;	
+}
+
+/* ********************************** */
+
+#add span{
+	display:inline-block;
+	width:100px;
+	text-align:right;
+	margin-top:12px;
+}

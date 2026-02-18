@@ -2,7 +2,7 @@
 let div_Film = document.getElementById("div_Film");
 let div_Dettagli = document.getElementById("div_Dettagli");
 let div_Riproduzione = document.getElementById("div_Riproduzione");
-let params = {}; // query params used for movie list requests
+let params = {};
 
 let listBox = div_Film.querySelector("select");
 let elencoFilm = div_Film.querySelector(".elencoFilm")
