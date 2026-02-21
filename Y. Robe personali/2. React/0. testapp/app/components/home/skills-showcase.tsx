@@ -58,13 +58,13 @@ const skills: Skill[] = [
         id: "projects",
         icon: "bi-controller",
         title: "Project Building",
-        summary: "Sviluppo di mini-progetti e giochi web completi e pubblicabili.",
+        summary: "Sviluppo di progetti web completi e pubblicabili con focus su qualità e usabilità.",
         level: 80,
-        tags: ["Games", "UI", "UX", "Deployment-ready"],
+        tags: ["Web Apps", "UI", "UX", "Deployment-ready"],
         details: [
-            "Realizzazione di giochi browser-based in JavaScript.",
-            "Architettura di pagine portfolio con routing Next.js.",
-            "Ottimizzazione contenuti e flusso di navigazione.",
+            "Realizzazione di applicazioni web moderne con React e Next.js.",
+            "Architettura di pagine portfolio con routing e componenti riutilizzabili.",
+            "Ottimizzazione contenuti, performance e flusso di navigazione.",
         ],
         ctaLabel: "Scarica progetto ToDo",
         ctaHref: "/assets/projects/todoList.zip",
@@ -91,11 +91,11 @@ export function SkillsShowcase() {
                                         className={`skill-selector ${selectedId === skill.id ? "active" : ""}`}
                                         onClick={() => setSelectedId(skill.id)}
                                     >
-                                        <span className="d-flex align-items-center gap-2">
+                                        <span className="d-flex align-items-center gap-2 flex-wrap">
                                             <i className={`bi ${skill.icon}`}></i>
-                                            {skill.title}
+                                            <span className="text-truncate">{skill.title}</span>
                                         </span>
-                                        <span>{skill.level}%</span>
+                                        <span className="ms-auto">{skill.level}%</span>
                                     </button>
                                 ))}
                             </div>
@@ -116,7 +116,7 @@ export function SkillsShowcase() {
 
                             <div className="d-flex flex-wrap gap-2 mb-4">
                                 {selectedSkill.tags.map((tag) => (
-                                    <span className="badge text-bg-dark" key={tag}>
+                                    <span className="badge skill-tag" key={tag}>
                                         {tag}
                                     </span>
                                 ))}

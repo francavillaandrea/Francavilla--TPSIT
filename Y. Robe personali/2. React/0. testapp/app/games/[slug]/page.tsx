@@ -23,12 +23,11 @@ export default async function GamePlayPage({ params }: Props) {
     <SiteLayout current="games" eyebrow="Game Player" title={game.title} subtitle={game.description}>
       <div className="card bg-body-tertiary">
         <div className="card-body">
-          <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-            <p className="mb-0">
-              Categoria: <strong>{game.category}</strong> • Difficolta: <strong>{game.difficulty}</strong> • Tempo:{" "}
-              <strong>~{game.estimatedMinutes} min</strong>
+          <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2 game-meta-row">
+            <p className="mb-0 game-meta-text">
+              Categoria: <strong>{game.category}</strong> | Difficolta: <strong>{game.difficulty}</strong> | Tempo: <strong>~{game.estimatedMinutes} min</strong>
             </p>
-            <div className="d-flex gap-2">
+            <div className="d-flex gap-2 game-meta-actions">
               <Link href="/games" className="btn btn-outline-secondary btn-sm">
                 Torna ai giochi
               </Link>
@@ -46,7 +45,7 @@ export default async function GamePlayPage({ params }: Props) {
             allowFullScreen
           />
 
-          <div className="d-flex justify-content-between flex-wrap gap-2 mt-3">
+          <div className="d-flex justify-content-between flex-wrap gap-2 mt-3 game-nav-row">
             <Link href={`/games/${prevGame.slug}`} className="btn btn-outline-danger btn-sm">
               <i className="bi bi-arrow-left me-1"></i>
               {prevGame.title}
