@@ -29,27 +29,27 @@ export function GamesToolbar({
 }: GamesToolbarProps) {
   return (
     <div className="card bg-body-tertiary mb-4 games-toolbar">
-      <div className="card-body">
+      <div className="card-body p-3 p-md-4">
         <div className="row g-3 align-items-end">
           <div className="col-12 col-lg-5">
-            <label htmlFor="search" className="form-label">
+            <label htmlFor="search" className="form-label small">
               Cerca gioco
             </label>
             <input
               id="search"
-              className="form-control"
+              className="form-control form-control-sm"
               placeholder="Es. 2048, Snake, Puzzle..."
               value={query}
               onChange={(event) => onQueryChange(event.target.value)}
             />
           </div>
           <div className="col-6 col-lg-2">
-            <label htmlFor="category" className="form-label">
+            <label htmlFor="category" className="form-label small">
               Categoria
             </label>
             <select
               id="category"
-              className="form-select"
+              className="form-select form-select-sm"
               value={category}
               onChange={(event) => onCategoryChange(event.target.value as (typeof gameCategories)[number])}
             >
@@ -61,12 +61,12 @@ export function GamesToolbar({
             </select>
           </div>
           <div className="col-6 col-lg-3">
-            <label htmlFor="sort" className="form-label">
+            <label htmlFor="sort" className="form-label small">
               Ordina per
             </label>
             <select
               id="sort"
-              className="form-select"
+              className="form-select form-select-sm"
               value={sortMode}
               onChange={(event) => onSortModeChange(event.target.value as SortMode)}
             >
@@ -77,7 +77,7 @@ export function GamesToolbar({
             </select>
           </div>
           <div className="col-12 col-lg-2 d-flex justify-content-lg-end">
-            <button type="button" className="btn btn-outline-secondary w-100" onClick={onReset}>
+            <button type="button" className="btn btn-outline-secondary btn-sm w-100" onClick={onReset}>
               Reset
             </button>
           </div>
@@ -91,7 +91,7 @@ export function GamesToolbar({
             checked={onlyFavorites}
             onChange={(event) => onOnlyFavoritesChange(event.target.checked)}
           />
-          <label className="form-check-label" htmlFor="favoritesOnly">
+          <label className="form-check-label small" htmlFor="favoritesOnly">
             Mostra solo preferiti
           </label>
         </div>

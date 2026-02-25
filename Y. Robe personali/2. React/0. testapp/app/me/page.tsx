@@ -1,4 +1,7 @@
+"use client";
+
 import { SiteLayout } from "../components/site-layout";
+import { Timeline } from "../components/ui/aceternity/timeline";
 
 const profileInfo = [
     { label: "Nome", value: "Andrea Francavilla" },
@@ -29,7 +32,14 @@ export default function MePage() {
                 <div className="col-12 col-lg-4">
                     <article className="card section-card h-100">
                         <div className="card-body text-center">
-                            <img src="/assets/img/Pfp.jpg" alt="Andrea Francavilla" className="profile-image rounded-4 mb-3" />
+                            <img 
+                                src="/assets/img/Pfp.jpg" 
+                                alt="Andrea Francavilla - Profilo professionale" 
+                                className="profile-image rounded-4 mb-3"
+                                loading="lazy"
+                                width="320"
+                                height="320"
+                            />
                             <h2 className="h5 mb-2">Andrea Francavilla</h2>
                             <p className="text-muted mb-0">Junior Developer</p>
                         </div>
@@ -59,14 +69,13 @@ export default function MePage() {
                 <div className="card-body">
                     <p className="section-kicker mb-2">Visione</p>
                     <h2 className="h4 mb-3">Percorso e mindset</h2>
-                    <div className="d-grid gap-3">
-                        {timeline.map((item) => (
-                            <div className="roadmap-item" key={item.title}>
-                                <h3 className="h6 mb-1">{item.title}</h3>
-                                <p className="mb-0 text-muted">{item.text}</p>
-                            </div>
-                        ))}
-                    </div>
+                    <Timeline
+                        items={timeline.map((item) => ({
+                            title: item.title,
+                            description: item.text,
+                            icon: <i className="bi bi-arrow-right-circle-fill" />,
+                        }))}
+                    />
                 </div>
             </div>
         </SiteLayout>

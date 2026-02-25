@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
     title: "Andrea Francavilla | Portfolio",
     description:
-        "Portfolio professionale di Andrea Francavilla: progetti web, giochi sviluppati in JavaScript, percorso tecnico e contatti.",
+        "Portfolio professionale di Andrea Francavilla: progetti web, competenze tecniche, percorso formativo e contatti.",
 };
 
 const manrope = Manrope({
@@ -36,6 +36,8 @@ export default function RootLayout({
                     rel="stylesheet"
                     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
                 />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="description" content="Portfolio professionale di Andrea Francavilla: progetti web, competenze tecniche, percorso formativo e contatti." />
             </head>
             <body className={`${manrope.variable} ${spaceGrotesk.variable}`}>
                 {children}

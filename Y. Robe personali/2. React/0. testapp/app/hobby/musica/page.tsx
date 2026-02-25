@@ -16,10 +16,10 @@ export default function MusicaPage() {
         <SiteLayout current="hobby" currentHobby="musica" title="Musica: ritmo e identità" eyebrow="Hobby" subtitle="Una passione quotidiana che impatta energia, focus e creatività.">
             <div className="card section-card mb-4">
                 <div className="card-body">
-                    <div className="row g-3 mb-4">
+                    <div className="row g-3 mb-4 music-gallery">
                         {artists.map((artist) => (
                             <div className="col-6 col-md-4" key={artist.src}>
-                                <img src={artist.src} alt={artist.alt} className="img-fluid rounded artist-photo w-100" />
+                                <img src={artist.src} alt={artist.alt} className="music-uniform-photo" />
                             </div>
                         ))}
                     </div>

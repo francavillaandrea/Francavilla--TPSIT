@@ -5,20 +5,26 @@ import { useEffect, useState } from "react";
 type ThemeMode = "light" | "dark" | "system";
 
 function applyTheme(mode: ThemeMode) {
+    if (typeof window === "undefined") return;
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const resolvedTheme = mode === "system" ? (prefersDark ? "dark" : "light") : mode;
     document.documentElement.setAttribute("data-theme", resolvedTheme);
+    document.documentElement.setAttribute("data-bs-theme", resolvedTheme);
+    document.documentElement.classList.toggle("dark", resolvedTheme === "dark");
 }
 
 export function ThemeSwitcher() {
     const [mode, setMode] = useState<ThemeMode>(() => {
-        if (typeof window === "undefined") return "system";
+        if (typeof window === "undefined") {
+            return "system";
+        }
         const saved = localStorage.getItem("portfolio-theme");
         return saved === "light" || saved === "dark" || saved === "system" ? saved : "system";
     });
 
     useEffect(() => {
         applyTheme(mode);
+        localStorage.setItem("portfolio-theme", mode);
     }, [mode]);
 
     useEffect(() => {
@@ -35,7 +41,6 @@ export function ThemeSwitcher() {
 
     const updateMode = (nextMode: ThemeMode) => {
         setMode(nextMode);
-        localStorage.setItem("portfolio-theme", nextMode);
     };
 
     return (
