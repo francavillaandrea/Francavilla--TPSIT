@@ -50,7 +50,7 @@ async function getLanguages() {
 
     let languages = httpResponse.data;
 
-    languages.sort((a, b) => b.booksNumber - a.booksNumber);
+    languages.sort((a, b) => b.booksNumber - a.booksNumber); //Sbagliato
 
     lstLanguages.innerHTML = "";
     let optDefault = document.createElement("option");
@@ -99,7 +99,7 @@ async function getBooks(params = {}) {
                 }
                 selectedBooks.push(book);
             } else {
-                selectedBooks = selectedBooks.filter(b => b.id !== book.id);
+                selectedBooks = selectedBooks.filter(b => b.id !== book.id); //!== Contolla non solo value ma anche il tipo --> controlla se il libro selezionato ha lo stesso id di uno dei 
             }
         });
 
