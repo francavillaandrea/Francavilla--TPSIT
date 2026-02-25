@@ -99,8 +99,17 @@ async function getBooks(params = {}) {
                 }
                 selectedBooks.push(book);
             } else {
-                selectedBooks = selectedBooks.filter(b => b.id !== book.id); //!== Contolla non solo value ma anche il tipo --> controlla se il libro selezionato ha lo stesso id di uno dei 
+                selectedBooks = selectedBooks.filter(b => b.id !== book.id); //!== Contolla non solo value ma anche il tipo --> controlla se il libro selezionato ha lo stesso id di uno dei libri in lista
+                //Tranquillamente sostituibile con:
+                /*
+                    let index = selectedBooks.indexOf(book);
+
+                    if (index != -1) {
+                        selectedBooks.splice(index, 1);
+                    }
+                */
             }
+
         });
 
         mainWrapper.appendChild(chk);

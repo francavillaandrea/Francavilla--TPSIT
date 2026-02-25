@@ -34,7 +34,7 @@ function ordina() {
 function cancella() {
     for (let i = 0; i < vet.length; i++) {
         if (vet[i].nome == "pippo") {
-            vet[i] = ""
+            vet.splice(i, 1)
         }
     }
 
