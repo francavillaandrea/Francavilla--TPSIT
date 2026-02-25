@@ -11,14 +11,19 @@ visualizza(sortedArray.items);
 visualizza(sortedArray.values);
 
 function visualizza(vet) {
-  let s = "";
-  for (let item of vet) {
-    s += item + "<br>";
-}
-s += "<br><br>";
+    let s = "";
+    for (let item of vet) {
 
-  risultati.innerHTML += s;
+        s += item + "<br>";
+    }
+    s += "<br><br>";
+
+    risultati.innerHTML += s;
+
 }
 
 
 /* ************************************************ */
+
+
+
