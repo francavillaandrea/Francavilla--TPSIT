@@ -1,7 +1,6 @@
 class MyMapLibre {
 
-    API_KEY = "6KawoDWwnp6wlxaxlZB9"
-
+    API_KEY = "6KawoDWwnp6wlxaxlZB9 "
 
     neutralStyle = "https://api.maptiler.com/maps/streets-v2/style.json?key="
     cartographicStyle = "https://api.maptiler.com/maps/streets/style.json?key="
@@ -35,10 +34,6 @@ class MyMapLibre {
             return
         }
         // features è un json contenente i campi center (coord gps) e place_name
-
-        //gpsaddress è un json che contiene due campi princiali:
-        // -place_name: Contiene il nome completo ricercato
-        // -center: Vettore lungo due contenente le coordinate rispettivamente Longitudine e
         let gpsAddress = httpResponse.data.features[0]
         return gpsAddress
     }
@@ -53,23 +48,17 @@ class MyMapLibre {
                 style,
                 container: mapContainer,
                 center: gpsAddress.center,
-                zoom,
-                dragPan: true
+                zoom
             }
             this.map = new maplibregl.Map(mapOptions)
             this.map.addControl(new maplibregl.NavigationControl())
             this.map.addControl(new maplibregl.ScaleControl())
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 this.map.on('load', () => {
                     // Visualizzazione completa del foglio di stile
                     // console.log("Mappa ok ", this.map.getStyle())
                     this.#customizeColors(this.map)
-
-                    //Richiamato il metodo resolve scatta il then nel main
-                    resolve();
-                });
-                this.map.on("error", (err) => {
-                    reject(err);
+                    resolve(this.map);
                 });
             });
         }
@@ -255,11 +244,11 @@ class MyMapLibre {
         // creao un vettore con i names di tutti i layers
         const layersNames = this.map.getStyle().layers.map(item => item.id)
         layersNames.sort()
-        //console.log(layersNames) // vedo i nomi di tutti i layers
+        // console.log(layersNames) // vedo i nomi di tutti i layers
 
         // log completo di un singolo layer. Vedo quali property usa
         const layer = this.map.getStyle().layers.find(item => item.id == "Highway road")
-        //console.log(layer)
+        // console.log(layer)
         if (layer) // Se il layer "Highway road" esiste nello stile corrente
             map.setPaintProperty("Highway road", "line-color", "#f0f");
     }
