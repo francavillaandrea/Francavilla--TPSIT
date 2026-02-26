@@ -14,12 +14,32 @@ loadMap()
 
 
 async function loadMap() {
+    //Soluzione con await:
+    let gpsAddress = await myMapLibre.geocode(address1)
+        .catch(function (err) {
+            alert(`Errore nella decodifica dell'indirizzo:\n${err}`);
+        });
 
-    let gpsAddress = await myMapLibre.geocode(address1).catch(console.error);
-    if (!gpsAdress) {
-        console.log(gpsAddress)
+    if (gpsAddress) {
+        await myMapLibre.drawMap(style, mapContainer, gpsAddress, zoom).catch(function (err) {
+            alert(`Errore nel rendering della mappa:\n${err}`);
+        });
+        if (myMapLibre.map) {
+            myMapLibre.addPOILayer(style)
+        }
     }
 
+    //Soluzione con then e catch:
+    // let promise = myMapLibre.geocode(address1);
+    // promise.catch(function(err)
+    // {
+    //     alert(`Errore nella decodifica dell'indirizzo:\n${err}`);
+    // });
+    // promise.then(function(gpsAddress)
+    // {
+    //     //... continuazione
+    // });
+
+    //Notare che await riceve una promise, e risolve la automaticamente.
+    //Mentre con then e catch siamo noi a gestirla con il then
 }
-
-

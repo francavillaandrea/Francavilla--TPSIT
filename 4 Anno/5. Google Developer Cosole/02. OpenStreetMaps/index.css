@@ -8,12 +8,11 @@ h1{
 #mapContainer{
 	width:1200px;
 	height:900px;
-	margin:10px auto;		
+	margin:10px auto;
 }
-
-
+/*
 .marker {
-        /* display: block; */      
+        display: block;
         padding: 0;
 		background-position:center;
 		background-size:contain;
@@ -24,3 +23,4 @@ h1{
 .maplibregl-canvas {
     pointer-events: none !important;
 }
+*/
