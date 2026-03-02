@@ -1,6 +1,6 @@
 class MyMapLibre {
 
-    API_KEY = "6KawoDWwnp6wlxaxlZB9 "
+    API_KEY = "6KawoDWwnp6wlxaxlZB9"
 
     neutralStyle = "https://api.maptiler.com/maps/streets-v2/style.json?key="
     cartographicStyle = "https://api.maptiler.com/maps/streets/style.json?key="
@@ -15,7 +15,7 @@ class MyMapLibre {
     /* Elenco dei metodi esposti :
        1. async geocode(stringAddress)
        2. async drawMap(style, mapContainer, gpsAddress, zoom)
-       3. addPOILayer()
+       3. addPOILayer(style)
        4. async addMarker (gpsAddress, icon="", label="", popupText="")
        5. async drawSingleRoutes(fromAddress, toAddress, color='#3887be',
                                                         profile='driving')
@@ -34,6 +34,10 @@ class MyMapLibre {
             return
         }
         // features è un json contenente i campi center (coord gps) e place_name
+
+        //gpsaddress è un json che contiene due campi princiali:
+        // -place_name: Contiene il nome completo ricercato
+        // -center: Vettore lungo due contenente le coordinate rispettivamente Longitudine e
         let gpsAddress = httpResponse.data.features[0]
         return gpsAddress
     }
@@ -48,17 +52,23 @@ class MyMapLibre {
                 style,
                 container: mapContainer,
                 center: gpsAddress.center,
-                zoom
+                zoom,
+                dragPan: true
             }
             this.map = new maplibregl.Map(mapOptions)
             this.map.addControl(new maplibregl.NavigationControl())
             this.map.addControl(new maplibregl.ScaleControl())
-            return new Promise((resolve) => {
+            return new Promise((resolve, reject) => {
                 this.map.on('load', () => {
                     // Visualizzazione completa del foglio di stile
                     // console.log("Mappa ok ", this.map.getStyle())
                     this.#customizeColors(this.map)
-                    resolve(this.map);
+
+                    //Richiamato il metodo resolve scatta il then nel main
+                    resolve();
+                });
+                this.map.on("error", (err) => {
+                    reject(err);
                 });
             });
         }
@@ -71,10 +81,10 @@ class MyMapLibre {
         }
     }
 
-
-    addPOILayer(style = "openMapsStyle") {
+    //Scritte aggiuntive sulla mappa
+    addPOILayer(style) {
         // Questi stili non 'vedono' "openmaptiles"
-        if (style != "neutralStyle" && style != "hibridStyle" && style != "satelliteStyle") {
+        if (style && style != "neutralStyle" && style != "hibridStyle" && style != "satelliteStyle") {
             this.map.addLayer({
                 id: "my-poi",
                 source: "openmaptiles",
@@ -99,7 +109,7 @@ class MyMapLibre {
         }
     }
 
-    async addMarker(gpsAddress, icon, label = "", popupText = "") {
+    async addMarker(gpsAddress, icon, label, popupText) {
         const markerContainer = document.createElement('div');
 
         // 1. Costruzione della popup
@@ -140,7 +150,7 @@ class MyMapLibre {
 
         // Su click posso intraprendere azioni specifiche
         markerContainer.addEventListener('click', () => console.log("marker clicked"))
-        new maplibregl.Marker({ element: markerContainer, draggable: true })
+        new maplibregl.Marker({ element: markerContainer, draggable: false })
             .setLngLat(gpsAddress.center)
             .setPopup(popup)
             .addTo(this.map);
@@ -244,11 +254,11 @@ class MyMapLibre {
         // creao un vettore con i names di tutti i layers
         const layersNames = this.map.getStyle().layers.map(item => item.id)
         layersNames.sort()
-        // console.log(layersNames) // vedo i nomi di tutti i layers
+        //console.log(layersNames) // vedo i nomi di tutti i layers
 
         // log completo di un singolo layer. Vedo quali property usa
         const layer = this.map.getStyle().layers.find(item => item.id == "Highway road")
-        // console.log(layer)
+        //console.log(layer)
         if (layer) // Se il layer "Highway road" esiste nello stile corrente
             map.setPaintProperty("Highway road", "line-color", "#f0f");
     }

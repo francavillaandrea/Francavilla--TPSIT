@@ -24,8 +24,16 @@ async function loadMap() {
         await myMapLibre.drawMap(style, mapContainer, gpsAddress, zoom).catch(function (err) {
             alert(`Errore nel rendering della mappa:\n${err}`);
         });
+
         if (myMapLibre.map) {
-            myMapLibre.addPOILayer(style)
+            myMapLibre.addPOILayer(style);
+            const popupText = `
+            <div id="popUp">
+                <p>Istituto superiore specializzato in informatica</p>
+                <img src="./img/FotoVallauri.png">
+            </div>
+            `
+            myMapLibre.addMarker(gpsAddress, icon, "I.I.S. G.Vallauri Fossano", popupText);
         }
     }
 

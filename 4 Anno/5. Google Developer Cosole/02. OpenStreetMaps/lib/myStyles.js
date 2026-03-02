@@ -5,7 +5,7 @@ const myFullStyle = {
     "openMapTiles": {
       "type": "vector",
       "tiles": [
-         `https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=AVXt2UV4vFU23b3AwPbF`
+         `https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=VW1nflCjhZSaSkhxwhBPF`
       ],
       "minzoom": 0,
       "maxzoom": 14

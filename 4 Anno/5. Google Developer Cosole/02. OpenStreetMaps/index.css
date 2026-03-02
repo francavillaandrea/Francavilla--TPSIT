@@ -1,15 +1,16 @@
-h1{
-	text-align:center;
-	font-size:25pt;
-	font-weight:bold;
+h1 {
+    text-align: center;
+    font-size: 25pt;
+    font-weight: bold;
 }
 
 
-#mapContainer{
-	width:1200px;
-	height:900px;
-	margin:10px auto;
+#mapContainer {
+    width: 1200px;
+    height: 900px;
+    margin: 10px auto;
 }
+
 /*
 .marker {
         display: block;
@@ -24,3 +25,11 @@ h1{
     pointer-events: none !important;
 }
 */
+
+#popUp {
+    img {
+        max-width: 150px;
+    }
+
+    text-align: center;
+}
