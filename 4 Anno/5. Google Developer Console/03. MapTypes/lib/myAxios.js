@@ -11,7 +11,7 @@ class Ajax {
 		"method": method.toUpperCase(),
 		"headers": {"Accept": "application/json"},
 		"responseType": "json",
-		"timeout": 5000,
+		"timeout": 10000,
 	}
 	if(parameters instanceof FormData){
 		// i parametri rimangono così come sono e vengono inseriti nel body
