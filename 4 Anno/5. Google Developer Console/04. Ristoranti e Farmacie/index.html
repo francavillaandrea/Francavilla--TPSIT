@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ristoranti su Mappa</title>
+
+    <!-- library -->
+    <link rel="stylesheet" href="./lib/mapLibre/dist/maplibre-gl.css" />
+    <script src="./lib/mapLibre/dist/maplibre-gl.js"></script>
+    <script src="./lib/axios@1.13.min.js"></script>
+
+    <!-- user files -->
+    <link rel="stylesheet" href="index.css" />
+    <script src="./lib/myAxios.js"></script>
+    <script src="./lib/myMapLibre.js"></script>
+    <script src="./lib/myStyles.js"></script>
+    <script defer src="index.js"></script>
+
+</head>
+
+
+
+<body>
+    <h1>Ristoranti e Percorso</h1>
+
+    <section id="controls">
+        <label for="citySelect">Città:</label>
+        <select id="citySelect">
+            <option value="">Seleziona una città...</option>
+        </select>
+
+        <label for="startAddress">La tua posizione di partenza:</label>
+        <input id="startAddress" type="text" placeholder="Es. Via Roma 10, Fossano">
+    </section>
+
+    <div id="mapContainer"></div>
+
+    <section id="infoPercorso">
+        <p id="distanceText">Distanza stradale: -</p>
+        <p id="durationText">Tempo di percorrenza: -</p>
+    </section>
+</body>
+</html>

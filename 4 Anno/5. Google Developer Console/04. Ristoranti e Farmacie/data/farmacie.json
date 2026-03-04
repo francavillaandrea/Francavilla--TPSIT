@@ -1,0 +1,71 @@
+{
+    "citta": [
+        {
+            "nome": "Savigliano"
+        },
+        {
+            "nome": "Saluzzo"
+        },
+        {
+            "nome": "Fossano"
+        }
+    ],
+    "farmacie": [
+        {
+            "nome": "Farmacia Rotondo",
+            "citta": "Fossano",
+            "indirizzo": "Via Roma 1",
+            "desc": "Farmacia Rotondo",
+            "img": "img1.jpg"
+        },
+        {
+            "nome": "Farmacia municipale 3",
+            "citta": "Fossano",
+            "indirizzo": " Piazza Kennedy 5",
+            "desc": "Farmacia municipale 3",
+            "img": "img2.jpg"
+        },
+        {
+            "nome": "Farmacia Abrate",
+            "citta": "Fossano",
+            "indirizzo": " Via Roma 92",
+            "desc": "Farmacia Abrate",
+            "img": "img3.jpeg"
+        },
+        {
+            "nome": "Farmacia Dominici",
+            "citta": "Savigliano",
+            "indirizzo": " Piazza Santarosa 36",
+            "desc": "Farmacia Dominici",
+            "img": "img4.jpeg"
+        },
+        {
+            "nome": "Farmacia Monchiero",
+            "citta": "Savigliano",
+            "indirizzo": " Piazza del Popolo 61",
+            "desc": "Farmacia Monchiero",
+            "img": "img5.jpeg"
+        },
+        {
+            "nome": "Farmacia San Chiaffredo",
+            "citta": "Saluzzo",
+            "indirizzo": " Via della Resistenza 16",
+            "desc": "Farmacia San Chiaffredo",
+            "img": "img6.jpeg"
+        },
+        {
+            "nome": "Farmacia Santa Maria",
+            "citta": "Saluzzo",
+            "indirizzo": " Piazza Risorgimento 38",
+            "desc": "Farmacia Santa Maria",
+            "img": "img7.jpeg"
+        },
+        {
+            "nome": "Farmacia San Martino",
+            "citta": "Saluzzo",
+            "indirizzo": " Corso Piemonte 8",
+            "desc": "Farmacia San Martino",
+            "img": "img8.jpg"
+        }
+    ]
+}
