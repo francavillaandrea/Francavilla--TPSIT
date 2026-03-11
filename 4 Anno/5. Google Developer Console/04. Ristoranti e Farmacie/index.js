@@ -1,19 +1,11 @@
 "use strict";
 
-// ============================================================================
-// CONFIGURAZIONE E COSTANTI
-// ============================================================================
-
 const style = myMapLibre.openMapsStyle;
 const defaultZoom = 13;
 const datasetName = "ristoranti";
 const datasetPath = "./data/ristoranti.json";
 const imgBasePath = "./img";
 const fallbackImg = "./img/FotoVallauri.png";
-
-// ============================================================================
-// ELEMENTI DOM
-// ============================================================================
 
 const mapContainer = document.getElementById("mapContainer");
 const citySelect = document.getElementById("citySelect");
@@ -22,23 +14,13 @@ const infoPercorso = document.getElementById("infoPercorso");
 const distanceText = document.getElementById("distanceText");
 const durationText = document.getElementById("durationText");
 
-// ============================================================================
-// STATO DELL'APPLICAZIONE
-// ============================================================================
 
 let selectedCity = "";
 let markers = [];
 let dataset = { citta: [], ristoranti: [] };
 
-// ============================================================================
-// ESPOSIZIONE FUNZIONI GLOBALI
-// ============================================================================
 
 window.visualizzaPercorso = visualizzaPercorso;
-
-// ============================================================================
-// INIZIALIZZAZIONE
-// ============================================================================
 
 init();
 
