@@ -14,7 +14,7 @@
         <script src="lib/myAxios.js"></script>
         <script src="lib/myChart.js"></script>
         <script src="lib/myMapLibre.js"></script>
-        <script defer src="script.js" > </script>
+        <script defer src="script.js"> </script>
 
     </head>
 
@@ -22,10 +22,15 @@
     <!-- ----------------------------  BODY  ----------------------------- -->
 
     <body>
-        <h1> Temperature del 5 marzo 2026 in Italia </h1>
+        <h1 id="main-title"> Temperature del <span id="current-date"></span> in Italia </h1>
         <div id="mapContainer"> </div>
         <a id="button" href="#"> Disegna grafico </a>
         <canvas id="canvas"> </canvas>
     </body>
+    <script>
+        const d = new Date();
+        const dateString = d.toLocaleDateString('it-IT');
+        document.getElementById('current-date').textContent = dateString;
+    </script>
 
 </html>
