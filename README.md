@@ -17,7 +17,7 @@ Benvenuti nel repository dedicato alle esercitazioni di **Tecnologie e Progettaz
 ## Indice degli Argomenti
 
 <details>
-<summary style="cursor: pointer;"><b>📂 Clicca per visualizzare la lista dei moduli</b></summary>
+<summary style="cursor: pointer;"><b> Clicca per visualizzare la lista dei moduli</b></summary>
 <br>
 
 ### Frontend
