@@ -48,7 +48,7 @@ Per scaricare una copia locale del progetto e lavorarci, segui questi passaggi:
 ### 1. Installa Git
 Se non hai ancora Git installato sul tuo PC, scaricalo dal sito ufficiale:
 > [!IMPORTANT]
-> **[Scarica Git per Windows/Mac/Linux](https://git-scm.com/downloads)**
+> **[Scarica Git per il tuo Sistema Operativo](https://git-scm.com/downloads)**
 
 ### 2. Clona via Terminale
 Apri il tuo terminale (CMD, PowerShell o Git Bash) e digita i seguenti comandi:
@@ -65,3 +65,18 @@ git clone https://github.com/francavillaandrea/Francavilla--TPSIT.git
 # Entra nella cartella del progetto
 cd Francavilla--TPSIT
 ```
+
+---
+
+## Authors
+
+| Avatar | Profilo |
+| :---: | :--- |
+| <img src="https://github.com/francavillaandrea.png" width="50px;" style="border-radius:50%"/> | **Andrea Francavilla**<br>[@francavillaandrea](https://github.com/francavillaandrea) |
+| <img src="https://github.com/kamiostaku.png" width="50px;" style="border-radius:50%"/> | **Nikola Milojkov**<br>[@kamiostaku](https://github.com/kamiostaku) |
+
+---
+
+> [!TIP]
+> Per visualizzare correttamente gli esercizi PHP, assicurati di utilizzare un server locale come **XAMPP**.
+> ** [Scarica XAMPP per il tuo Sistema Operativo!!!](https://www.apachefriends.org/it/download.html)**
