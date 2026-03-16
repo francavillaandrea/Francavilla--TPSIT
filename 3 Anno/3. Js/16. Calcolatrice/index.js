@@ -7,31 +7,35 @@ const _btnClear = document.querySelector("#btnClear");
 const _txtDisplay = document.querySelector("#txtDisplay");
 
 let firstNumber = 0;
-let operator;
+let operator = "";
+let secondNumber = 0;
+let shouldResetDisplay = false;
 
 _btnCalcola.addEventListener("click", calcola);
-_btnClear.addEventListener("click", function()
-{
+_btnClear.addEventListener("click", function () {
     _txtDisplay.value = "";
     firstNumber = 0;
     operator = "";
+    secondNumber = 0;
+    shouldResetDisplay = false;
 });
 
-//for(let i = 0; i< _btnNumeri.length; i++) 
-for (let _btn of _btnNumeri)
-{
-    _btn.addEventListener("click", viusualizzaNumero);
+//for(let i = 0; i< _btnNumeri.length; i++)
+for (let _btn of _btnNumeri) {
+    _btn.addEventListener("click", visualizzaNumero);
 }
-for (let _btn of _btnOperatori)
-{
+for (let _btn of _btnOperatori) {
     _btn.addEventListener("click", memorizzaOperatore);
 }
-function calcola()
-{
+function calcola() {
     let ris = 0;
-    let secondNumber = parseFloat(_txtDisplay.value);
-    switch (operator)
-    {
+    secondNumber = parseFloat(_txtDisplay.value);
+
+    if (operator === "") {
+        return;
+    }
+
+    switch (operator) {
         case "+":
             ris = firstNumber + secondNumber;
             break;
@@ -42,24 +46,58 @@ function calcola()
             ris = firstNumber * secondNumber;
             break;
         case "/":
+            if (secondNumber === 0) {
+                alert("Errore: Divisione per zero!");
+                _txtDisplay.value = "";
+                firstNumber = 0;
+                operator = "";
+                secondNumber = 0;
+                return;
+            }
             ris = firstNumber / secondNumber;
             break;
     }
+
+    // Limita i decimali a 6 cifre
+    ris = parseFloat(ris.toFixed(6));
     _txtDisplay.value = ris;
+    firstNumber = ris;
+    operator = "";
+    secondNumber = 0;
+    shouldResetDisplay = true;
 }
 
-function memorizzaOperatore()
-{
+function memorizzaOperatore() {
+    let currentValue = _txtDisplay.value;
+
+    // Se c'è già un operatore e il display ha un valore, calcola prima
+    if (operator !== "" && currentValue !== "") {
+        calcola();
+        _txtDisplay.value = "";
+    }
+    else if (currentValue === "") {
+        return;
+    }
+    else {
+        firstNumber = parseFloat(currentValue);
+        _txtDisplay.value = "";
+    }
+
     operator = this.value;
-    firstNumber = parseFloat(_txtDisplay.value);   
-    _txtDisplay.value = "";
-
+    shouldResetDisplay = false;
 }
-function viusualizzaNumero()
-{
+
+function visualizzaNumero() {
     let n = this.value;
-    if(!(n == "." && _txtDisplay.value.includes(".")))
-    {
+
+    // Se era stata premuta un'operazione, resetta il display
+    if (shouldResetDisplay) {
+        _txtDisplay.value = "";
+        shouldResetDisplay = false;
+    }
+
+    // Evita più punti decimali
+    if (!(n === "." && _txtDisplay.value.includes("."))) {
         _txtDisplay.value += n;
     }
 }

@@ -2,6 +2,9 @@
 
 let vet = ["mano", "sasso", "forbice"];
 let imgUtente = "";
+let vittorieUtente = 0;
+let vittorieComputer = 0;
+let pareggi = 0;
 
 window.onload = function () {
     let _imgUtente = document.getElementById("imgUtente");
@@ -35,7 +38,7 @@ window.onload = function () {
     // Gestione click pulsante Gioca
     _btnGioca.addEventListener("click", function () {
         if (imgUtente == "") {
-            alert("Seleziona prima una carta!");
+            alert("Seleziona prima una mossa!");
             return;
         }
 
@@ -47,27 +50,42 @@ window.onload = function () {
 
         // Determina il vincitore
         let risultato = determinaVincitore(imgUtente, mossaComputer);
-        _txtRisultato.innerHTML = risultato;
+        _txtRisultato.innerHTML = risultato + "<br><br>Vittorie: Tu " + vittorieUtente + " - Computer " + vittorieComputer + " - Pareggi " + pareggi;
     });
-
 }
 
 function determinaVincitore(sceltaUtente, sceltaComputer) {
-    if (sceltaUtente == "forbice" && sceltaComputer == "mano") 
-        return "Hai vinto!";
-    if (sceltaUtente == "mano" && sceltaComputer == "sasso") 
-        return "Hai vinto!";
-    if (sceltaUtente == "sasso" && sceltaComputer == "forbice") 
-        return "Hai vinto!";
+    // Vittorie dell'utente
+    if (sceltaUtente == "forbice" && sceltaComputer == "mano") {
+        vittorieUtente++;
+        return "✓ Hai vinto!";
+    }
+    if (sceltaUtente == "mano" && sceltaComputer == "sasso") {
+        vittorieUtente++;
+        return "✓ Hai vinto!";
+    }
+    if (sceltaUtente == "sasso" && sceltaComputer == "forbice") {
+        vittorieUtente++;
+        return "✓ Hai vinto!";
+    }
 
-    if (sceltaComputer == "forbice" && sceltaUtente == "mano") 
-        return "Ha vinto il computer!";
-    if (sceltaComputer == "mano" && sceltaUtente == "sasso") 
-        return "Ha vinto il computer!";
-    if (sceltaComputer == "sasso" && sceltaUtente == "forbice") 
-        return "Ha vinto il computer!";
+    // Vittorie del computer
+    if (sceltaComputer == "forbice" && sceltaUtente == "mano") {
+        vittorieComputer++;
+        return "✗ Ha vinto il computer!";
+    }
+    if (sceltaComputer == "mano" && sceltaUtente == "sasso") {
+        vittorieComputer++;
+        return "✗ Ha vinto il computer!";
+    }
+    if (sceltaComputer == "sasso" && sceltaUtente == "forbice") {
+        vittorieComputer++;
+        return "✗ Ha vinto il computer!";
+    }
 
-    return "Pareggio!";
+    // Pareggio
+    pareggi++;
+    return "= Pareggio!";
 }
 
 function random(min, max) {
