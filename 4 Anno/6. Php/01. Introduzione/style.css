@@ -1,0 +1,16 @@
+body {
+    background-color: #f0f4f8;
+}
+
+.card-studente {
+    border-left: 5px solid #0d6efd;
+    transition: transform 0.2s;
+}
+
+.card-studente:hover {
+    transform: scale(1.02);
+}
+
+.badge-eta {
+    font-size: 0.95rem;
+}

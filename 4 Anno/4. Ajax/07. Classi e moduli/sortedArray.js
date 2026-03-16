@@ -1,13 +1,16 @@
-
 class SortedArray {
 	
     // items = []   facoltativo	
 	// compareFn    facoltativo
 	
+	//Riceve come parametro un puntatore a funzione
 	constructor(compareFn) {
+		//Controllo se gli ho passato una funzione, in caso contrario ne stabilisce una di default
 		if (typeof compareFn != "function") {
 			// assegno una compareFn di default
 			compareFn = function(a, b) {
+				//Funzione che restituisce -1 per a<b, 0 per a==b e 1 per a>b
+				//NOTA: funziona solo se sono variabili scalari e non oggetti(tipo json)
 			    return a.localeCompare(b);
 			};
 		}
@@ -32,8 +35,3 @@ class SortedArray {
 		return this.items;
 	}
 }
-
-
-
-
-

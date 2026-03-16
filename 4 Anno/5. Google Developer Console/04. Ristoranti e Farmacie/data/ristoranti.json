@@ -1,0 +1,26 @@
+{
+  "citta":[
+    {"nome":"Savigliano"},
+    {"nome":"Saluzzo"},
+    {"nome":"Genola"},
+    {"nome":"Fossano"}
+  ],
+ "ristoranti": [
+  {"nome":"Ostu Bistrot", "citta":"Savigliano", "indirizzo":"Via Muratori, 18", "desc":"Cucina contemporanea di qualità", "img":"img1.jpg"},
+  {"nome":"Officina Del Gusto", "citta":"Savigliano", "indirizzo":"Corso Roma, 55", "desc":"Pizzeria/ristorante molto frequentato", "img":"img2.jpg"},
+  {"nome":"Antica Osteria dell'Orsa", "citta":"Savigliano", "indirizzo":"Piazza Cesare Battisti, 5", "desc":"Tipica osteria piemontese", "img":"img3.jpg"},
+  {"nome":"Taverna Del Teatro", "citta":"Savigliano", "indirizzo":"Via Teatro, 7", "desc":"Ristorante tradizionale in centro storico", "img":"img4.jpg"},
+  {"nome":"Ristorante Lo Zaru'", "citta":"Savigliano", "indirizzo":"Corso Roma, 77", "desc":"Ristorante italiano con piatti classici", "img":"img5.jpg"},
+  {"nome":"Ristorante Sapori In Movimento", "citta":"Savigliano", "indirizzo":"Via Rigrasso, 2/b", "desc":"Cucina locale e stagionale", "img":"img6.jpg"},
+  {"nome":"Ristorante Le 4 Stagioni di Casa Sassone", "citta":"Saluzzo", "indirizzo":"Via Alessandro Volta, 21", "desc":"Ristorante italiano molto apprezzato", "img":"img7.jpg"},
+  {"nome":"Ristorante La Cave San Giovanni", "citta":"Saluzzo", "indirizzo":"Via Tapparelli, 9", "desc":"Locale elegante e cucina raffinata", "img":"img8.jpg"},
+  {"nome":"I Quat Taulin", "citta":"Saluzzo", "indirizzo":"Via Piave, 5", "desc":"Ristorante piemontese tradizionale", "img":"img9.jpg"},
+  {"nome":"Osteria Roma", "citta":"Fossano", "indirizzo":"Via Roma, 97", "desc":"Osteria con cucina italiana classica", "img":"img10.jpg"},
+  {"nome":"Nuova Trattoria Antiche Volte", "citta":"Fossano", "indirizzo":"Via Giovanni Negri, 20", "desc":"Trattoria con piatti locali", "img":"img11.jpg"},
+  {"nome":"Vineria in Piazzetta", "citta":"Fossano", "indirizzo":"Via Garibaldi, 40", "desc":"Ristorante accogliente con vino selezionato", "img":"img12.jpg"},
+  {"nome":"Osteria I 3 Taulin", "citta":"Fossano", "indirizzo":"Via Ricrosio, 5", "desc":"Osteria tradizionale piemontese", "img":"img13.jpg"},
+  {"nome":"Ristorante Aquila Nera", "citta":"Genola", "indirizzo":"Via Roma, 83", "desc":"Ristorante storico con cucina italiana", "img":"img14.jpg"},
+  {"nome":"Teatro della Carne", "citta":"Genola", "indirizzo":"Via Garetta, 8/b", "desc":"Locale con cucina tipica e carne", "img":"img15.jpg"},
+  {"nome":"Pizzeria Pagus", "citta":"Genola", "indirizzo":"Via G. Marconi, 24", "desc":"Pizzeria e ristorante informale", "img":"img16.jpg"}
+ ]
+}

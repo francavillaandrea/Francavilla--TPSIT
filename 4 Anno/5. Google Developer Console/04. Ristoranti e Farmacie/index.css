@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #1f2937;
+}
+
+h1 {
+    margin: 20px 0 12px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+#controls {
+    width: min(1100px, 95%);
+    margin: 0 auto 14px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: auto minmax(180px, 1fr) auto minmax(260px, 2fr);
+    align-items: center;
+    gap: 10px 12px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+}
+
+#controls label {
+    font-weight: 600;
+}
+
+#controls select,
+#controls input {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #9ca3af;
+    font-size: 1rem;
+}
+
+#mapContainer {
+    width: min(1100px, 95%);
+    height: min(72vh, 820px);
+    min-height: 480px;
+    margin: 0 auto 10px;
+    border-radius: 10px;
+    border: 1px solid #9ca3af;
+    overflow: hidden;
+}
+
+#infoPercorso {
+    width: min(1100px, 95%);
+    margin: 0 auto 18px;
+    padding: 12px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    display: none;
+}
+
+#infoPercorso p {
+    margin: 6px 0;
+    font-size: 1rem;
+}
+
+.location-marker {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #dc2626;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.popup-card {
+    max-width: 240px;
+}
+
+.popup-card h3 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+}
+
+.popup-card p {
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+}
+
+.popup-card img {
+    display: block;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.popup-card button {
+    width: 100%;
+    padding: 7px 8px;
+    border: 0;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.popup-card button:hover {
+    background: #1d4ed8;
+}
+
+@media (max-width: 850px) {
+    #controls {
+        grid-template-columns: 1fr;
+    }
+}
