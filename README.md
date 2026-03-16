@@ -79,4 +79,4 @@ cd Francavilla--TPSIT
 
 > [!TIP]
 > Per visualizzare correttamente gli esercizi PHP, assicurati di utilizzare un server locale come **XAMPP**.
-> **[Scarica XAMPP per il tuo Sistema Operativo](https://www.apachefriends.org/it/download.html)**
+> <br>**[Scarica XAMPP per il tuo Sistema Operativo](https://www.apachefriends.org/it/download.html)**
