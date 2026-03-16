@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Registrazione al corso di HTML</h2>
+    <label for="txtNome">Nominativo:</label>
+    <input type="text"  id="txtNome"name="txtNome" placeholder="Inserisci qui il tuo nome" maxlength="10" required>
+    <br>
+    <legend> Hai gia seguito altri corsi </legend>
+                <input type="radio" id="optSi" name="optCorso" value="Si">
+                <label for="optSi"> Si </label>
+                <input type="radio" id="optNo" name="optCorso" value="No">
+                <label for="optNo"> No </label>
+    <br>
+    <legend> A quali argomenti sei interessato </legend>
+    <input type="checkbox" id="chkHtml" name="chkArgo" value="Html">
+    <label for="chkHtml"> HTML Base </label>
+    <input type="checkbox" id="chkCSS" name="chkArgo" value="Css">
+    <label for="chkCss"> Css </label>
+    <input type="checkbox" id="chkJs" name="chkArgo" value="Js">
+    <label for="chkJs"> Java Script </label>
+    <br>
+    <input type="submit" value="registrati">
+    <input type="reset" value="canecella">
+    <img src="./img/ritorna.gif" alt="">
+</body>
+</html>

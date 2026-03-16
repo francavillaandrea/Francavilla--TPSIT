@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Es 12</title>
+</head>
+<body>
+    <h1 align="center"> <font color="red"><i>  Pagina di Registrazione </font> </i></h1>
+    <form action="./index2.html">
+            <label for="txtNome">Nome:</label>
+            <input type="text"  id="txtNome"name="txtNome" placeholder="Inserisci qui il tuo nome" maxlength="10" required>
+                <br><br>
+            <label for="txt2Nome">Secondo nome :</label>
+            <input type="text"  id="txt2Nome"name="txt2Nome" placeholder="Inserisci qui il tuo secondo nome" maxlength="10">
+                <br> <br> 
+            <label for="txtCognome">Cognome:</label>
+            <input type="text"  id="txtCognome"name="txtCognome" placeholder="Inserisci qui il tuo Cognome" maxlength="10" required>
+                <br> <br>
+            <label for="txtEtà">Età</label>
+            <input type="number" name="txtEtà" placeholder="Inserisci la tua età" max="100" min="18" required>
+                <br> <br>
+            <label for="txtImg"></label>
+            <input type="file" id="txtImg" accept=".jpg, .png" name="TxtImg" placeholder="Non lo riconosce" required>
+                <br> <br>
+            <span>Hobbies:</span>
+                <br>
+            <input type="checkbox" id="chkCalcio" name="chkHobbies" value="Calcio">
+            <label for="chkCalcio"> Calcio</label>
+                <br>
+            <input type="checkbox" id="chkBasket" name="chkHobbies" value="Basket">
+            <label for="chksport"> Basket </label>
+                <br>
+                <input type="checkbox" id="chkNuoto" name="chkHobbies" value="Nuoto">
+            <label for="chkNuoto"> Nuoto</label>
+                <br>
+            <input type="checkbox" id="chkTennis" name="chkHobbies" value="Tennis">
+            <label for="chkTennis"> Tennis</label>
+                <br>
+            <input type="checkbox" id="chkInfo" name="chkHobbies" value="Informatica">
+            <label for="chksport"> Informatica </label>
+                <br>
+            <input type="checkbox" id="chkMusica" name="chkHobbies" value="Musica">
+            <label for="chkMusica"> Musica</label>
+                <br>
+            <label for="txtPassowrd">Password</label>
+            <input type="password" id="txtPassword" name="txtPassword" placeholder="Inserisci o imposta la tua password" minlength="8" maxlength="16" required>
+                <br> <br>
+           <fieldset> 
+                <legend> Settore di studio </legend>
+                <input type="radio" id="optInfo" name="optSettore" value="I">
+                <label for="optInfo"> Informatica </label>
+                <br>
+                <input type="radio" id="optElt" name="optSettore" value="E">
+                <label for="optElt"> Elettronica </label>
+                <br>
+                <input type="radio" id="optMec" name="optSettore" value="M">
+                <label for="optMec"> Meccanica </label>
+                <br>
+           </fieldset>
+           <br>
+           <label for="lstProvincia"> Provincia: </label>
+           <select name="lstProvincia" id="lstProvincia" required>
+             <option value="CN"> Cuneo </option>
+             <option value="TO"> Torino </option>
+             <option value="AT"> Asti </option>
+             <option value="AL"> Alessandria </option>
+           </select>
+           <br> <br>
+           <label for="txtCommenti"> Commenti: </label>
+           <textarea name="txtCommenti" id="txtCommenti" cols="30" rows="5" placeholder="Inserisci qui i tuoi commenti"></textarea>
+           <br> <br>
+
+            <input type="submit" value="registrati">
+            <input type="reset" value="canecella">
+    </form>
+</body>
+</html>
