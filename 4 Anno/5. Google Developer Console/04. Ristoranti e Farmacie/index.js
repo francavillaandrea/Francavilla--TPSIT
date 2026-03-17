@@ -1,236 +1,119 @@
 "use strict";
 
-const style = myMapLibre.openMapsStyle;
-const defaultZoom = 13;
-const datasetName = "ristoranti";
-const datasetPath = "./data/ristoranti.json";
-const imgBasePath = "./img";
-const fallbackImg = "./img/FotoVallauri.png";
+const style = myMapLibre.hibridStyle;
+const zoom = 16
+const icon = "url(./img/restaurant.png)"
 
-const mapContainer = document.getElementById("mapContainer");
-const citySelect = document.getElementById("citySelect");
-const startAddressInput = document.getElementById("startAddress");
-const infoPercorso = document.getElementById("infoPercorso");
-const distanceText = document.getElementById("distanceText");
-const durationText = document.getElementById("durationText");
+infoPercorso.style.display = "none"
+loadCitta();
 
+citySelect.addEventListener("change", async function () {
+    const cittaScelta = citySelect.value;
+    if (!cittaScelta) return;
 
-let selectedCity = "";
-let markers = [];
-let dataset = { citta: [], ristoranti: [] };
-
-
-window.visualizzaPercorso = visualizzaPercorso;
-
-init();
-
-async function init() {
     infoPercorso.style.display = "none";
+    distanceText.textContent = "Distanza stradale: -";
+    durationText.textContent = "Tempo di percorrenza: -";
 
-    const isOk = await loadDataset().catch(console.error);
-    if (!isOk) {
+    await loadRistoranti(cittaScelta);
+});
+
+
+async function loadCitta() {
+    const response = await ajax.sendRequest("GET", "http://localhost:3000/citta")
+        .catch(console.error);
+
+    if (response) {
+        response.data.forEach(function (citta) {
+            const option = document.createElement("option");
+            option.value = citta.nome;
+            option.textContent = citta.nome;
+            citySelect.appendChild(option);
+        });
+    }
+}
+
+
+async function loadRistoranti(citta) {
+    const response = await ajax.sendRequest("GET", "http://localhost:3000/ristoranti", { citta: citta })
+        .catch(console.error);
+
+    if (!response || response.data.length == 0) {
+        alert("Nessun ristorante trovato per: " + citta);
         return;
     }
 
-    loadCities();
-    citySelect.addEventListener("change", onCityChange);
+    let gpsCitta = await myMapLibre.geocode(citta + ", Italia")
+        .catch(function (err) {
+            alert(`Errore nella decodifica dell'indirizzo:\n${err}`);
+        });
+
+    if (gpsCitta) {
+        await myMapLibre.drawMap(style, mapContainer, gpsCitta, zoom)
+            .catch(function (err) {
+                alert(`Errore nel rendering della mappa:\n${err}`);
+            });
+
+        if (myMapLibre.map) {
+            response.data.forEach(function (ristorante) {
+                addRistoranteMarker(ristorante);
+            });
+        }
+    }
 }
 
-async function loadDataset() {
-    const response = await ajax.sendRequest("GET", datasetPath).catch(console.error);
-    if (!response?.data) {
-        /* Se response non ha la proprietà data oppure response è nullo/indefinito, la condizione è true e il blocco if viene eseguito*/
-        alert("Impossibile caricare i dati locali.");
-        return false;
+
+async function addRistoranteMarker(ristorante) {
+    const indirizzoCompleto = ristorante.indirizzo + ", " + ristorante.citta + ", Italia";
+
+    let gpsRistorante = await myMapLibre.geocode(indirizzoCompleto)
+        .catch(function (err) {
+            console.log(`Geocoding fallito per ${ristorante.nome}: ${err}`);
+        });
+
+    if (!gpsRistorante) return;
+
+    const popupText =
+        `
+        <div class="popup-ristorante">
+            <h3>${ristorante.nome}</h3>
+            <p>${ristorante.indirizzo}</p>
+            <p>${ristorante.desc}</p>
+            <img src="./img/${ristorante.img}" alt="${ristorante.nome}" onerror="this.style.display='none'">
+            <button onclick="visualizzaPercorso('${indirizzoCompleto}')">
+                Visualizza Percorso
+            </button>
+        </div>
+    `;
+
+    myMapLibre.addMarker(gpsRistorante, icon, ristorante.nome, popupText);
+}
+
+
+async function visualizzaPercorso(destinazione) {
+    const partenza = startAddress.value.trim();
+
+    if (!partenza) {
+        alert("Inserisci la tua posizione di partenza nella textbox dedicata!!!");
+        return;
     }
 
-    dataset = response.data;
-    return true;
-}
-
-function loadCities() {
-    const cities = dataset.citta ? dataset.citta : [];
-    let opt = document.createElement("option");
-    opt.textContent = "Seleziona una città...";
-    citySelect.append(opt)
-
-    cities.forEach(city => {
-        const nome = city.nome;
-        const option = document.createElement("option");
-        option.value = nome;
-        option.textContent = nome;
-        citySelect.appendChild(option);
-    });
-}
-
-async function onCityChange() {
-    selectedCity = citySelect.value;
     infoPercorso.style.display = "none";
-    clearRoute();
-    removeMarkers();
+    distanceText.textContent = "Distanza stradale: calcolo in corso...";
+    durationText.textContent = "Tempo di percorrenza: calcolo in corso...";
 
-    if (!selectedCity) {
-        return;
+    const result = await myMapLibre.drawSingleRoute(partenza, destinazione, "#676767")
+        .catch(function (err) {
+            alert(`Errore nel calcolo del percorso:\n${err}`);
+        });
+
+    if (result) {
+        infoPercorso.style.display = "";
+
+        const distanzaKm = (result.distance / 1000).toFixed(1);
+        const durataMin = Math.round(result.duration / 60);
+
+        distanceText.textContent = `Distanza stradale: ${distanzaKm} km`;
+        durationText.textContent = `Tempo di percorrenza: ${durataMin} minuti`;
     }
-
-    const cityAddress = `${selectedCity}, Italia`;
-    const cityGps = await myMapLibre.geocode(cityAddress);
-    if (!cityGps) {
-        return;
-    }
-
-    await myMapLibre.drawMap(style, mapContainer, cityGps, defaultZoom);
-    await loadPlacesAndMarkers(selectedCity);
-}
-
-async function loadPlacesAndMarkers(cityName) {
-    const places = getPlacesForCity(cityName);
-
-    if (places.length == 0) {
-        alert(`Nessun locale disponibile a ${cityName}`);
-        return;
-    }
-
-    const placesWithGps = await geocodeAllPlaces(places);
-
-    addMarkersToMap(placesWithGps);
-}
-
-function getPlacesForCity(cityName) {
-    const allPlaces = dataset[datasetName] ? dataset[datasetName] : [];
-    const places = [];
-
-    for (let i = 0; i < allPlaces.length; i++) {
-        if (allPlaces[i].citta == cityName) {
-            places.push(allPlaces[i]);
-        }
-    }
-    return places;
-}
-
-async function geocodeAllPlaces(places) {
-    const geocodeTasks = places.map(async (place) => {
-        const fullAddress = `${place.indirizzo}, ${place.citta}, Italia`;
-        const gps = await myMapLibre.geocode(fullAddress);
-        return { place, fullAddress, gps };
-    });
-
-    return Promise.all(geocodeTasks);
-}
-
-function addMarkersToMap(placesWithGps) {
-    for (let i = 0; i < placesWithGps.length; i++) {
-        const item = placesWithGps[i];
-
-        if (item.gps) {
-            addPlaceMarker(item.place, item.fullAddress, item.gps);
-        }
-    }
-}
-
-function addPlaceMarker(place, fullAddress, gps) {
-    const markerNode = document.createElement("div");
-    markerNode.className = "location-marker";
-
-    const popupText = buildPopupHtml(place, fullAddress);
-    const popup = new maplibregl.Popup({ offset: [0, -12] }).setHTML(popupText);
-
-    const marker = new maplibregl.Marker({ element: markerNode })
-        .setLngLat(gps.center)
-        .setPopup(popup)
-        .addTo(myMapLibre.map);
-
-    markers.push(marker);
-}
-
-
-function buildPopupHtml(place, fullAddress) {
-    const imgPath = `${imgBasePath}/${place.img}`;
-
-    const card = document.createElement("div");
-    card.className = "popup-card";
-
-    const h3 = document.createElement("h3");
-    h3.textContent = place.nome;
-    card.appendChild(h3);
-
-    const p = document.createElement("p");
-    p.textContent = place.desc;
-    card.appendChild(p);
-
-    const img = document.createElement("img");
-    img.src = imgPath;
-    img.alt = place.nome;
-    img.onerror = function () {
-        this.src = fallbackImg;
-    };
-    card.appendChild(img);
-
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = "Visualizza percorso";
-    button.onclick = function () {
-        window.visualizzaPercorso(fullAddress);
-    };
-    card.appendChild(button);
-
-    return card.innerHTML;
-}
-
-async function visualizzaPercorso(destinationAddress) {
-    if (!selectedCity) {
-        alert("Seleziona prima una citta.");
-        return;
-    }
-
-    const fromAddress = startAddressInput.value.trim();
-    if (!fromAddress) {
-        alert("Inserisci la tua posizione di partenza.");
-        return;
-    }
-
-    const route = await myMapLibre.drawSingleRoute(fromAddress, destinationAddress);
-    if (!route) {
-        return;
-    }
-
-    const km = Math.round((route.distance / 1000) * 100) / 100;
-    const minutes = Math.round(route.duration / 60);
-
-    distanceText.textContent = `Distanza stradale: ${km} km`;
-    durationText.textContent = `Tempo di percorrenza: ${minutes} minuti`;
-    infoPercorso.style.display = "block";
-}
-
-function removeMarkers() {
-    markers.forEach((marker) => marker.remove());
-    markers = [];
-}
-
-function clearRoute() {
-    if (!myMapLibre.map) {
-        return;
-    }
-
-    const routeLayers = [
-        "route-line",
-        "route-outline",
-        "route-line-alt",
-        "route-outline-alt",
-        "route-line-main",
-        "route-outline-main"
-    ];
-
-    routeLayers.forEach((layerId) => {
-        if (myMapLibre.map.getLayer(layerId)) {
-            myMapLibre.map.removeLayer(layerId);
-        }
-    });
-
-    const routeSources = ["route", "routes"];
-    routeSources.forEach((sourceId) => {
-        if (myMapLibre.map.getSource(sourceId)) {
-            myMapLibre.map.removeSource(sourceId);
-        }
-    });
 }

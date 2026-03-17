@@ -10,11 +10,11 @@ let valoriAscii = [];
 
 init();
 
-function init() 
+function init()
 {
     _lstVoci.selectedIndex = -1;
     valoriAscii = [];
-    for (let i = 0; i < _txtNum.length; i++) 
+    for (let i = 0; i < _txtNum.length; i++)
     {
         _txtNum[i].value = "";
         _txtStr[i].value = "";
@@ -24,23 +24,23 @@ function init()
     _btnControlla.disabled = true;
 }
 
-function genera() 
+function genera()
 {
     let range = _lstVoci.value.split("-");
     let min = parseInt(range[0]);
     let max = parseInt(range[1]);
     valoriAscii = [];
 
-    while (valoriAscii.length < 6) 
+    while (valoriAscii.length < 6)
     {
         let numero = generaNumero(min, max);
-        if (!valoriAscii.includes(numero)) 
+        if (!valoriAscii.includes(numero))
         {
             valoriAscii = valoriAscii.concat(numero);
         }
     }
 
-    for (let i = 0; i < _txtNum.length; i++) 
+    for (let i = 0; i < _txtNum.length; i++)
     {
         _txtNum[i].value = valoriAscii[i];
         _txtStr[i].value = "";
@@ -53,7 +53,7 @@ function genera()
 
 function abilita() {
     let tuttiCompilati = true;
-    for (let campo of _txtStr) 
+    for (let campo of _txtStr)
     {
         if (campo.value.length !== 1)
         {
@@ -67,12 +67,12 @@ function abilita() {
 function controlla() {
     let corretti = 0;
 
-    for (let i = 0; i < valoriAscii.length; i++) 
+    for (let i = 0; i < valoriAscii.length; i++)
     {
         let insertedChar = _txtStr[i].value;
         let correctedChar = String.fromCharCode(valoriAscii[i]);
 
-        if (insertedChar === correctedChar) 
+        if (insertedChar == correctedChar)
         {
             _txtStr[i].disabled = true;
             _chk[i].checked = true;
@@ -84,17 +84,17 @@ function controlla() {
         }
     }
 
-    if (corretti === 6) 
+    if (corretti == 6)
     {
         alert("Complimenti! Tutte le risposte sono corrette.");
-    } 
-    else 
+    }
+    else
     {
         alert("Alcune risposte sono errate. Riprova.");
     }
 }
 
-function generaNumero(min, max) 
+function generaNumero(min, max)
 {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
