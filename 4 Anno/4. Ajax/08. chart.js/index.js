@@ -1,4 +1,4 @@
-﻿"use strict";
+﻿﻿"use strict";
 
 const wrapper = document.querySelector("#wrapper")
 const table =  wrapper.querySelector("table") 
@@ -36,11 +36,11 @@ btnInvia.addEventListener("click", async function(){
 	let nPeople = result.value
 
 	// _limit => Quanti record restituire
-	//let httpResponse = await ajax.sendRequest("GET", "/results", { _limit: nPeople });
-	let httpResponse = await ajax.sendRequest("GET", "/api", { results: nPeople });
+	let httpResponse = await ajax.sendRequest("GET", "/results", { _limit: nPeople });
+	//let httpResponse = await ajax.sendRequest("GET", "/api", { results: nPeople });
 	//console.log(httpResponse.data);
 	let nazioni = [];
-	for (let person of httpResponse.data.results){
+	for (let person of httpResponse.data){
 		const nat = person.nat;
 		const item = nazioni.find((item) => { return item.nat == nat });
 		
