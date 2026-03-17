@@ -55,12 +55,15 @@ class MyBarChart {
 		}
 	}
 
-	setChartOptions(title, keysArray, valuesArray, colorsArray, maxValue) {
+	setChartOptions(title, keysArray, valuesArray, colorsArray) {
+		let max = Math.max(valuesArray)+1;
+		let min = Math.min(valuesArray)-1;
 		this.#chartOptions.options.plugins.title.text = title
 		this.#chartOptions.data.labels = keysArray
 		this.#chartOptions.data.datasets[0].data = valuesArray
 		this.#chartOptions.data.datasets[0].backgroundColor = colorsArray
-		this.#chartOptions.options.scales.y.suggestedMax = maxValue + 1
+		this.#chartOptions.options.scales.y.suggestedMax = max;
+		this.#chartOptions.options.scales.y.suggestedMin = min;
 	}
 
 	getChartOptions() {

@@ -2,8 +2,8 @@
 
 class Ajax {
  // Se vuota viene assegnata  l'origine da cui è stata scaricata la pagina
- _URL = ""
-
+ _URL = ""  
+ 
  sendRequest(method, url, parameters={}) {
 	let options={
 		"baseURL":this._URL,
@@ -15,9 +15,9 @@ class Ajax {
 	}
 	if(parameters instanceof FormData){
 		// i parametri rimangono così come sono e vengono inseriti nel body
-		options.headers["Content-Type"]='multipart/form-data;'
+		options.headers["Content-Type"]='multipart/form-data;' 
 		options["data"]=parameters     // Accept FormData, File, Blob
-	}
+	}	
 	else if(method.toUpperCase()=="GET"){
 	    options.headers["Content-Type"] =
 		                    'application/x-www-form-urlencoded;charset=utf-8'
@@ -25,23 +25,23 @@ class Ajax {
 	}
 	else{
 		// JSON-Server
-		options.headers["Content-Type"] = 'application/json; charset=utf-8'
-		options["data"]=parameters
-	}
-	let promise = axios(options)
-	return promise
+		options.headers["Content-Type"] = 'application/json; charset=utf-8' 
+		options["data"]=parameters    
+	}	
+	let promise = axios(options)      
+	return promise	
  }
 
  errore(err) {
-	if(!err.response)
-		alert("Connection Refused or Server timeout");
+	if(!err.response) 
+		alert("Connection Refused or Server timeout");	
 	else if (err.response.status == 200)
         alert("Formato dei dati non corretto : " + err.response.data);
     else{
         alert("Server Error: " +err.response.status + " - " +err.response.data)
 	}
  }
-
+ 
 }
 
 let ajax = new Ajax()
