@@ -29,6 +29,7 @@ btn.addEventListener("click", function () {
             values.push(city.meteoInfo.main.temp);
             colors.push(color)
         }
+        else {
             values.push(0);
             color.push(color)
         }
