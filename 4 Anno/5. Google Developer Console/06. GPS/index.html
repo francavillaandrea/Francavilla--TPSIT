@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="it">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html" />
+    <title> GPS </title>
+	
+	<!-- axios.js -->	
+	<script src="./lib/axios@1.13.min.js"></script>
+	
+	<!-- mapLibre -->
+	<link rel="stylesheet" href="./lib/mapLibre/dist/maplibre-gl.css" />
+	<script src="./lib/mapLibre/dist/maplibre-gl.js"> </script>	
+	
+	<!--user libreries -->		
+	<script src="./myAxios.js"></script>
+	<script src="./myMapLibre.js"></script>
+	 
+	<link rel="stylesheet" href="./index.css">
+	<script defer src="./index.js"> </script> 
+</head>
+
+<!-- ----------------------------  BODY  ----------------------------- -->
+<body>
+    <h1> Posizione Corrente </h1>
+	<p>
+		<label> coordinate GPS: 
+			<span class="results"> </span> 
+		</label>
+	</p>
+	
+    <div class="mapContainer">   </div>	
+	<div class="buttons">
+		<button id="btnAvvia"> Avvia </button>
+		<button id="btnArresta"> Arresta </button>
+	</div>
+	
+</body>
+</html>

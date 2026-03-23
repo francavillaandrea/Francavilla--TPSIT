@@ -1,0 +1,17 @@
+h1, p{
+	text-align:center;
+}	
+	
+label{
+	font-size:16pt;
+}
+		
+.mapContainer{
+	width:800px;
+	height:600px;
+	margin:10px auto;		
+}
+
+.buttons{
+	text-align:center;
+}
