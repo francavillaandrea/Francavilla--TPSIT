@@ -54,7 +54,7 @@ h1 {
     font-size: 14pt;
 }
 
-#wrapper > div {
+#wrapper>div {
     overflow: auto;
     margin-bottom: 25px;
 }
@@ -65,7 +65,8 @@ h1 {
     align-items: center;
     gap: 20px;
     margin-bottom: 20px;
-    flex-wrap: wrap; /* Ensure responsiveness */
+    flex-wrap: wrap;
+    /* Ensure responsiveness */
 }
 
 img {
@@ -82,25 +83,34 @@ img:hover {
 }
 
 .big {
-    width: 140;
-    height: 210;
+    width: 140px;
+    height: 210px;
+    float: left;
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .big:first-of-type {
-    float: left;
-    margin-left: 60px;
+    margin-left: 20px;
 }
 
 .big:last-of-type {
     float: right;
-    margin-right: 50px;
+    margin-right: 20px;
 }
 
 .small {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    display: inline-block;
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .small:hover {
@@ -131,10 +141,15 @@ input[type=button] {
 }
 
 #txtRisultato {
-    font-size: 1.5rem;
-    margin-top: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 30px;
     text-align: center;
     animation: fadeIn 1s ease-in-out;
+    color: #2e2e2e;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 30px;
 }
 
 @keyframes fadeIn {
@@ -142,6 +157,7 @@ input[type=button] {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

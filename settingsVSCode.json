@@ -1,0 +1,100 @@
+{
+    // =========================
+    // TEMA & INTERFACCIA
+    // =========================
+    "workbench.colorTheme": "One Monokai",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "none",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.tabCloseButton": "right",
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "workbench.sideBar.location": "left",
+    "workbench.panel.defaultLocation": "bottom",
+    "workbench.menuBarVisibility": "toggle",
+    // Animazioni UI
+    "workbench.list.smoothScrolling": true,
+    "workbench.editor.animateTabs": true,
+    "workbench.editor.smoothScrolling": true,
+    "workbench.sideBar.experimental.useSidebarAnimations": true,
+    "workbench.panel.experimental.usePanelAnimations": true,
+    // =========================
+    // FILE SYSTEM
+    // =========================
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 800,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true
+    },
+    // =========================
+    // EDITOR (MINIMAL)
+    // =========================
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.wordWrap": "on",
+    // Animazioni editor
+    "editor.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorBlinking": "phase",
+    "editor.scrollBeyondLastLine": true,
+    "editor.stickyScroll.enabled": true,
+    "editor.hover.enabled": true,
+    "editor.hover.delay": 120,
+    "editor.hover.sticky": true,
+    "editor.folding": true,
+    "editor.foldingHighlight": true,
+    // Pulizia visiva
+    "editor.renderWhitespace": "none",
+    "editor.renderIndentGuides": false,
+    "editor.guides.indentation": false,
+    "editor.guides.bracketPairs": false,
+    "editor.minimap.enabled": false,
+    // =========================
+    // LIVE SERVER (FIREFOX)
+    // =========================
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.host": "127.0.0.1",
+    "liveServer.settings.root": "/",
+    "liveServer.settings.CustomBrowser": "firefox",
+    "liveServer.settings.NoBrowser": false,
+    "liveServer.settings.fullReload": true,
+    "liveServer.settings.wait": 50,
+    "liveServer.settings.ignoreFiles": [
+        "**/.vscode/**",
+        "**/.git/**",
+        "**/node_modules/**"
+    ],
+    // =========================
+    // HTML / CSS / JS
+    // =========================
+    "html.format.indentInnerHtml": true,
+    "html.format.wrapLineLength": 120,
+    "html.autoClosingTags": true,
+    "html.autoCreateQuotes": true,
+    "css.validate": true,
+    "javascript.validate.enable": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "emmet.triggerExpansionOnTab": true,
+    // =========================
+    // TERMINALE (CMD)
+    // =========================
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.scrollback": 5000,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorSmoothCaretAnimation": true,
+    // =========================
+    // QUALITY OF LIFE
+    // =========================
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "breadcrumbs.enabled": true,
+    "window.zoomLevel": 0
+}

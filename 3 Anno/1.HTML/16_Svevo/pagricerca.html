@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="./benvenuto.html" target="_blank">
+    <h2> Elenco dei romanzi </h2>
+    <label for="lstRomanzi"></label>
+           <select name="lstRomanzi" id="lstRomanzi">
+             <option value="UnaVita"> Una vita </option>
+             <option value="CoscienzaDiZeno"> La coscienza di Zeno </option>
+             <option value="Senilità"> Senilità </option>
+           </select>
+    <input type="submit" value="ricerca">
+    <h2> Temi caratteristici dei romanzi di Svevo</h2>
+    <legend> Scegliere un tema ed avviare la ricerca </legend>
+                <input type="radio" id="optInettitudine" name="optTemi" value="I">
+                <label for="optInettitudine"> Inettitudine </label>
+                <br>
+                <input type="radio" id="optMalattia" name="optTemi" value="M">
+                <label for="optMalattia"> La malattia  </label>
+                <br>
+                <input type="radio" id="optPsicologia" name="optTemi" value="P">
+                <label for="optPsicologia"> Psicologia </label>
+                <br>
+                <input type="radio" name="optTemi" id="optMonologo" value="MI">
+                <label for="optMonologo"> Monologo Interiore </label>
+    <input type="submit" value="ricerca">
+</form>
+</body>
+</html>

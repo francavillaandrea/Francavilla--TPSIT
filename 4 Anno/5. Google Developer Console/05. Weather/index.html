@@ -5,16 +5,23 @@
         <meta charset="UTF-8" />
         <title>Temperature in Italia</title>
 
-        <link rel="stylesheet" href="./\lib/mapLibre/dist/maplibre-gl.css" />
-        <link rel="stylesheet" href="index.css" />
+        <!-- axios.js -->
+        <script src="./lib/axios@1.13.min.js"></script>
 
-        <script src="lib/axios@1.13.min.js"></script>
-        <script src="lib/chart@4.2.0.umd.min.js"></script>
-        <script src="lib/mapLibre/dist/maplibre-gl.js"></script>
-        <script src="lib/myAxios.js"></script>
-        <script src="lib/myChart.js"></script>
-        <script src="lib/myMapLibre.js"></script>
-        <script defer src="./script.js"> </script>
+        <!-- mapLibre -->
+        <link rel="stylesheet" href="./lib/mapLibre/dist/maplibre-gl.css" />
+        <script src="./lib/mapLibre/dist/maplibre-gl.js"> </script>
+
+        <!-- chart.js -->
+        <script src="./lib/chart@4.2.0.umd.min.js"></script>
+
+        <!--user libreries -->
+        <script src="./lib/myAxios.js"></script>
+        <script src="./lib/myChart.js"></script>
+        <script src="./lib/myMapLibre.js"></script>
+
+        <link rel="stylesheet" href="./index.css">
+        <script defer src="./index.js"> </script>
 
     </head>
 
@@ -22,21 +29,12 @@
     <!-- ----------------------------  BODY  ----------------------------- -->
 
     <body>
-        <h1 id="main-title"> Temperature del <span id="current-date"></span> in Italia </h1>
+        <h1> Temperature del 8 marzo 2022 in Italia </h1>
         <div id="mapContainer"> </div>
         <a id="button" href="#"> Disegna grafico </a>
-
         <div id="canvas">
-            <canvas>
-
-            </canvas>
-
+            <canvas> </canvas>
         </div>
     </body>
-    <script>
-        const d = new Date();
-        const dateString = d.toLocaleDateString('it-IT');
-        document.getElementById('current-date').textContent = dateString;
-    </script>
 
 </html>

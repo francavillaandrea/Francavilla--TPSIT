@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>es 06</title>
+</head>
+<body>
+    <h1 align="center "> Mappe Immagine </h1>
+    <!-- Per fare le mappe immagine usare image-map -->
+    <div align="center">
+        <img src="./img/Img02.jpg" alt="Immagine non caricata " usemap="#image-map">
+    </div>
+     <!-- se impostiamo un width diverso dalla dimensione originale della foto tutti i punti sull'immagine si sposteranno o verranno eliminati -->
+    <map name="image-map">
+        <area target="_blank" alt="Monviso" title="Clicca per vedere i dettagli del Monviso" href="./monviso.html" coords="126,79,26" shape="circle">
+        <area target="_self" alt="Bisalta" title=" Clicca per vedere i dettagli della Bisalta" href="./bisalta.html" coords="238,78,28" shape="circle">
+        <area target="_blank" alt="Argentera" title=" Clicca per vedere i dettagli dell'Argentera" href="./argentera.html" coords="509,101,20" shape="circle">
+    </map>
+    
+</body>
+</html>

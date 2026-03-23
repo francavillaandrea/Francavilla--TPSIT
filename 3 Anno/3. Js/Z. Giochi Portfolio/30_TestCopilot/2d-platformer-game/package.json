@@ -1,0 +1,24 @@
+{
+  "name": "2d-platformer-game",
+  "version": "1.0.0",
+  "description": "A 2D platformer game inspired by Hollow Knight and Ori and the Blind Forest.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "http-server .",
+    "build": "echo 'Build step not defined yet.'"
+  },
+  "keywords": [
+    "game",
+    "platformer",
+    "2D",
+    "Phaser"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "phaser": "^3.55.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}

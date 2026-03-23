@@ -6,7 +6,7 @@ const mapContainer = document.getElementById("mapContainer")
 const address1 = "Via San Michele 68, Fossano, Italia"
 const address2 = "Via Onorato Vigliani, Torino"
 const zoom = 15.5  // 1-25
-const icon = "url(./img/university.png)"    
+const icon = "url(./img/university.png)"
 
 
 infoPercorso.style.display="none"
@@ -28,9 +28,9 @@ async function loadMap(){
     let gpsAddress = await myMapLibre.geocode(address1)
     .catch(function(err)
     {
-        alert(`Errore nella decodifica dell'indirizzo:\n${err}`); 
+        alert(`Errore nella decodifica dell'indirizzo:\n${err}`);
     });
-        
+
     if(gpsAddress)
     {
         await myMapLibre.drawMap(style,mapContainer,gpsAddress,zoom).catch(function(err)
@@ -41,7 +41,7 @@ async function loadMap(){
         if(myMapLibre.map)
         {
             myMapLibre.addPOILayer(style);
-            const popupText = 
+            const popupText =
             `
                 <div id="popUp">
                     <p>Istituto superiore specializzato in informatia</p>
@@ -53,17 +53,17 @@ async function loadMap(){
             const result = await myMapLibre.drawSingleRoute(address1,address2,"#00f");
 
             infoPercorso.style.display = "";
-            infoPercorso.children[0].textContent += result.distance;
-            infoPercorso.children[1].textContent += `${result.duration/60} minuti`;        
-        
+            infoPercorso.children[0].textContent += Math.round(result.distance/1000);
+            infoPercorso.children[1].textContent += `${Math.round(result.duration/60)} minuti`;
+
         }
     }
-    
+
     //Soluzione con then e catch:
         // let promise = myMapLibre.geocode(address1);
         // promise.catch(function(err)
         // {
-        //     alert(`Errore nella decodifica dell'indirizzo:\n${err}`); 
+        //     alert(`Errore nella decodifica dell'indirizzo:\n${err}`);
         // });
         // promise.then(function(gpsAddress)
         // {
