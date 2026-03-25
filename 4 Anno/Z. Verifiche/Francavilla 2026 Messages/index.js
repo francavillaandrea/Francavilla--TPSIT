@@ -12,6 +12,7 @@ errore.style.display = "none"
 const okButton = login.querySelectorAll("button")[0];
 let Modal = new bootstrap.Modal("#mdlDiagram")
 let userGlobal;
+let chart;
 
 btnDrawGraphics.addEventListener("click", async () => {
     Modal.show();
