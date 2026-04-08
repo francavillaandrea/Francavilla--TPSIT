@@ -1,44 +1,97 @@
 <?php
-
-class ClsMySQL
+/**
+ * Helper class for mysqli.
+ */
+class MySQL
 {
-    const DB_NAME = "4b_sondaggi";
-
-    const DB_HOST = "localhost";
-    const DB_USER = "root";
-    const DB_PASS = "";
-    const DB_PORT = 3306;
+    public const DB_NAME = "4b_sondaggi";
+    public const DB_HOST = "localhost";
+    public const DB_USER = "root";
+    public const DB_PASS = "";
     private $connection;
 
     public function __construct()
     {
-        //abilita la generaziobne degli errori che di default su Php è bloccata
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
         try {
-            //libreria php che gestisce interfacciamento con MySql (la i finale sta per improved)
-            //il costruttore si aspetta 5 costanti, ovvero quelle sopra e per usare le costanti su usa la sintassi self::
-            new mysqli(
-                self::DB_HOST,
-                self::DB_USER,
-                self::DB_PASS,
-                self::DB_NAME,
-                self::DB_PORT //Questa è facoltativa in caso usa quella di default MySQL (3306)
-            );
-        } catch (mysqli_sql_exception $err) {
-            die("Errore di connessione al database" . $err->getMessage());
+            $this->connection = new mysqli(MySQL::DB_HOST, MySQL::DB_USER, MySQL::DB_PASS, MySQL::DB_NAME);
+        } catch (Exception $ex) {
+            die("Errore connessione database {$ex->getMessage()}" . PHP_EOL);
         }
     }
 
-    public function select($query, $params = array(), $types = "")
+    public function execute_query($sql, $params = [], $types = "")
     {
         try {
-            $statement = $this->prepareAndBind($query, $params, $types);
+            $statement = $this->prepareAndBind($sql, $params, $types);
             $statement->execute();
-        } catch (mysqli_sql_exception $err) {
-
+            $rs = $statement->get_result();
+            $statement->close();
+            // fetch_all trasforma il recordset di get_result in array (Associativo con MYSQLI_ASSOC | Enumerativo con MYSQLI_NUM)
+            return $rs->fetch_all(MYSQLI_ASSOC);
+        } catch (Exception $ex) {
+            $this->close_connection();
+            die("Errore esecuzione query {$ex->getMessage()}" . PHP_EOL);
         }
     }
-}
-?>
 
+    public function executeNonQuery($sql, $params = [], $types = "")
+    {
+        try {
+            $statement = $this->prepareAndBind($sql, $params, $types);
+            //Eseguo query e salvo totale dei record interessati
+            $rowsAffected = $statement->execute();
+            //Restituisce l'id dell'ultimo inserimento
+            $resId = $this->connection->insert_id;
+            $statement->close();
+            return $resId ?: $rowsAffected;
+
+
+        } catch (Exception $ex) {
+            $this->close_connection();
+            die("Errore esecuzione query {$ex->getMessage()}" . PHP_EOL);
+        }
+    }
+
+    public function close_connection()
+    {
+        $this->connection->close();
+    }
+
+    public function check_params($param_name)
+    {
+        if (!isset($_REQUEST[$param_name])) {
+            http_response_code(400);
+            die("Parametro mancante: $param_name");
+        }
+
+        return $_REQUEST[$param_name];
+    }
+
+    /**
+     * Crea uno statement in cui i segnaposto della query vengono sostituiti dai parametri.
+     * @param mixed $query
+     * @param mixed $params
+     * @param mixed $types
+     * @return bool|mysqli_stmt
+     */
+    private function prepareAndBind($query, $params, $types)
+    {
+        $statement = $this->connection->prepare($query);
+
+        if ($statement == false) {
+            $this->close_connection();
+            die("Errore nella preparazione della query {$this->connection->error}");
+        }
+
+        if (!empty($params)) {
+            if (!$statement->bind_param($types, ...$params)) {
+                $this->close_connection();
+                die("Errore nel bind dei parametri {$statement->error}");
+            }
+        }
+
+        return $statement;
+    }
+}
