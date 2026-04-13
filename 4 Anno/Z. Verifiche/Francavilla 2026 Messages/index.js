@@ -77,7 +77,7 @@ okButton.addEventListener("click", () => {
 async function verificaLogin() {
 
     let httpResponse = await ajax.sendRequest("GET", "/users", { "login.username": `${username.value}`, "login.password": `${password.value}` }).catch(console.error);
-    if (httpResponse) {
+    if (httpResponse && httpResponse.data.lenght > 0) {
         let data = httpResponse.data;
         let user = data[0];
         userGlobal = user
